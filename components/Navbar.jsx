@@ -3,14 +3,14 @@ import Button from "./Button";
 
 function Navbar() {
   return (
-    <div className="flex w-full px-10 items-center justify-between text-2xl font-extrabold">
+    <div className="flex w-full items-center justify-between px-5 text-2xl font-extrabold">
       <Image
         src="/logo.png"
         width="110"
         height="100"
         alt="De Nieuwe Mensa Logo"
       />
-      <div className="flex gap-5 items-center">
+      <div className="flex items-center gap-5">
         <span>About</span>
         <span>Transparency</span>
         <span>Catering</span>
