@@ -6,7 +6,7 @@
   --color-dnm-light-green: oklch(0.5725 0.1145 151.74);
   --color-dnm-white: oklch(0.9862 0.0142 84.58);
   --font-garet: var(--font-garet);
-  /* @link https://utopia.fyi/type/calculator?c=360,18,1.2,1240,28,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  /* @link https://utopia.fyi/type/calculator?c=760,14,1.2,1400,28,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
   --text-step--2: clamp(0.6076rem, -0.0008rem + 1.2809vw, 1.12rem);
   --text-step--1: clamp(0.7292rem, -0.0674rem + 1.6771vw, 1.4rem);
