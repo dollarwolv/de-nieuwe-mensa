@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Button from "@/components/Button";
+import ScrollText from "@/components/ScrollText";
 
 export default function Home() {
   return (
@@ -29,6 +30,85 @@ export default function Home() {
           </Button>
         </div>
       </div>
+      <ScrollText />
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
+      <p>hi</p>
     </div>
   );
 }
