@@ -1,47 +1,65 @@
 "use client";
 
-import { useAnimationFrame, useScroll } from "framer-motion";
-import { useEffect } from "react";
+import {
+  useAnimationFrame,
+  useScroll,
+  useVelocity,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { useRef } from "react";
 
 function ScrollText() {
   const texts = [
     "  [40.000+] Students served  |",
-    "  [200.000+] Total Euros saved  |",
-    "  [50%+] Meal costs reduced  |",
-    "  [20.000+] Appie runs eliminated  |",
+    "[200.000+] Total Euros saved  | ",
+    " [50%+] Meal costs reduced  | ",
+    " [20.000+] Appie runs spared  |",
     "  [12+] Students employed  |",
+    "  [100%] plant-powered meals  |  ",
   ];
 
   const container = useRef();
-  const { scrollYProgress } = useScroll({
+  const { scrollY } = useScroll({
     target: container,
     offset: ["start end", "end start"],
   });
 
   const textRefs = useRef([]);
+  const scrollVelocity = useVelocity(scrollY);
+  const baseOffset = useRef(0);
 
+  // generate array of offsets of the individual texts
   const charWidth = 14.6;
-  let cumulative = 0;
-
   let offsets = [];
   let current = 0;
   texts.forEach((text) => {
     offsets.push(current);
     current += charWidth * text.length;
   });
-
   const totalLength = current;
 
-  console.log(offsets);
+  /**
+   * This function is responsible for moving the text along and moving it left/right
+   * on scroll.
+   */
+  useAnimationFrame((time, delta) => {
+    // loop through each text ref, and move it to the right.
+    textRefs.current.forEach((text, i) => {
+      const v = scrollVelocity.get();
+      const baseSpeed = 40;
+      const boostSpeed = 0.2;
+      const speed = baseSpeed + v * boostSpeed;
 
-  useEffect(() => {
-    scrollYProgress.on("change", (e) => {
-      textRefs.current.forEach((text, i) => {
-        text.setAttribute("startOffset", offsets[i] - 800 + e * 800 + "px");
-      });
+      // each frame, increase the base offset by speed * time passed (delta)
+      baseOffset.current += (speed * delta) / 1000;
+
+      // change startOffset of each text to the length of the text (offset[i]) + the increased baseOffset,
+      // and use modulo to wrap around. -800 because it wraps around when the text has just left the screen
+      let moveBy = ((offsets[i] + baseOffset.current) % totalLength) - 800;
+      text.setAttribute("startOffset", `${moveBy}px`);
     });
-  }, []);
+  });
 
   return (
     <div className="w-full" ref={container}>
@@ -57,7 +75,6 @@ function ScrollText() {
               <textPath
                 href="#curve"
                 key={i}
-                startOffset={offsets[i] + "px"} // when i comment this out, it doesn't work anymore. why?
                 ref={(ref) => (textRefs.current[i] = ref)}
               >
                 {text}

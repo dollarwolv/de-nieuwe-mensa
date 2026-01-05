@@ -1,8 +1,24 @@
+"use client";
+
 import Image from "next/image";
 import Button from "@/components/Button";
 import ScrollText from "@/components/ScrollText";
+import { useEffect } from "react";
+import Lenis from "lenis";
 
 export default function Home() {
+  useEffect(() => {
+    // Initialize Lenis
+    const lenis = new Lenis();
+
+    // Use requestAnimationFrame to continuously update the scroll
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
   return (
     <div className="flex flex-col items-center">
       {/* Hero section */}
