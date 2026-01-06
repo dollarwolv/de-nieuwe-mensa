@@ -29,7 +29,7 @@ function StickyCards() {
   ];
 
   return (
-    <div className="relative after:mt-[100vh]">
+    <div className="relative">
       {stickyCardsData.map((data, i) => {
         return <StickyCard key={i} data={data} />;
       })}

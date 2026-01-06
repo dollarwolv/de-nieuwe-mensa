@@ -5,6 +5,7 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import ScrollText from "@/components/ScrollText";
 import StickyCards from "@/components/StickyCards";
+import FloatingImageGallery from "@/components/FloatingImageGallery";
 
 import { useEffect } from "react";
 import Lenis from "lenis";
@@ -23,7 +24,7 @@ export default function Home() {
     requestAnimationFrame(raf);
   }, []);
   return (
-    <div className="flex flex-col items-center">
+    <div className="relative flex flex-col items-center">
       {/* Hero section */}
       <div className="mt-12 flex max-w-460 flex-col items-center justify-center gap-24 px-2 md:mt-32 md:grid md:grid-cols-24 md:gap-0">
         <div className="relative aspect-square w-full max-w-112.5 md:col-start-17 md:col-end-25 md:row-start-1 md:-mt-5 md:-mb-5 md:ml-auto md:max-w-full">
@@ -50,6 +51,8 @@ export default function Home() {
         </div>
       </div>
       <ScrollText />
+
+      <FloatingImageGallery />
 
       {/* Sticky Cards */}
       <StickyCards />
