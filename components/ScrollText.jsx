@@ -1,19 +1,11 @@
-"use client";
-
-import {
-  useAnimationFrame,
-  useScroll,
-  useVelocity,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import { useAnimationFrame, useScroll, useVelocity } from "framer-motion";
 import { useRef } from "react";
 
 function ScrollText() {
   const texts = [
-    "  [40.000+] Students served  |",
-    "[200.000+] Total Euros saved  | ",
-    " [50%+] Meal costs reduced  | ",
+    "  [40.000+] Meals served  |",
+    "[300+] Daily portions sold  | ",
+    " [40%+] Meal costs reduced  | ",
     " [20.000+] Appie runs spared  |",
     "  [12+] Students employed  |",
     "  [100%] plant-powered meals  |  ",
@@ -47,7 +39,7 @@ function ScrollText() {
     // loop through each text ref, and move it to the right.
     textRefs.current.forEach((text, i) => {
       const v = scrollVelocity.get();
-      const baseSpeed = 40;
+      const baseSpeed = 25;
       const boostSpeed = 0.2;
       const speed = baseSpeed + v * boostSpeed;
 
@@ -63,7 +55,7 @@ function ScrollText() {
 
   return (
     <div className="w-full" ref={container}>
-      <svg viewBox="0 0 1512 137" className="mt-12 overflow-visible">
+      <svg viewBox="0 0 1512 137" className="my-12 overflow-visible">
         <path
           d="M0 136.001C287.5 136.001 472.5 0.499903 751 0.5C1029.5 0.500097 1262.5 136.001 1512 136.001"
           id="curve"
