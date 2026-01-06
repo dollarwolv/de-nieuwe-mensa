@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-dnm-black: oklch(0.2562 0 0);
+  --color-dnm-black: oklch(0.2562 0.0001 0);
   --color-dnm-dark-green: oklch(0.4209 0.0792 172.88);
   --color-dnm-light-green: oklch(0.5725 0.1145 151.74);
   --color-dnm-white: oklch(0.9862 0.0142 84.58);
@@ -16,6 +16,11 @@
   --text-step-3: clamp(1.512rem, -0.7513rem + 4.7649vw, 3.418rem);
   --text-step-4: clamp(1.8144rem, -1.1045rem + 6.1452vw, 4.2725rem);
   --text-step-5: clamp(2.1773rem, -1.5791rem + 7.9082vw, 5.3406rem);
+  --text-step-5: clamp(2.1773rem, -1.5791rem + 7.9082vw, 5.3406rem);
+  --text-step-6: clamp(2.6127rem, -2.2121rem + 10.1575vw, 6.6757rem);
+  --text-step-7: clamp(3.1353rem, -3.0508rem + 13.0234vw, 8.3447rem);
+  --text-step-8: clamp(3.7623rem, -4.1565rem + 16.6712vw, 10.4308rem);
+  --text-step-9: clamp(4.5148rem, -5.6071rem + 21.3093vw, 13.0385rem);
 
   /* @link https://utopia.fyi/type/calculator?c=360,14,1.2,768,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
   --text-mobile-step--2: clamp(0.6076rem, 0.4379rem + 0.7544vw, 0.8rem);
