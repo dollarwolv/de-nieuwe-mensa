@@ -1,8 +1,11 @@
 "use client";
 
 import Image from "next/image";
+
 import Button from "@/components/Button";
 import ScrollText from "@/components/ScrollText";
+import StickyCards from "@/components/StickyCards";
+
 import { useEffect } from "react";
 import Lenis from "lenis";
 
@@ -34,7 +37,7 @@ export default function Home() {
         <div className="flex flex-col gap-2 md:col-start-1 md:col-end-16 md:gap-4 lg:gap-8">
           <div className="md:text-step-5 text-mobile-step-5 flex flex-col leading-[92%] font-extrabold tracking-tight">
             <span className="">REAL FOOD.</span>
-            <span className="">STUDENT PRICED.</span>
+            <span className="">4,50 EUROS.</span>
             <span className="">NO COMPROMISE.</span>
           </div>
           <span className="text-mobile-step-1 md:text-step-0 leading-[92%] font-medium tracking-tight">
@@ -47,6 +50,9 @@ export default function Home() {
         </div>
       </div>
       <ScrollText />
+
+      {/* Sticky Cards */}
+      <StickyCards />
       <p>hi</p>
       <p>hi</p>
       <p>hi</p>
