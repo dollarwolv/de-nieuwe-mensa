@@ -1,14 +1,33 @@
-import { useSpring, motion } from "framer-motion";
+import { useSpring, motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
 
 function FloatingImageGallery() {
+  const container = useRef();
+
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["end start", "start end"],
+  });
+
+  const deplaceValue1 = useTransform(scrollYProgress, [1, 0], [0, 200]);
+  const deplaceValue2 = useTransform(scrollYProgress, [1, 0], [0, 250]);
+  const deplaceValue3 = useTransform(scrollYProgress, [1, 0], [0, 300]);
+
+  useEffect(() => {
+    scrollYProgress.on("change", (e) => {
+      console.log("scrollYProgress = " + e);
+    });
+  }, []);
+
   const planesData = [
     {
       speed: 0.05,
       opacity: "opacity-30 brightness-70",
       x: useSpring(0, springConfig),
       y: useSpring(0, springConfig),
+      deplaceValue: deplaceValue1,
       images: [
         { src: "1015/800/500", pos: "top-[12%] left-[10%] h-44" },
         { src: "1027/400/700", pos: "top-[15%] left-[85%] h-56" },
@@ -20,6 +39,7 @@ function FloatingImageGallery() {
       opacity: "opacity-80 brightness-90",
       x: useSpring(0, springConfig),
       y: useSpring(0, springConfig),
+      deplaceValue: deplaceValue2,
       images: [
         { src: "1043/500/800", pos: "top-[8%] left-[55%] h-52" },
         { src: "1052/900/500", pos: "top-[60%] left-[8%] h-44" },
@@ -31,6 +51,7 @@ function FloatingImageGallery() {
       opacity: "opacity-100",
       x: useSpring(0, springConfig),
       y: useSpring(0, springConfig),
+      deplaceValue: deplaceValue3,
       images: [
         { src: "1074/700/450", pos: "top-[18%] left-[20%] h-40" },
         { src: "1084/450/750", pos: "top-[55%] left-[80%] h-56" },
@@ -53,31 +74,42 @@ function FloatingImageGallery() {
   };
 
   return (
-    <div className="relative h-[200vh] w-screen">
-      <div
+    <div className="bg-dnm-black relative mt-25 h-screen w-screen">
+      <motion.div
         className="sticky top-0 flex h-screen w-screen items-center justify-center overflow-hidden"
         onMouseMove={manageMouseMove}
+        ref={container}
       >
-        <h1 className="absolute z-20 text-8xl font-black">ABOUT DNM</h1>
+        <h1 className="text-step-8 absolute z-20 font-extrabold text-white">
+          OUR STORY
+        </h1>
+        <span className="text-step-7 absolute right-5 bottom-0 z-20 tracking-[-10.85876px] text-white">
+          (↓)
+        </span>
 
         {/* 3. Rendering: Double map for Planes and Images */}
         {planesData.map((plane, index) => (
           <motion.div
             key={index}
-            style={{ x: plane.x, y: plane.y }}
-            className={`absolute h-screen w-screen ${plane.opacity}`}
+            style={{ y: plane.deplaceValue }}
+            className="absolute mt-[-30vh] h-screen w-screen"
           >
-            {plane.images.map((img, imgIndex) => (
-              <img
-                key={imgIndex}
-                src={`https://picsum.photos/id/${img.src}`}
-                className={`absolute ${img.pos}`}
-                alt=""
-              />
-            ))}
+            <motion.div
+              style={{ x: plane.x, y: plane.y }}
+              className={`absolute h-screen w-screen ${plane.opacity}`}
+            >
+              {plane.images.map((img, imgIndex) => (
+                <img
+                  key={imgIndex}
+                  src={`https://picsum.photos/id/${img.src}`}
+                  className={`absolute ${img.pos}`}
+                  alt=""
+                />
+              ))}
+            </motion.div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
