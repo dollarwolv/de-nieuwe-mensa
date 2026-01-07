@@ -1,6 +1,7 @@
 import "./StickyCards.css";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
+import Button from "./Button";
 
 function StickyCard({ data }) {
   const ref = useRef();
@@ -48,8 +49,15 @@ function StickyCard({ data }) {
             alt="placeholder image"
             className="aspect-5/3 md:w-[75%]"
           />
-          <div className="lg:text-step--1 flex flex-col gap-2 md:w-[75%] md:flex-row md:gap-6">
-            <p> {data.description}</p>
+          <div className="lg:text-step--1 flex flex-row gap-2 md:w-[75%] md:flex-row md:gap-6">
+            <div className="flex flex-col gap-2">
+              <p> {data.description}</p>
+              {data.index == "03" && (
+                <Button className="w-fit px-0 font-extrabold">
+                  LEARN MORE ABOUT DNM
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </motion.div>
