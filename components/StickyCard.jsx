@@ -22,12 +22,12 @@ function StickyCard({ data }) {
 
   return (
     <div
-      className={`relative ${data.index !== "03" ? "h-[200vh]" : "h-full"} w-full`}
+      className={`relative ${data.index !== "03" ? "h-[200vh]" : "h-full"} bg-dnm-black w-full`}
       ref={ref}
       style={{ marginTop: data.index === "01" ? "0" : "-100vh" }}
     >
       <motion.div
-        className={`${data.bgColor} sticky-card sticky top-0 flex h-screen w-screen flex-col rounded-t-[80px] px-6 pt-12 text-white lg:flex-row`}
+        className={`${data.bgColor} sticky-card sticky top-0 flex h-screen w-screen flex-col border-t px-6 pt-12 lg:flex-row`}
         style={{
           "--after-opacity": data.index !== "03" ? opacityValue : "",
           scale: data.index !== "03" ? scaleValue : "",
@@ -49,8 +49,7 @@ function StickyCard({ data }) {
             className="aspect-5/3 md:w-[75%]"
           />
           <div className="lg:text-step--1 flex flex-col gap-2 md:w-[75%] md:flex-row md:gap-6">
-            <h2 className="flex-3 font-semibold uppercase">{`(About the ${data.title})`}</h2>
-            <p className="flex-4"> {data.description}</p>
+            <p> {data.description}</p>
           </div>
         </div>
       </motion.div>

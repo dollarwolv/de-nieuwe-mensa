@@ -8,7 +8,7 @@ function StickyCards() {
       image: "/sticky-cards/card-1.jpg",
       description:
         "The canteen was too expensive. That's why we protested on campus by giving out free food.",
-      bgColor: "bg-dnm-black",
+      bgColor: "bg-dnm-white",
     },
     {
       index: "02",
@@ -16,7 +16,7 @@ function StickyCards() {
       image: "/sticky-cards/card-2.jpg",
       description:
         "Next, we launched a food stall at the Roeterseilandcampus of the University of Amsterdam.",
-      bgColor: "bg-dnm-dark-green",
+      bgColor: "bg-dnm-white",
     },
     {
       index: "03",
@@ -24,7 +24,7 @@ function StickyCards() {
       image: "/sticky-cards/card-3.jpg",
       description:
         "Now, we're serving around 2000 healthy, vegan, and affordable meals to hungry students & staff per week.",
-      bgColor: "bg-dnm-light-green",
+      bgColor: "bg-dnm-white",
     },
   ];
 
