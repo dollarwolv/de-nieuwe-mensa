@@ -52,6 +52,20 @@ export default function Home() {
       </div>
       <ScrollText />
 
+      <div className="flex w-screen flex-col items-center justify-center pt-2">
+        <div className="flex w-full justify-between px-4">
+          <span className="text-sm font-medium">(ABOUT DNM)</span>
+          <span className="text-sm font-medium">(SCROLL TO EXPLORE)</span>
+        </div>
+
+        <h3 className="text-step-3 mt-25 max-w-[22ch] text-center leading-[95%] font-semibold tracking-tight">
+          What started as a protest against the status quo is now your daily
+          alternative. De Nieuwe Mensa is a student-led non-profit initiative
+          serving fresh, vegan meals for a fair price—because affordable food
+          shouldn't be a radical idea.
+        </h3>
+      </div>
+
       <FloatingImageGallery />
 
       {/* Sticky Cards */}
