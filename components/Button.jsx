@@ -1,7 +1,7 @@
-function Button({ children, className = "" }) {
+function Button({ children, className = "text-2xl" }) {
   return (
     <button
-      className={`bg-dnm-light-green text-white shadow-[4px_4px_0px_0px_rgb(35,35,35)] rounded-full py-2 px-5 border-black border text-2xl ${className}`}
+      className={`bg-dnm-light-green rounded-full border border-black px-5 py-2 text-white shadow-[4px_4px_0px_0px_rgb(35,35,35)] ${className}`}
     >
       {children}
     </button>

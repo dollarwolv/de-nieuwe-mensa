@@ -30,7 +30,7 @@ function Navbar() {
           <span>Transparency</span>
           <span>Catering</span>
           <span>Blog</span>
-          <Button>SUPPORT US</Button>
+          <Button className="text-2xl">SUPPORT US</Button>
         </div>
       </div>
 
