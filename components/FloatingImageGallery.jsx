@@ -74,15 +74,21 @@ function FloatingImageGallery() {
   };
 
   return (
-    <div className="bg-dnm-black relative mt-25 h-screen w-screen">
+    <div className="bg-dnm-black relative h-screen w-screen rounded-t-4xl border-2">
       <motion.div
         className="sticky top-0 flex h-screen w-screen items-center justify-center overflow-hidden"
         onMouseMove={manageMouseMove}
         ref={container}
       >
-        <h1 className="text-step-8 absolute z-20 font-extrabold text-white">
-          OUR STORY
-        </h1>
+        <div className="absolute flex flex-col items-center justify-center">
+          <h1 className="text-step-8 stroke-red z-20 stroke-3 leading-[92%] font-extrabold tracking-tight text-white">
+            OUR STORY
+          </h1>
+          <p className="text-step-0 z-20 font-bold text-white uppercase">
+            from protest movement to canteen stall
+          </p>
+        </div>
+
         <span className="text-step-7 absolute right-5 bottom-0 z-20 tracking-[-10.85876px] text-white">
           (↓)
         </span>

@@ -45,7 +45,7 @@ export default function Home() {
             Student-led. Non-profit. Taking back the canteen with healthy, vegan
             meals.
           </span>
-          <Button className="md:text-step-1 w-fit font-extrabold">
+          <Button className="md:text-step-1 w-fit text-2xl font-extrabold">
             SEE THIS WEEK'S MENU
           </Button>
         </div>
@@ -66,6 +66,8 @@ export default function Home() {
         </h3>
       </div>
 
+      <div className="bg-dnm-dark-green mt-25 -mb-12 flex h-24 w-screen rounded-t-4xl border-2"></div>
+      <div className="bg-dnm-light-green -mb-12 flex h-22 w-screen rounded-t-4xl border-2"></div>
       <FloatingImageGallery />
 
       {/* Sticky Cards */}
