@@ -15,12 +15,6 @@ function FloatingImageGallery() {
   const deplaceValue2 = useTransform(scrollYProgress, [1, 0], [0, 250]);
   const deplaceValue3 = useTransform(scrollYProgress, [1, 0], [0, 300]);
 
-  useEffect(() => {
-    scrollYProgress.on("change", (e) => {
-      console.log("scrollYProgress = " + e);
-    });
-  }, []);
-
   const planesData = [
     {
       speed: 0.05,
@@ -74,7 +68,7 @@ function FloatingImageGallery() {
   };
 
   return (
-    <div className="bg-dnm-black relative h-screen w-screen rounded-t-4xl border-2">
+    <div className="bg-dnm-black relative h-screen w-screen rounded-t-4xl border-t-2">
       <motion.div
         className="sticky top-0 flex h-screen w-screen items-center justify-center overflow-hidden"
         onMouseMove={manageMouseMove}

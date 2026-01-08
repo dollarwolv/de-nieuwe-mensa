@@ -5,6 +5,7 @@
   --color-dnm-dark-green: oklch(0.4209 0.0792 172.88);
   --color-dnm-light-green: oklch(0.5725 0.1145 151.74);
   --color-dnm-white: oklch(0.9862 0.0142 84.58);
+  --color-dnm-gray: oklch(37.34% 0.003 197.04);
   --font-garet: var(--font-garet);
 
   /* @link https://utopia.fyi/type/calculator?c=760,14,1.2,1400,28,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */

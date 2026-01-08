@@ -15,12 +15,6 @@ function StickyCard({ data }) {
   const scaleValue = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
   const rotationValue = useTransform(scrollYProgress, [0, 1], [0, 2]);
 
-  useEffect(() => {
-    scrollYProgress.on("change", (e) => {
-      console.log(e);
-    });
-  }, []);
-
   return (
     <div
       className={`relative ${data.index !== "03" ? "h-[200vh]" : "h-full"} bg-dnm-black w-full`}
@@ -28,7 +22,7 @@ function StickyCard({ data }) {
       style={{ marginTop: data.index === "01" ? "0" : "-100vh" }}
     >
       <motion.div
-        className={`${data.bgColor} sticky-card sticky top-0 flex h-screen w-screen flex-col border-t px-6 pt-12 lg:flex-row`}
+        className={`${data.bgColor} sticky-card sticky top-0 flex h-screen w-screen flex-col rounded-t-4xl border-t px-6 pt-12 lg:flex-row`}
         style={{
           "--after-opacity": data.index !== "03" ? opacityValue : "",
           scale: data.index !== "03" ? scaleValue : "",
