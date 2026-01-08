@@ -1,6 +1,7 @@
-import { useScroll, motion, useTransform } from "framer-motion";
+import { useScroll, motion, useTransform, easeInOut } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { cubicBezier } from "framer-motion";
 
 function ValuesSection() {
   const values = [
@@ -42,7 +43,7 @@ function ValuesSection() {
   });
 
   return (
-    <div className="relative h-[250vh]" ref={container}>
+    <div className="relative h-[400vh]" ref={container}>
       <div className="sticky top-12 flex h-[90vh] w-full flex-col">
         <div className="flex flex-row items-center justify-between border-t-2 pt-6">
           <h2 className="text-step-4 leading-[92%] font-semibold tracking-tight">
@@ -61,6 +62,7 @@ function ValuesSection() {
               scrollYProgress,
               [firstValue, secondValue],
               [600, 0],
+              { ease: easeInOut },
             );
             return (
               <motion.div
