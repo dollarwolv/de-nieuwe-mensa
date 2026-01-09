@@ -68,49 +68,53 @@ function FloatingImageGallery() {
   };
 
   return (
-    <div className="bg-dnm-black relative h-screen w-screen rounded-t-4xl border-t-2">
-      <motion.div
-        className="sticky top-0 flex h-screen w-screen items-center justify-center overflow-hidden"
-        onMouseMove={manageMouseMove}
-        ref={container}
-      >
-        <div className="absolute flex flex-col items-center justify-center">
-          <h1 className="text-step-8 stroke-red z-20 stroke-3 leading-[92%] font-extrabold tracking-tight text-white">
-            OUR STORY
-          </h1>
-          <p className="text-step-0 z-20 font-bold text-white uppercase">
-            from protest movement to canteen stall
-          </p>
-        </div>
+    <>
+      <div className="bg-dnm-dark-green mt-25 -mb-12 flex h-24 w-screen rounded-t-4xl border-2"></div>
+      <div className="bg-dnm-light-green -mb-12 flex h-22 w-screen rounded-t-4xl border-2"></div>
+      <div className="bg-dnm-black relative h-screen w-screen rounded-t-4xl border-t-2">
+        <motion.div
+          className="sticky top-0 flex h-screen w-screen items-center justify-center overflow-hidden"
+          onMouseMove={manageMouseMove}
+          ref={container}
+        >
+          <div className="absolute flex flex-col items-center justify-center">
+            <h1 className="text-step-8 stroke-red z-20 stroke-3 leading-[92%] font-extrabold tracking-tight text-white">
+              OUR STORY
+            </h1>
+            <p className="text-step-0 z-20 font-bold text-white uppercase">
+              from protest movement to canteen stall
+            </p>
+          </div>
 
-        <span className="text-step-7 absolute right-5 bottom-0 z-20 tracking-[-10.85876px] text-white">
-          (↓)
-        </span>
+          <span className="text-step-7 absolute right-5 bottom-0 z-20 tracking-[-10.85876px] text-white">
+            (↓)
+          </span>
 
-        {/* 3. Rendering: Double map for Planes and Images */}
-        {planesData.map((plane, index) => (
-          <motion.div
-            key={index}
-            style={{ y: plane.deplaceValue }}
-            className="absolute mt-[-30vh] h-screen w-screen"
-          >
+          {/* 3. Rendering: Double map for Planes and Images */}
+          {planesData.map((plane, index) => (
             <motion.div
-              style={{ x: plane.x, y: plane.y }}
-              className={`absolute h-screen w-screen ${plane.opacity}`}
+              key={index}
+              style={{ y: plane.deplaceValue }}
+              className="absolute mt-[-30vh] h-screen w-screen"
             >
-              {plane.images.map((img, imgIndex) => (
-                <img
-                  key={imgIndex}
-                  src={`https://picsum.photos/id/${img.src}`}
-                  className={`absolute ${img.pos}`}
-                  alt=""
-                />
-              ))}
+              <motion.div
+                style={{ x: plane.x, y: plane.y }}
+                className={`absolute h-screen w-screen ${plane.opacity}`}
+              >
+                {plane.images.map((img, imgIndex) => (
+                  <img
+                    key={imgIndex}
+                    src={`https://picsum.photos/id/${img.src}`}
+                    className={`absolute ${img.pos}`}
+                    alt=""
+                  />
+                ))}
+              </motion.div>
             </motion.div>
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
+          ))}
+        </motion.div>
+      </div>
+    </>
   );
 }
 

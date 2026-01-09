@@ -1,16 +1,7 @@
 import { useAnimationFrame, useScroll, useVelocity } from "framer-motion";
 import { useRef } from "react";
 
-function ScrollText() {
-  const texts = [
-    "  [40.000+] Meals served  |",
-    "[300+] Daily portions sold  | ",
-    " [40%+] Meal costs reduced  | ",
-    " [20.000+] Appie runs spared  |",
-    "  [12+] Students employed  |",
-    "  [100%] plant-powered meals  |  ",
-  ];
-
+function ScrollText({ texts }) {
   const container = useRef();
   const { scrollY } = useScroll({
     target: container,

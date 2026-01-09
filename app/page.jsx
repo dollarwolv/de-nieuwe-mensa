@@ -25,6 +25,23 @@ export default function Home() {
 
   //   requestAnimationFrame(raf);
   // }, []);
+
+  const heroTexts = [
+    "  [40.000+] Meals served  |",
+    "[300+] Daily portions sold  | ",
+    " [40%+] Meal costs reduced  | ",
+    " [20.000+] Appie runs spared  |",
+    "  [12+] Students employed  |",
+    "  [100%] plant-powered meals  |  ",
+  ];
+
+  const menuTexts = [
+    "[15+] Average Grams of Protein  |",
+    "  [10+] Filling Food Options |",
+    "[20+] Essential Nutrients | ",
+    "[1000+] times healthier than Albert Heijn Croissants  | ",
+    "  [100%] plant-powered meals  |  ",
+  ];
   return (
     <div className="relative flex flex-col items-center">
       {/* Hero section */}
@@ -52,7 +69,7 @@ export default function Home() {
           </Button>
         </div>
       </div>
-      <ScrollText />
+      <ScrollText texts={heroTexts} />
 
       <div className="flex w-screen flex-col items-center justify-center pt-2">
         <div className="flex w-full justify-between px-4">
@@ -68,14 +85,14 @@ export default function Home() {
         </h3>
       </div>
 
-      <div className="bg-dnm-dark-green mt-25 -mb-12 flex h-24 w-screen rounded-t-4xl border-2"></div>
-      <div className="bg-dnm-light-green -mb-12 flex h-22 w-screen rounded-t-4xl border-2"></div>
       <FloatingImageGallery />
 
       {/* Sticky Cards */}
       <StickyCards />
       <ValuesSection />
       <MenuSection />
+      <ScrollText texts={menuTexts} />
+
       <p>hi</p>
       <p>hi</p>
       <p>hi</p>
