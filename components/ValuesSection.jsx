@@ -44,7 +44,8 @@ function ValuesSection() {
 
   return (
     <div className="relative h-[400vh]" ref={container}>
-      <div className="sticky top-12 flex h-[90vh] w-full flex-col">
+      {/* This sticky section causes everything to break on mobile */}
+      <div className="sticky top-0 flex h-[90vh] w-full flex-col">
         <div className="flex flex-row items-center justify-between border-t-2 pt-6">
           <h2 className="text-step-4 leading-[92%] font-semibold tracking-tight">
             Our values
@@ -61,7 +62,7 @@ function ValuesSection() {
             const yValue = useTransform(
               scrollYProgress,
               [firstValue, secondValue],
-              [600, 0],
+              [400, 0],
               { ease: easeInOut },
             );
             return (

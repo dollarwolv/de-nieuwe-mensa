@@ -33,3 +33,24 @@
   --text-mobile-step-4: clamp(1.8144rem, 0.7226rem + 4.8524vw, 3.0518rem);
   --text-mobile-step-5: clamp(2.1773rem, 0.7325rem + 6.4212vw, 3.8147rem);
 }
+
+@utility scrollbar-hide {
+  /* Firefox */
+  scrollbar-width: none;
+  /* IE and Edge */
+  -ms-overflow-style: none;
+  /* Chrome, Safari, and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+@utility scrollbar-default {
+  /* Firefox */
+  scrollbar-width: auto;
+  /* IE and Edge */
+  -ms-overflow-style: auto;
+  /* Chrome, Safari, and Opera */
+  &::-webkit-scrollbar {
+    display: block;
+  }
+}

@@ -15,6 +15,8 @@ function StickyCard({ data }) {
   const scaleValue = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
   const rotationValue = useTransform(scrollYProgress, [0, 1], [0, 2]);
 
+  useEffect(() => {}, []);
+
   return (
     <div
       className={`relative ${data.index !== "03" ? "h-[200vh]" : "h-full"} bg-dnm-black w-full`}

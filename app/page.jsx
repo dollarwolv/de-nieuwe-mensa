@@ -10,6 +10,7 @@ import ValuesSection from "@/components/ValuesSection";
 
 import { useEffect } from "react";
 import Lenis from "lenis";
+import MenuSection from "@/components/MenuSection";
 
 export default function Home() {
   // useEffect(() => {
@@ -74,38 +75,7 @@ export default function Home() {
       {/* Sticky Cards */}
       <StickyCards />
       <ValuesSection />
-
-      <div className="mt-36 flex w-full flex-col items-center py-12">
-        <div className="mb-6 flex flex-col items-center gap-2 tracking-tight">
-          <h2 className="text-step-5 leading-[92%] font-extrabold">OUR MENU</h2>
-          <span className="text-step-0 leading-[92%]">
-            All of our meals 100% plant-based and made by students with ❤️
-          </span>
-        </div>
-        <div className="flex h-75 w-full flex-row justify-between">
-          <div className="flex h-75 w-full flex-2 items-center justify-center">
-            <img
-              src="https://picsum.photos/id/1074/1200/1200"
-              alt=""
-              className="h-75 rounded-2xl"
-            />
-          </div>
-          <div className="flex h-full w-full flex-3 flex-col items-start justify-center gap-2">
-            <p className="text-step-0 leading-[92%] font-bold tracking-tight">
-              We believe in a canteen that serves students, not financial
-              interests.
-            </p>
-            <p className="text-step-0 leading-[92%] font-bold tracking-tight">
-              We are 100% transparent about where your money goes - so you can
-              be sure that you are not paying more than you have to for the food
-              you need.
-            </p>
-            <Button className="font-extrabold">
-              SEE FULL FINANCIAL OVERVIEW
-            </Button>
-          </div>
-        </div>
-      </div>
+      <MenuSection />
       <p>hi</p>
       <p>hi</p>
       <p>hi</p>
