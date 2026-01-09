@@ -91,9 +91,9 @@ function MenuSection() {
         <span className="text-center text-xl leading-[92%]">
           All of our meals 100% plant-based and made by students with ❤️
         </span>
-        <PillSwitch toggled={toggled} setToggled={setToggled} />
       </div>
 
+      <PillSwitch toggled={toggled} setToggled={setToggled} className="mb-2" />
       <AnimatePresence mode="wait">
         <motion.div
           key={toggled} // This key changing tells AnimatePresence to swap the whole group

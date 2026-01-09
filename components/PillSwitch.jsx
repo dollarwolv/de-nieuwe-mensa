@@ -2,10 +2,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { clipPath } from "framer-motion/client";
 
-function PillSwitch({ toggled, setToggled }) {
+function PillSwitch({ toggled, setToggled, className = "" }) {
   return (
     <div
-      className="relative cursor-pointer"
+      className={`relative cursor-pointer ${className}`}
       onClick={() => setToggled((prev) => !prev)}
     >
       <motion.div
