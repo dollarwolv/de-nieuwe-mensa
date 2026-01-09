@@ -36,51 +36,42 @@ function Testimonials() {
         </span>
       </div>
 
-      <Marquee style={{ width: "100vw", margin: "24px 0px 0px 0px" }}>
-        {testimonials.map((testimonial) => {
-          return (
-            <div className="mx-4 flex h-63 w-100 flex-col rounded-2xl bg-white p-4 md:w-120">
-              <div className="flex flex-row items-center gap-2 border-b-[0.5px] border-gray-200 pb-4">
-                <img
-                  src="https://picsum.photos/56/56"
-                  alt=""
-                  className="rounded-full"
-                />
-                <div className="flex flex-col">
-                  <span className="text-xl font-bold">{testimonial.name}</span>
-                  <span className="">{testimonial.major}</span>
+      {[0, 1].map((i) => {
+        return (
+          <Marquee
+            style={{ width: "100vw", margin: "24px 0px 0px 0px" }}
+            direction={i == 0 ? "left" : "right"}
+            key={i}
+          >
+            {testimonials.map((testimonial) => {
+              return (
+                <div
+                  className="mx-4 flex h-63 w-80 flex-col rounded-2xl bg-white p-4 md:w-120"
+                  key={testimonial.index}
+                >
+                  <div className="flex flex-row items-center gap-2 border-b-[0.5px] border-gray-200 pb-4">
+                    <img
+                      src="https://picsum.photos/56/56"
+                      alt=""
+                      className="rounded-full"
+                    />
+                    <div className="flex flex-col">
+                      <span className="text-xl font-bold">
+                        {testimonial.name}
+                      </span>
+                      <span className="">{testimonial.major}</span>
+                    </div>
+                  </div>
+                  <p className="line-clamp-5 h-full max-w-[40ch] pt-6">
+                    {testimonial.text}
+                  </p>
                 </div>
-              </div>
-              <p className="line-clamp-5 h-full max-w-[40ch] pt-6">
-                {testimonial.text}
-              </p>
-            </div>
-          );
-        })}
-      </Marquee>
-      <Marquee direction="right" style={{ width: "100vw", margin: "24px 0px" }}>
-        {testimonials.map((testimonial) => {
-          return (
-            <div className="mx-4 flex h-63 w-100 flex-col rounded-2xl bg-white p-4 md:w-120">
-              <div className="flex flex-row items-center gap-2 border-b-[0.5px] border-gray-200 pb-4">
-                <img
-                  src="https://picsum.photos/56/56"
-                  alt=""
-                  className="rounded-full"
-                />
-                <div className="flex flex-col">
-                  <span className="text-xl font-bold">{testimonial.name}</span>
-                  <span className="">{testimonial.major}</span>
-                </div>
-              </div>
-              <p className="line-clamp-5 h-full max-w-[40ch] pt-6">
-                {testimonial.text}
-              </p>
-            </div>
-          );
-        })}
-      </Marquee>
-      <Button className="text-xl font-bold">
+              );
+            })}
+          </Marquee>
+        );
+      })}
+      <Button className="mt-8 text-xl font-bold">
         <a href="https://www.instagram.com/denieuwemensa/">
           Leave feedback - good or bad ❤️
         </a>

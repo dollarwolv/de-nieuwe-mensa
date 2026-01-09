@@ -110,17 +110,17 @@ function MenuSection() {
             .map((item, i) => {
               return (
                 <motion.div
-                  className="bg-dnm-light-green/93 flex w-75 shrink-0 flex-col items-center gap-2 rounded-4xl border border-black px-8 py-4 shadow-[4px_4px_0px_0px_rgb(35,35,35)]"
+                  className="bg-dnm-light-green/93 flex w-65 shrink-0 flex-col items-center gap-2 rounded-4xl border border-black px-8 py-4 shadow-[4px_4px_0px_0px_rgb(35,35,35)]"
                   key={item.name}
                   variants={cardVariants}
                 >
-                  <h4 className="text-5xl font-extrabold">{item.day}</h4>
+                  <h4 className="text-4xl font-extrabold">{item.day}</h4>
                   <img
                     src="https://picsum.photos/210/270"
                     alt=""
                     className="rounded-2xl"
                   />
-                  <p className="my-auto max-w-[16ch] text-center text-2xl font-semibold">
+                  <p className="my-auto max-w-[16ch] text-center text-xl font-semibold">
                     {item.name}
                   </p>
 
