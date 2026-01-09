@@ -19,7 +19,7 @@ function StickyCard({ data }) {
 
   return (
     <div
-      className={`relative ${data.index !== "03" ? "h-[200vh]" : "h-full"} bg-dnm-black w-full`}
+      className={`relative ${data.index !== "03" ? "h-[200vh]" : "h-full"} bg-dnm-black w-full ${data.index !== "01" && "rounded-t-4xl"} `}
       ref={ref}
       style={{ marginTop: data.index === "01" ? "0" : "-100vh" }}
     >
