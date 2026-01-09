@@ -8,6 +8,7 @@ import StickyCards from "@/components/StickyCards";
 import FloatingImageGallery from "@/components/FloatingImageGallery";
 import ValuesSection from "@/components/ValuesSection";
 import HireUs from "@/components/HireUs";
+import Testimonials from "@/components/Testimonials";
 
 import { useEffect } from "react";
 import Lenis from "lenis";
@@ -94,7 +95,7 @@ export default function Home() {
       <MenuSection />
       <ScrollText texts={menuTexts} />
       <HireUs />
-
+      <Testimonials />
       <p>hi</p>
       <p>hi</p>
       <p>hi</p>
