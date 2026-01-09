@@ -42,6 +42,7 @@ function Testimonials() {
             style={{ width: "100vw", margin: "24px 0px 0px 0px" }}
             direction={i == 0 ? "left" : "right"}
             key={i}
+            pauseOnHover={true}
           >
             {testimonials.map((testimonial) => {
               return (
