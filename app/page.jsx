@@ -48,7 +48,7 @@ export default function Home() {
   return (
     <div className="relative flex flex-col items-center">
       {/* Hero section */}
-      <div className="mt-12 flex max-w-460 flex-col items-center justify-center gap-24 px-2 md:mt-32 md:grid md:grid-cols-24 md:gap-0">
+      <div className="mt-12 flex max-w-460 flex-col items-center justify-center gap-12 px-2 md:mt-32 md:grid md:grid-cols-24 md:gap-0">
         <div className="wmax-w-112.5 relative aspect-square w-full md:col-start-17 md:col-end-25 md:row-start-1 md:-mt-5 md:-mb-5 md:ml-auto md:max-w-full">
           <div className="relative md:h-full md:w-full">
             <Image
@@ -77,7 +77,7 @@ export default function Home() {
       </div>
       <ScrollText texts={heroTexts} />
 
-      <div className="flex w-screen flex-col items-center justify-center pt-2">
+      <div className="mt-12 flex w-screen flex-col items-center justify-center pt-2 md:mt-0">
         <div className="flex w-full justify-between px-4">
           <span className="text-sm font-medium">(ABOUT DNM)</span>
           <span className="text-sm font-medium">(SCROLL TO EXPLORE)</span>

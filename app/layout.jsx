@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import StickyFooter from "@/components/StickyFooter";
 
 const garet = localFont({
   src: [
@@ -69,9 +70,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${garet.variable} p-4 font-garet bg-dnm-white`}>
-        <Navbar />
-        {children}
+      <body className={`${garet.variable} font-garet bg-dnm-white`}>
+        <div className="p-4">
+          <Navbar />
+          {children}
+        </div>
+        <StickyFooter />
       </body>
     </html>
   );
