@@ -9,6 +9,7 @@ import FloatingImageGallery from "@/components/FloatingImageGallery";
 import ValuesSection from "@/components/ValuesSection";
 import HireUs from "@/components/HireUs";
 import Testimonials from "@/components/Testimonials";
+import CircleScrollText from "@/components/CircleScrollText";
 
 import { useEffect } from "react";
 import Lenis from "lenis";
@@ -48,13 +49,16 @@ export default function Home() {
     <div className="relative flex flex-col items-center">
       {/* Hero section */}
       <div className="mt-12 flex max-w-460 flex-col items-center justify-center gap-24 px-2 md:mt-32 md:grid md:grid-cols-24 md:gap-0">
-        <div className="relative aspect-square w-full max-w-112.5 md:col-start-17 md:col-end-25 md:row-start-1 md:-mt-5 md:-mb-5 md:ml-auto md:max-w-full">
-          <Image
-            src="/daal.png"
-            className="object-cover"
-            alt="Daal at de nieuwe mensa"
-            fill
-          />
+        <div className="wmax-w-112.5 relative aspect-square w-full md:col-start-17 md:col-end-25 md:row-start-1 md:-mt-5 md:-mb-5 md:ml-auto md:max-w-full">
+          <div className="relative md:h-full md:w-full">
+            <Image
+              src="/daal.png"
+              className="absolute object-cover"
+              alt="Daal at de nieuwe mensa"
+              fill
+            />
+            <CircleScrollText />
+          </div>
         </div>
         <div className="flex flex-col gap-2 md:col-start-1 md:col-end-16 md:gap-4 lg:gap-8">
           <div className="md:text-step-5 text-mobile-step-5 flex flex-col leading-[92%] font-extrabold tracking-tight">
@@ -79,7 +83,7 @@ export default function Home() {
           <span className="text-sm font-medium">(SCROLL TO EXPLORE)</span>
         </div>
 
-        <h3 className="text-step-3 mt-25 max-w-[22ch] text-center leading-[95%] font-semibold tracking-tight">
+        <h3 className="md:text-step-3 mt-25 text-center text-3xl leading-[95%] font-semibold tracking-tight md:max-w-[22ch]">
           What started as a protest against the status quo is now your daily
           alternative. De Nieuwe Mensa is a student-led non-profit initiative
           serving fresh, vegan meals for a fair price—because affordable food
