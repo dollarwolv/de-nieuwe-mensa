@@ -5,6 +5,7 @@ import Button from "./Button";
 import { useState } from "react";
 import { Squeeze as Hamburger } from "hamburger-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 function Navbar() {
   const [isOpen, setOpen] = useState(false);
@@ -15,28 +16,30 @@ function Navbar() {
         <Hamburger toggled={isOpen} toggle={setOpen} />
       </div>
 
-      <div className="lg:text-step-0 md:text-step-1 flex w-full items-center justify-between px-5 font-extrabold">
+      <nav className="lg:text-step-0 md:text-step-1 flex w-full items-center justify-between px-5 font-extrabold">
         <div className="relative hidden shrink-0 md:block md:h-13 md:w-16 lg:h-18 lg:w-22">
-          <Image
-            src="/logo.png"
-            alt="De Nieuwe Mensa Logo"
-            fill
-            className="object-cover"
-          />
+          <Link href={"/"}>
+            <Image
+              src="/logo.png"
+              alt="De Nieuwe Mensa Logo"
+              fill
+              className="object-cover"
+            />
+          </Link>
         </div>
 
         <div className="hidden items-center gap-5 md:flex">
-          <span>About</span>
-          <span>Transparency</span>
-          <span>Catering</span>
-          <span>Blog</span>
+          <Link href="/about">About</Link>
+          <Link href="/transparency">Transparency</Link>
+          <Link href="/catering">Catering</Link>
+          <Link href="/blog">Blog</Link>
           <Button className="text-2xl">SUPPORT US</Button>
         </div>
-      </div>
+      </nav>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <motion.nav
             initial={{ clipPath: "inset(0% 0% 100%)" }}
             animate={{ clipPath: "inset(0% 0% 0%)" }}
             exit={{ clipPath: "inset(0% 0% 100%)" }}
@@ -64,7 +67,7 @@ function Navbar() {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </motion.nav>
         )}
       </AnimatePresence>
     </>

@@ -88,9 +88,12 @@ function OurTeam() {
             </p>
           </div>
           <div className="mt-6 grid grid-cols-2 justify-between gap-x-20 gap-y-2.5 md:grid-cols-3 lg:mt-12 lg:grid-cols-5">
-            {boardMembers.map((profile) => {
+            {boardMembers.map((profile, i) => {
               return (
-                <div className="flex max-w-53 flex-col">
+                <div
+                  className="flex max-w-53 flex-col"
+                  key={`board-member-${i}`}
+                >
                   <img
                     src="https://picsum.photos/212/212"
                     alt=""
@@ -118,9 +121,9 @@ function OurTeam() {
             </p>
           </div>
           <div className="mt-6 grid grid-cols-2 justify-between gap-x-20 gap-y-2.5 md:grid-cols-3 lg:mt-12 lg:grid-cols-5">
-            {boardMembers.map((profile) => {
+            {boardMembers.map((profile, i) => {
               return (
-                <div className="flex max-w-53 flex-col">
+                <div className="flex max-w-53 flex-col" key={`cook-${i}`}>
                   <img
                     src="https://picsum.photos/212/212"
                     alt=""

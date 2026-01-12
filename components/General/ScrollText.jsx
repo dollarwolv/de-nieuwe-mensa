@@ -40,7 +40,7 @@ function ScrollText({ texts }) {
       // change startOffset of each text to the length of the text (offset[i]) + the increased baseOffset,
       // and use modulo to wrap around. -800 because it wraps around when the text has just left the screen
       let moveBy = ((offsets[i] + baseOffset.current) % totalLength) - 800;
-      text.setAttribute("startOffset", `${moveBy}px`);
+      text?.setAttribute("startOffset", `${moveBy}px`);
     });
   });
 
