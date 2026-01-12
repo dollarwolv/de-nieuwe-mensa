@@ -2,18 +2,18 @@
 
 import Image from "next/image";
 
-import Button from "@/components/Button";
-import ScrollText from "@/components/ScrollText";
+import Button from "@/components/General/Button";
+import ScrollText from "@/components/General/ScrollText";
 import StickyCards from "@/components/StickyCards";
 import FloatingImageGallery from "@/components/FloatingImageGallery";
-import ValuesSection from "@/components/ValuesSection";
-import HireUs from "@/components/HireUs";
-import Testimonials from "@/components/Testimonials";
-import CircleScrollText from "@/components/CircleScrollText";
+import ValuesSection from "@/components/LandingPage/ValuesSection";
+import HireUs from "@/components/LandingPage/HireUs";
+import Testimonials from "@/components/LandingPage/Testimonials";
+import CircleScrollText from "@/components/LandingPage/CircleScrollText";
 
 import { useEffect } from "react";
 import Lenis from "lenis";
-import MenuSection from "@/components/MenuSection";
+import MenuSection from "@/components/LandingPage/MenuSection";
 
 export default function Home() {
   // useEffect(() => {

@@ -1,7 +1,7 @@
-import Button from "./Button";
-import PillSwitch from "./PillSwitch";
+import Button from "../General/Button";
+import PillSwitch from "../General/PillSwitch";
 import { useState } from "react";
-import ScrollText from "./ScrollText";
+import ScrollText from "../General/ScrollText";
 import { motion, AnimatePresence } from "framer-motion";
 
 function MenuSection() {

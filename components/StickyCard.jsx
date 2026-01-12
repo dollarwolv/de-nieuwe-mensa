@@ -1,7 +1,7 @@
 import "./StickyCards.css";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
-import Button from "./Button";
+import Button from "./General/Button";
 
 function StickyCard({ data }) {
   const ref = useRef();

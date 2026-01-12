@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import StickyFooter from "@/components/StickyFooter";
+import Navbar from "@/components/General/Navbar";
+import StickyFooter from "@/components/General/StickyFooter";
 
 const garet = localFont({
   src: [

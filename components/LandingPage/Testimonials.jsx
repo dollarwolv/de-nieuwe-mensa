@@ -1,5 +1,5 @@
 import Marquee from "react-fast-marquee";
-import Button from "./Button";
+import Button from "../General/Button";
 
 function Testimonials() {
   const testimonials = [
