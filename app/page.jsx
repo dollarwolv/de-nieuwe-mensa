@@ -77,7 +77,7 @@ export default function Home() {
       </div>
       <ScrollText texts={heroTexts} />
 
-      <div className="mt-12 flex w-screen flex-col items-center justify-center pt-2 md:mt-0">
+      <div className="mt-12 flex w-full max-w-460 flex-col items-center justify-center pt-2 md:mt-0">
         <div className="flex w-full justify-between px-4">
           <span className="text-sm font-medium">(ABOUT DNM)</span>
           <span className="text-sm font-medium">(SCROLL TO EXPLORE)</span>

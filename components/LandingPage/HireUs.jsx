@@ -2,9 +2,9 @@ import Button from "../General/Button";
 
 function HireUs() {
   return (
-    <div>
-      <div className="bg-dnm-dark-green mt-25 -mb-12 flex h-24 w-screen rounded-t-4xl border-2"></div>
-      <div className="bg-dnm-light-green -mb-12 flex h-22 w-screen rounded-t-4xl border-2"></div>
+    <div className="max-w-460">
+      <div className="bg-dnm-dark-green mt-25 -mb-12 flex h-24 w-full rounded-t-4xl border-2"></div>
+      <div className="bg-dnm-light-green -mb-12 flex h-22 w-full rounded-t-4xl border-2"></div>
       <div className="bg-dnm-white flex flex-col gap-8 rounded-4xl border-2 px-8 py-16 md:flex-row">
         <div className="flex flex-1 flex-row gap-2">
           <img

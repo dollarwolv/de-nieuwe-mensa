@@ -25,7 +25,7 @@ function Testimonials() {
     },
   ];
   return (
-    <div className="mt-24 flex flex-col items-center">
+    <div className="mt-24 flex max-w-460 flex-col items-center overflow-clip">
       <div className="mb-6 flex flex-col items-center gap-2 tracking-tight">
         <h2 className="text-center text-5xl leading-[92%] font-extrabold lg:text-8xl">
           WHAT STUDENTS SAY

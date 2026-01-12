@@ -45,7 +45,7 @@ function ScrollText({ texts }) {
   });
 
   return (
-    <div className="hidden w-full md:block" ref={container}>
+    <div className="hidden w-full max-w-460 md:block" ref={container}>
       <svg viewBox="0 0 1512 137" className="my-12 overflow-visible">
         <path
           d="M0 136.001C287.5 136.001 472.5 0.499903 751 0.5C1029.5 0.500097 1262.5 136.001 1512 136.001"

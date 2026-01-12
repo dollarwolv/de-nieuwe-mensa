@@ -83,7 +83,7 @@ function MenuSection() {
     },
   ];
   return (
-    <div className="mt-36 flex w-full flex-col items-center py-12">
+    <div className="mt-36 flex w-full max-w-460 flex-col items-center py-12">
       <div className="mb-6 flex flex-col items-center gap-2 tracking-tight">
         <h2 className="text-6xl leading-[92%] font-extrabold lg:text-8xl">
           OUR MENU
@@ -101,7 +101,7 @@ function MenuSection() {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="scrollbar-hide flex w-screen grow-0 gap-8 overflow-x-scroll overflow-y-visible px-8 py-2"
+          className="scrollbar-hide flex w-screen grow-0 gap-8 overflow-x-scroll overflow-y-visible px-8 py-2 md:justify-center"
         >
           {foodItems
             .filter((item) =>
