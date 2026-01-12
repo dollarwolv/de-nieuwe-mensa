@@ -1,3 +1,5 @@
+import ClickThroughStory from "@/components/AboutPage/ClickThroughStory";
+
 function About() {
   return (
     <div className="flex w-full flex-col items-center">
@@ -48,6 +50,8 @@ function About() {
           </p>
         </div>
       </div>
+
+      <ClickThroughStory />
     </div>
   );
 }

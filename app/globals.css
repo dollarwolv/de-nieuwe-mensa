@@ -49,7 +49,8 @@
   --text-test-step-6: clamp(3.7325rem, 0.3191rem + 7.1861vw, 8.5831rem);
   --text-test-step-7: clamp(4.479rem, 0.0809rem + 9.2591vw, 10.7288rem);
   --text-test-step-8: clamp(5.3748rem, -0.2804rem + 11.9056vw, 13.411rem);
-
+  --text-test-step-9: clamp(6.4497rem, -0.8083rem + 15.2801vw, 16.7638rem);
+  --text-test-step-10: clamp(7.7397rem, -1.5598rem + 19.5779vw, 20.9548rem);
   --breakpoint-3xl: 120rem;
 }
 
