@@ -29,7 +29,7 @@ function YearDropdown({ years, selectedYear, onChange, className = "" }) {
           width={12}
           height={12}
           alt="down arrow"
-          className="pointer-events-none ml-2"
+          className="pointer-events-none ml-2 rotate-90"
         />
       </div>
     </div>

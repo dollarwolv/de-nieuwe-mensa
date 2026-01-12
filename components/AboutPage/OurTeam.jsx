@@ -133,7 +133,7 @@ function OurTeam() {
           </p>
         </div>
         <div className="mt-12 flex w-full flex-col lg:mt-24">
-          <div className="flex flex-row justify-between">
+          <div className="flex flex-col justify-between md:flex-row md:items-end">
             <div className="flex flex-col">
               <h2 className="text-test-step-4 leading-[92%] font-bold tracking-tight">
                 The Board
@@ -147,7 +147,7 @@ function OurTeam() {
               years={years}
               selectedYear={selectedYear}
               onChange={setSelectedYear}
-              className="mt-2"
+              className="w-fit max-md:mt-2"
             />
           </div>
           <div className="mt-6 grid grid-cols-2 justify-between gap-x-20 gap-y-2.5 md:grid-cols-3 lg:mt-12 lg:grid-cols-5">
