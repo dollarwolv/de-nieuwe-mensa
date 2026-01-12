@@ -1,4 +1,5 @@
 import ClickThroughStory from "@/components/AboutPage/ClickThroughStory";
+import OurTeam from "@/components/AboutPage/OurTeam";
 
 function About() {
   return (
@@ -52,6 +53,7 @@ function About() {
       </div>
 
       <ClickThroughStory />
+      <OurTeam />
     </div>
   );
 }
