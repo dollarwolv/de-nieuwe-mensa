@@ -1,66 +1,121 @@
+"use client";
+
+import { useState } from "react";
+import YearDropdown from "../General/YearDropdown";
+
 function OurTeam() {
-  const boardMembers = [
+  const boardMembersByYear = [
     {
-      name: "Noah Bisinger",
-      role: "Chair",
-      imgUrl: "",
+      year: "2024",
+      members: [
+        {
+          name: "Noah Bisinger",
+          role: "Chair",
+          imgUrl: "",
+        },
+        {
+          name: "Chris Cleef",
+          role: "Kitchen",
+          imgUrl: "",
+        },
+        {
+          name: "Fanni Kocsis",
+          role: "Secretary",
+          imgUrl: "",
+        },
+        {
+          name: "Priyasha Ghosh",
+          role: "Secretary",
+          imgUrl: "",
+        },
+        {
+          name: "Malik Jansen",
+          role: "Treasurer",
+          imgUrl: "",
+        },
+        {
+          name: "Sanne Vermeer",
+          role: "Operations",
+          imgUrl: "",
+        },
+      ],
     },
     {
-      name: "Chris Cleef",
-      role: "Kitchen",
-      imgUrl: "",
+      year: "2025",
+      members: [
+        {
+          name: "Lina de Vries",
+          role: "Chair",
+          imgUrl: "",
+        },
+        {
+          name: "Ravi Kumar",
+          role: "Kitchen",
+          imgUrl: "",
+        },
+        {
+          name: "Mara Lopes",
+          role: "Secretary",
+          imgUrl: "",
+        },
+        {
+          name: "Jules Bakker",
+          role: "Treasurer",
+          imgUrl: "",
+        },
+        {
+          name: "Aya Haddad",
+          role: "Communications",
+          imgUrl: "",
+        },
+        {
+          name: "Timo Smit",
+          role: "Operations",
+          imgUrl: "",
+        },
+      ],
     },
     {
-      name: "Fanni Kocsis",
-      role: "Secretary",
-      imgUrl: "",
-    },
-    {
-      name: "Priyasha Ghosh",
-      role: "Secretary",
-      imgUrl: "",
-    },
-    {
-      name: "Noah Bisinger",
-      role: "Chair",
-      imgUrl: "",
-    },
-    {
-      name: "Chris Cleef",
-      role: "Kitchen",
-      imgUrl: "",
-    },
-    {
-      name: "Fanni Kocsis",
-      role: "Secretary",
-      imgUrl: "",
-    },
-    {
-      name: "Priyasha Ghosh",
-      role: "Secretary",
-      imgUrl: "",
-    },
-    {
-      name: "Noah Bisinger",
-      role: "Chair",
-      imgUrl: "",
-    },
-    {
-      name: "Chris Cleef",
-      role: "Kitchen",
-      imgUrl: "",
-    },
-    {
-      name: "Fanni Kocsis",
-      role: "Secretary",
-      imgUrl: "",
-    },
-    {
-      name: "Priyasha Ghosh",
-      role: "Secretary",
-      imgUrl: "",
+      year: "2026",
+      members: [
+        {
+          name: "Zoe Arens",
+          role: "Chair",
+          imgUrl: "",
+        },
+        {
+          name: "Bruno Ortega",
+          role: "Kitchen",
+          imgUrl: "",
+        },
+        {
+          name: "Nora El Mansour",
+          role: "Secretary",
+          imgUrl: "",
+        },
+        {
+          name: "Iris Vos",
+          role: "Treasurer",
+          imgUrl: "",
+        },
+        {
+          name: "Tomas Silva",
+          role: "Communications",
+          imgUrl: "",
+        },
+        {
+          name: "Elsa Meijer",
+          role: "Operations",
+          imgUrl: "",
+        },
+      ],
     },
   ];
+
+  const years = boardMembersByYear.map(({ year }) => year);
+  const [selectedYear, setSelectedYear] = useState(years.at(-1));
+  const selectedBoardMembers =
+    boardMembersByYear.find((set) => set.year === selectedYear)?.members ?? [];
   return (
     <div>
       <div className="bg-dnm-dark-green mt-25 -mb-12 flex h-24 w-full rounded-t-4xl border-2"></div>
@@ -78,17 +133,25 @@ function OurTeam() {
           </p>
         </div>
         <div className="mt-12 flex w-full flex-col lg:mt-24">
-          <div className="flex flex-col">
-            <h2 className="text-test-step-4 leading-[92%] font-bold tracking-tight">
-              The Board
-            </h2>
-            <p className="text-test-step--2 max-w-[50ch] leading-[92%] font-medium tracking-tight">
-              Meet the motivated students who are working on the administrative
-              side of De Nieuwe Mensa.
-            </p>
+          <div className="flex flex-row justify-between">
+            <div className="flex flex-col">
+              <h2 className="text-test-step-4 leading-[92%] font-bold tracking-tight">
+                The Board
+              </h2>
+              <p className="text-test-step--2 max-w-[50ch] leading-[92%] font-medium tracking-tight">
+                Meet the motivated students who are working on the
+                administrative side of De Nieuwe Mensa.
+              </p>
+            </div>
+            <YearDropdown
+              years={years}
+              selectedYear={selectedYear}
+              onChange={setSelectedYear}
+              className="mt-2"
+            />
           </div>
           <div className="mt-6 grid grid-cols-2 justify-between gap-x-20 gap-y-2.5 md:grid-cols-3 lg:mt-12 lg:grid-cols-5">
-            {boardMembers.map((profile, i) => {
+            {selectedBoardMembers.map((profile, i) => {
               return (
                 <div
                   className="flex max-w-53 flex-col"
@@ -121,7 +184,7 @@ function OurTeam() {
             </p>
           </div>
           <div className="mt-6 grid grid-cols-2 justify-between gap-x-20 gap-y-2.5 md:grid-cols-3 lg:mt-12 lg:grid-cols-5">
-            {boardMembers.map((profile, i) => {
+            {selectedBoardMembers.map((profile, i) => {
               return (
                 <div className="flex max-w-53 flex-col" key={`cook-${i}`}>
                   <img

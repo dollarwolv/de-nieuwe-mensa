@@ -101,7 +101,7 @@ function MenuSection() {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="scrollbar-hide flex w-screen grow-0 gap-8 overflow-x-scroll overflow-y-visible px-8 py-2 md:justify-center"
+          className="scrollbar-hide flex w-screen grow-0 gap-8 overflow-x-scroll overflow-y-visible px-8 py-2 xl:justify-center"
         >
           {foodItems
             .filter((item) =>
