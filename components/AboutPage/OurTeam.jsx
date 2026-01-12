@@ -90,7 +90,7 @@ function OurTeam() {
           <div className="mt-6 grid grid-cols-2 justify-between gap-x-20 gap-y-2.5 md:grid-cols-3 lg:mt-12 lg:grid-cols-5">
             {boardMembers.map((profile) => {
               return (
-                <div className="flex max-w-[212px] flex-col">
+                <div className="flex max-w-53 flex-col">
                   <img
                     src="https://picsum.photos/212/212"
                     alt=""
@@ -120,7 +120,7 @@ function OurTeam() {
           <div className="mt-6 grid grid-cols-2 justify-between gap-x-20 gap-y-2.5 md:grid-cols-3 lg:mt-12 lg:grid-cols-5">
             {boardMembers.map((profile) => {
               return (
-                <div className="flex max-w-[212px] flex-col">
+                <div className="flex max-w-53 flex-col">
                   <img
                     src="https://picsum.photos/212/212"
                     alt=""

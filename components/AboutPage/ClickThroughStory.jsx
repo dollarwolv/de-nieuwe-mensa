@@ -53,7 +53,7 @@ function ClickThroughStory() {
                 mass: 1,
               }}
               style={{ willChange: "transform" }}
-              className="text-test-step-10 block leading-[80%] font-extrabold"
+              className="md:text-test-step-10 block text-8xl leading-[80%] font-extrabold"
             >
               {story[index].year}
             </motion.span>
@@ -118,7 +118,7 @@ function ClickThroughStory() {
         <p className="md:text-test-step--2 max-w-[40ch] font-medium md:mt-12">
           {story[index].text}
         </p>
-        <div className="flex w-44 justify-between gap-4 max-md:mt-8">
+        <div className="flex w-44 justify-between gap-4 max-md:mt-8 max-md:w-full">
           {index > 0 ? (
             <RoundButton
               onClick={() => {
