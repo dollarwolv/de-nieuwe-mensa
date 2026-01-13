@@ -91,7 +91,13 @@ export default function Home() {
         </h3>
       </div>
 
-      <FloatingImageGallery />
+      <FloatingImageGallery
+        headingText={"OUR STORY"}
+        subHeadingText={"FROM PROTEST MOVEMENT TO CANTEEN STALL"}
+        bgColor={"bg-dnm-black"}
+        textColor={"text-white"}
+        showTop={false}
+      />
 
       {/* Sticky Cards */}
       <StickyCards />

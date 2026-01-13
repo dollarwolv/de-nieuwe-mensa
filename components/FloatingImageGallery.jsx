@@ -1,9 +1,17 @@
+"use client";
+
 import { useSpring, motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
 
-function FloatingImageGallery() {
+function FloatingImageGallery({
+  bgColor,
+  headingText,
+  subHeadingText,
+  textColor,
+  showTop = true,
+}) {
   const container = useRef();
 
   const { scrollYProgress } = useScroll({
@@ -69,24 +77,35 @@ function FloatingImageGallery() {
 
   return (
     <>
-      <div className="bg-dnm-dark-green mt-25 -mb-12 flex h-24 w-screen rounded-t-4xl border-2"></div>
-      <div className="bg-dnm-light-green -mb-12 flex h-22 w-screen rounded-t-4xl border-2"></div>
-      <div className="bg-dnm-black relative h-screen w-screen rounded-t-4xl border-t-2">
+      {showTop && (
+        <>
+          <div className="bg-dnm-dark-green mt-25 -mb-12 flex h-24 w-screen rounded-t-4xl border-2"></div>
+          <div className="bg-dnm-light-green -mb-12 flex h-22 w-screen rounded-t-4xl border-2"></div>
+        </>
+      )}
+
+      <div
+        className={`${bgColor} relative h-screen w-screen ${showTop && "rounded-t-4xl border-t-2"} rounded-t-4xl`}
+      >
         <motion.div
           className="sticky top-0 flex h-screen w-screen items-center justify-center overflow-hidden"
           onMouseMove={manageMouseMove}
           ref={container}
         >
           <div className="absolute flex flex-col items-center justify-center">
-            <h1 className="text-step-8 stroke-red z-20 stroke-3 leading-[92%] font-extrabold tracking-tight text-white">
-              OUR STORY
+            <h1
+              className={`text-step-8 stroke-red ${textColor} z-20 stroke-3 leading-[92%] font-extrabold tracking-tight`}
+            >
+              {headingText}
             </h1>
-            <p className="text-step-0 z-20 font-bold text-white uppercase">
-              from protest movement to canteen stall
+            <p className={`text-step-0 ${textColor} z-20 font-bold`}>
+              {subHeadingText}
             </p>
           </div>
 
-          <span className="text-step-7 absolute right-5 bottom-0 z-20 tracking-[-10.85876px] text-white">
+          <span
+            className={`text-step-7 ${textColor} absolute right-5 bottom-0 z-20 tracking-[-10.85876px]`}
+          >
             (↓)
           </span>
 
