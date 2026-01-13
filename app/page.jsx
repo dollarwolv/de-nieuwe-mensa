@@ -83,7 +83,7 @@ export default function Home() {
           <span className="text-sm font-medium">(SCROLL TO EXPLORE)</span>
         </div>
 
-        <h3 className="md:text-step-3 mt-25 text-center text-3xl leading-[95%] font-semibold tracking-tight md:max-w-[22ch]">
+        <h3 className="md:text-step-3 my-12 text-center text-3xl leading-[95%] font-semibold tracking-tight md:my-24 md:max-w-[22ch]">
           What started as a protest against the status quo is now your daily
           alternative. De Nieuwe Mensa is a student-led non-profit initiative
           serving fresh, vegan meals for a fair price—because affordable food

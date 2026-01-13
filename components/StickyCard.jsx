@@ -46,7 +46,7 @@ function StickyCard({ data, rounded = true, cardHeight = 100 }) {
         }}
       >
         <div className="flex flex-1 lg:flex-2">
-          <h1 className="lg:text-step-7 text-8xl leading-[92%] font-bold tracking-tight">
+          <h1 className="lg:text-test-step-5 text-7xl leading-[92%] font-bold tracking-tight">
             ({data.index})
           </h1>
         </div>

@@ -14,7 +14,7 @@ function CateringQuoteForm() {
   };
 
   return (
-    <section className="mt-16 w-full max-w-460 px-4">
+    <section className="w-full max-w-460 px-4">
       <div className="bg-dnm-dark-green mt-25 -mb-12 flex h-24 w-full rounded-t-4xl border-2"></div>
       <div className="bg-dnm-light-green -mb-12 flex h-22 w-full rounded-t-4xl border-2"></div>
       <div className="bg-dnm-white w-full rounded-4xl border-2 border-black px-6 py-12 md:px-12">
