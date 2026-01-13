@@ -1,7 +1,7 @@
+"use client";
+
 import { useScroll, motion, useTransform, easeInOut } from "framer-motion";
-import { useEffect, useRef } from "react";
-import Image from "next/image";
-import { cubicBezier } from "framer-motion";
+import { useRef } from "react";
 
 function ValuesSection() {
   const values = [

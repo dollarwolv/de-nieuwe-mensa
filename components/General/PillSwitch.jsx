@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { clipPath } from "framer-motion/client";
 
 function PillSwitch({ toggled, setToggled, className = "" }) {
   return (

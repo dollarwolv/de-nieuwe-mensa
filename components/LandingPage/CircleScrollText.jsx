@@ -1,6 +1,3 @@
-import { useAnimationFrame } from "framer-motion";
-import { useRef } from "react";
-
 function CircleScrollText() {
   const text =
     "[40000+] Students served | [200.000+] Total Euros saved | [50%+] Meal Costs reduced | [2000+] Appie runs spared | ";

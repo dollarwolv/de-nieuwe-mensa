@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 
 import Button from "@/components/General/Button";
@@ -11,7 +9,6 @@ import HireUs from "@/components/LandingPage/HireUs";
 import Testimonials from "@/components/LandingPage/Testimonials";
 import CircleScrollText from "@/components/LandingPage/CircleScrollText";
 
-import { useEffect } from "react";
 import Lenis from "lenis";
 import MenuSection from "@/components/LandingPage/MenuSection";
 
