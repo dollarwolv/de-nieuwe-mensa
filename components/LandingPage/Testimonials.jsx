@@ -37,11 +37,19 @@ async function Testimonials() {
                   key={testimonial.index}
                 >
                   <div className="flex flex-row items-center gap-2 border-b-[0.5px] border-gray-200 pb-4">
-                    <img
-                      src="https://picsum.photos/56/56"
-                      alt=""
-                      className="rounded-full"
-                    />
+                    <div className="h-14 w-14 overflow-hidden rounded-full">
+                      <img
+                        src={
+                          testimonial.profilePicture?.url ||
+                          "https://picsum.photos/56/56"
+                        }
+                        alt={
+                          testimonial.profilePicture?.alt || testimonial.name
+                        }
+                        className="object-cover"
+                      />
+                    </div>
+
                     <div className="flex flex-col">
                       <span className="text-xl font-bold">
                         {testimonial.name}

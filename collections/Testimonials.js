@@ -7,5 +7,6 @@ export const Testimonials = {
     { name: "name", type: "text", required: true },
     { name: "studyprogram", type: "text" },
     { name: "quote", type: "textarea", required: true },
+    { name: "profilePicture", type: "upload", relationTo: "media" },
   ],
 };
