@@ -31,7 +31,9 @@ function StickyCards() {
   return (
     <div className="relative">
       {stickyCardsData.map((data, i) => {
-        return <StickyCard key={i} data={data} />;
+        return (
+          <StickyCard key={i} data={data} rounded={true} cardHeight={100} />
+        );
       })}
     </div>
   );

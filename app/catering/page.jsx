@@ -1,5 +1,6 @@
 import FloatingImageGallery from "@/components/FloatingImageGallery";
 import CateringQuoteForm from "@/components/Catering/CateringQuoteForm";
+import CateringStickyCards from "@/components/Catering/CateringStickyCards";
 
 function Catering() {
   return (
@@ -19,6 +20,7 @@ function Catering() {
           student movement dedicated to fair food prices.
         </span>
       </div>
+      <CateringStickyCards />
       <CateringQuoteForm />
     </div>
   );

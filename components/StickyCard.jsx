@@ -1,9 +1,11 @@
+"use client";
+
 import "./StickyCards.css";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Button from "./General/Button";
 
-function StickyCard({ data }) {
+function StickyCard({ data, rounded = true, cardHeight = 100 }) {
   const ref = useRef();
 
   const { scrollYProgress } = useScroll({
@@ -15,29 +17,38 @@ function StickyCard({ data }) {
   const scaleValue = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
   const rotationValue = useTransform(scrollYProgress, [0, 1], [0, 2]);
 
-  useEffect(() => {}, []);
+  const cardH = `${cardHeight}vh`;
+  const wrapperH = `${cardHeight * 2}vh`;
 
   return (
     <div
-      className={`relative ${data.index !== "03" ? "h-[200vh]" : "h-full"} bg-dnm-black w-full ${data.index !== "01" && "rounded-t-4xl"} `}
+      className={`bg-dnm-black relative w-full ${data.index !== "01" && rounded && cardHeight >= 100 && "rounded-t-4xl"} `}
       ref={ref}
-      style={{ marginTop: data.index === "01" ? "0" : "-100vh" }}
+      style={{
+        height: data.index !== "03" ? wrapperH : "auto",
+        marginTop: data.index === "01" ? "0" : `-${cardH}`,
+      }}
     >
       <motion.div
-        className={`${data.bgColor} sticky-card sticky top-0 flex h-screen w-screen flex-col rounded-t-4xl border-t px-6 pt-12 lg:flex-row`}
+        className={`${data.bgColor} sticky-card sticky top-0 flex w-screen flex-col ${rounded && cardHeight >= 100 && "rounded-t-4xl"} border-t px-6 pt-12 lg:flex-row`}
         style={{
           "--after-opacity": data.index !== "03" ? opacityValue : "",
           scale: data.index !== "03" ? scaleValue : "",
           rotate: data.index !== "03" ? rotationValue : "",
+          height: cardH,
         }}
       >
         <div className="flex flex-1 lg:flex-2">
           <h1 className="lg:text-step-7 text-8xl leading-[92%] font-bold tracking-tight">
-            {data.index}
+            ({data.index})
           </h1>
         </div>
-        <div className="flex flex-4 flex-col items-start gap-6 pt-12">
-          <h1 className="text-step-7 leading-[92%] font-bold tracking-tight md:w-[75%]">
+        <div
+          className={`flex flex-4 flex-col items-start gap-6 ${cardHeight >= 100 && "pt-12"}`}
+        >
+          <h1
+            className={`${cardHeight === 100 ? "text-step-7" : "text-step-4"} leading-[92%] font-bold tracking-tight md:w-[75%]`}
+          >
             {data.title}
           </h1>
           <img
@@ -48,7 +59,7 @@ function StickyCard({ data }) {
           <div className="lg:text-step--1 flex flex-row gap-2 md:w-[75%] md:flex-row md:gap-6">
             <div className="flex flex-col gap-2">
               <p> {data.description}</p>
-              {data.index == "03" && (
+              {data.index == "03" && cardHeight >= 100 && (
                 <Button className="w-fit px-0 font-extrabold">
                   LEARN MORE ABOUT DNM
                 </Button>
