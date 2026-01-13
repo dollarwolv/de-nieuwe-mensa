@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     testimonials: Testimonial;
+    boards: Board;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +81,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    boards: BoardsSelect<false> | BoardsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -176,6 +178,24 @@ export interface Testimonial {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "boards".
+ */
+export interface Board {
+  id: number;
+  year: string;
+  members?:
+    | {
+        name: string;
+        role: string;
+        profilePicture?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -209,6 +229,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'testimonials';
         value: number | Testimonial;
+      } | null)
+    | ({
+        relationTo: 'boards';
+        value: number | Board;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -301,6 +325,23 @@ export interface TestimonialsSelect<T extends boolean = true> {
   studyprogram?: T;
   quote?: T;
   profilePicture?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "boards_select".
+ */
+export interface BoardsSelect<T extends boolean = true> {
+  year?: T;
+  members?:
+    | T
+    | {
+        name?: T;
+        role?: T;
+        profilePicture?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import YearDropdown from "../General/YearDropdown";
 
-function OurTeam() {
-  const boardMembersByYear = [
+function OurTeam({ boards }) {
+  let boardMembersByYear = [
     {
       year: "2024",
       members: [
@@ -112,6 +112,8 @@ function OurTeam() {
     },
   ];
 
+  boardMembersByYear = boards;
+
   const years = boardMembersByYear.map(({ year }) => year);
   const [selectedYear, setSelectedYear] = useState(years.at(-1));
   const selectedBoardMembers =
@@ -157,11 +159,14 @@ function OurTeam() {
                   className="flex max-w-53 flex-col"
                   key={`board-member-${i}`}
                 >
-                  <img
-                    src="https://picsum.photos/212/212"
-                    alt=""
-                    className="rounded-full"
-                  />
+                  <div className="aspect-square max-w-53 overflow-hidden rounded-full">
+                    <img
+                      src={`${profile.profilePicture?.url || "https://picsum.photos/212/212"}`}
+                      alt=""
+                      className="h-full w-full max-w-53 object-cover"
+                    />
+                  </div>
+
                   <div className="mt-2 flex flex-col items-center">
                     <span className="md:text-step--1 text-center leading-[92%] font-medium tracking-tight">
                       {profile.name}
