@@ -45,7 +45,7 @@ function Navbar() {
             exit={{ clipPath: "inset(0% 0% 100%)" }}
             transition={{ duration: 0.7, ease: [0.85, 0, 0.15, 1] }}
             key="hamburger"
-            className="bg-dnm-dark-green fixed top-0 left-0 z-10 flex h-dvh w-full flex-col justify-end overflow-hidden px-2 md:hidden"
+            className="bg-dnm-dark-green fixed top-0 left-0 z-10 flex h-dvh w-full flex-col justify-end overflow-hidden px-2 pb-[env(safe-area-inset-bottom)] md:hidden"
           >
             <div className="flex flex-col gap-2 text-3xl text-white uppercase">
               <Link href="/" onClick={() => setOpen(false)}>
