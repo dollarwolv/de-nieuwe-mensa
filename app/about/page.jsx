@@ -33,7 +33,7 @@ function About() {
               Our Philosophy
             </h2>
 
-            <p className="text-test-step--2 lg:mt-auto">
+            <p className="text-test-step--2 max-md:text-base lg:mt-auto">
               We believe that food is a basic human right that every student
               should have access to. That’s why we operate as a non-profit.
             </p>
@@ -44,7 +44,7 @@ function About() {
           <h3 className="leading-[92%] font-semibold max-md:text-3xl max-md:font-extrabold md:my-auto">
             A new canteen for everyone
           </h3>
-          <p className="max-md:text-l max-md:mt-2">
+          <p className="max-md:mt-2 max-md:text-base">
             We started De Nieuwe Mensa with a clear goal: Provide affordable,
             healthy, and sustainable food for every student at the University of
             Amsterdam.

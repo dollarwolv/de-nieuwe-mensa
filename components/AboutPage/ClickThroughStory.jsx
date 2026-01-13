@@ -33,10 +33,10 @@ function ClickThroughStory() {
   ];
 
   const [index, setIndex] = useState(0);
-  const progress = (index + 1) / story.length;
+  const progress = index / (story.length - 1);
 
   return (
-    <section className="mt-60 w-full max-w-460">
+    <section className="mt-24 w-full max-w-460 md:mt-48">
       <h2 className="text-test-step-0 font-bold">Our Origin</h2>
       <div className="flex flex-row items-start justify-start">
         <div className="relative inline-flex overflow-hidden">
