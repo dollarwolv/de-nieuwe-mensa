@@ -12,7 +12,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="fixed top-4 left-4 z-10 block md:hidden">
+      <div className="fixed top-4 left-4 z-20 block md:hidden">
         <Hamburger toggled={isOpen} toggle={setOpen} />
       </div>
 
@@ -33,7 +33,7 @@ function Navbar() {
           <Link href="/transparency">Transparency</Link>
           <Link href="/catering">Catering</Link>
           <Link href="/blog">Blog</Link>
-          <Button className="text-2xl">SUPPORT US</Button>
+          <Button className="text-2xl">GET INVOLVED</Button>
         </div>
       </nav>
 
@@ -45,14 +45,25 @@ function Navbar() {
             exit={{ clipPath: "inset(0% 0% 100%)" }}
             transition={{ duration: 0.7, ease: [0.85, 0, 0.15, 1] }}
             key="hamburger"
-            className="bg-dnm-dark-green fixed top-0 left-0 z-1 flex h-full w-full flex-col justify-end px-2 md:hidden"
+            className="bg-dnm-dark-green fixed top-0 left-0 z-10 flex h-dvh w-full flex-col justify-end overflow-hidden px-2 md:hidden"
           >
             <div className="flex flex-col gap-2 text-3xl text-white uppercase">
-              <span>About</span>
-              <span>Transparency</span>
-              <span>Catering</span>
-              <span>Blog</span>
-              <Button>SUPPORT US</Button>
+              <Link href="/" onClick={() => setOpen(false)}>
+                Home
+              </Link>
+              <Link href="/about" onClick={() => setOpen(false)}>
+                About
+              </Link>
+              <Link href="/transparency" onClick={() => setOpen(false)}>
+                Transparency
+              </Link>
+              <Link href="/catering" onClick={() => setOpen(false)}>
+                Catering
+              </Link>
+              <Link href="/blog" onClick={() => setOpen(false)}>
+                Blog
+              </Link>
+              <Button>GET INVOLVED</Button>
             </div>
             <div className="mt-12 flex justify-between text-sm text-white uppercase">
               <div className="flex flex-col">
