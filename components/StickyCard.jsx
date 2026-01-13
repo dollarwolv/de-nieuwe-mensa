@@ -14,8 +14,13 @@ function StickyCard({ data, rounded = true, cardHeight = 100 }) {
   });
 
   const opacityValue = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const scaleValue = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
-  const rotationValue = useTransform(scrollYProgress, [0, 1], [0, 2]);
+  const scaleValue = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  const rotationValue = useTransform(scrollYProgress, [0, 1], [0, -4]);
+  const rotateXValue = useTransform(
+    scrollYProgress,
+    [0, 0.3, 1],
+    [0, -10, -50],
+  );
 
   const cardH = `${cardHeight}vh`;
   const wrapperH = `${cardHeight * 2}vh`;
@@ -32,10 +37,12 @@ function StickyCard({ data, rounded = true, cardHeight = 100 }) {
       <motion.div
         className={`${data.bgColor} sticky-card sticky top-0 flex w-screen flex-col ${rounded && cardHeight >= 100 && "rounded-t-4xl"} border-t px-6 pt-12 lg:flex-row`}
         style={{
-          "--after-opacity": data.index !== "03" ? opacityValue : "",
-          scale: data.index !== "03" ? scaleValue : "",
-          rotate: data.index !== "03" ? rotationValue : "",
           height: cardH,
+          perspective: 1200,
+          rotateX: data.index !== "03" ? rotateXValue : 0,
+          scale: data.index !== "03" ? scaleValue : 1,
+          rotateZ: data.index !== "03" ? rotationValue : 0,
+          "--after-opacity": data.index !== "03" ? opacityValue : 0,
         }}
       >
         <div className="flex flex-1 lg:flex-2">
