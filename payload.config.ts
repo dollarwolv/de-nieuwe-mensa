@@ -12,6 +12,9 @@ import { Media } from "./collections/Media";
 import { Testimonials } from "./collections/Testimonials";
 import { Boards } from "./collections/Boards";
 import { Cooks } from "./collections/Cooks";
+import { Dishes } from "./collections/Dishes";
+
+import { MenuSettings } from "./globals/MenuSettings";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -23,7 +26,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Testimonials, Boards, Cooks],
+  collections: [Users, Media, Testimonials, Boards, Cooks, Dishes],
+  globals: [MenuSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {

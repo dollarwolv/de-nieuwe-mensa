@@ -2,10 +2,17 @@
 
 import Button from "../General/Button";
 import PillSwitch from "../General/PillSwitch";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 function MenuSection() {
+  const [menu, setMenu] = useState(null);
+  const [toggled, setToggled] = useState(false);
+
+  const list = toggled ? menu?.thisWeeksMenu : menu?.nextWeeksMenu;
+
+  const weekDays = ["MON", "TUE", "WED", "THU", "FRI"];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -30,7 +37,6 @@ function MenuSection() {
     exit: { y: -20, opacity: 0 },
   };
 
-  const [toggled, setToggled] = useState(false);
   const foodItems = [
     {
       week: "week1",
@@ -83,6 +89,18 @@ function MenuSection() {
       name: "Vegan Tacos",
     },
   ];
+
+  useEffect(() => {
+    const load = async () => {
+      const res = await fetch("/api/menu");
+      const data = await res.json();
+      setMenu(data);
+      console.log(data);
+    };
+
+    load();
+  }, []);
+
   return (
     <div className="mt-36 flex w-full max-w-460 flex-col items-center py-12">
       <div className="mb-6 flex flex-col items-center gap-2 tracking-tight">
@@ -97,45 +115,42 @@ function MenuSection() {
       <PillSwitch toggled={toggled} setToggled={setToggled} className="mb-2" />
       <AnimatePresence mode="wait">
         <motion.div
-          key={toggled} // This key changing tells AnimatePresence to swap the whole group
+          key={`${toggled}-${list?.length ?? 0}`}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           exit="exit"
           className="scrollbar-hide flex w-screen grow-0 gap-8 overflow-x-scroll overflow-y-visible px-8 py-2 xl:justify-center"
         >
-          {foodItems
-            .filter((item) =>
-              toggled ? item.week == "week1" : item.week == "week2",
-            )
-            .map((item, i) => {
-              return (
-                <motion.div
-                  className="bg-dnm-light-green/93 flex w-65 shrink-0 flex-col items-center gap-2 rounded-4xl border border-black px-8 py-4 shadow-[4px_4px_0px_0px_rgb(35,35,35)]"
-                  key={item.name}
-                  variants={cardVariants}
-                >
-                  <h4 className="text-4xl font-extrabold">{item.day}</h4>
+          {list?.map((item, i) => {
+            console.log("list length:", list?.length, "menu:", menu);
+            return (
+              <motion.div
+                className="bg-dnm-light-green/93 flex w-65 shrink-0 flex-col items-center gap-2 rounded-4xl border border-black px-8 py-4 shadow-[4px_4px_0px_0px_rgb(35,35,35)]"
+                key={item.dish.name}
+                variants={cardVariants}
+              >
+                <h4 className="text-4xl font-extrabold">{weekDays[i]}</h4>
+                <div className="h-full w-full overflow-hidden rounded-2xl">
                   <img
-                    src="https://picsum.photos/210/270"
-                    alt=""
-                    className="rounded-2xl"
+                    src={item.dish.image.url}
+                    alt={item.dish.image.alt}
+                    className="h-full w-full object-cover"
                   />
-                  <p className="my-auto max-w-[16ch] text-center text-xl font-semibold">
-                    {item.name}
-                  </p>
+                </div>
 
-                  <Button className="bottom-2 py-2 text-xl font-extrabold">
-                    SEE DETAILS
-                  </Button>
-                </motion.div>
-              );
-            })}
+                <p className="my-auto max-w-[16ch] text-center text-xl font-semibold">
+                  {item.dish.name}
+                </p>
+
+                <Button className="bottom-2 py-2 text-xl font-extrabold">
+                  SEE DETAILS
+                </Button>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </AnimatePresence>
-
-      {/* <div className="mt-12"></div>
-      <ScrollText /> */}
     </div>
   );
 }

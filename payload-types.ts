@@ -72,6 +72,7 @@ export interface Config {
     testimonials: Testimonial;
     boards: Board;
     cooks: Cook;
+    dishes: Dish;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +85,7 @@ export interface Config {
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     boards: BoardsSelect<false> | BoardsSelect<true>;
     cooks: CooksSelect<false> | CooksSelect<true>;
+    dishes: DishesSelect<false> | DishesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -93,8 +95,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    menuSettings: MenuSetting;
+  };
+  globalsSelect: {
+    menuSettings: MenuSettingsSelect<false> | MenuSettingsSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -215,6 +221,45 @@ export interface Cook {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dishes".
+ */
+export interface Dish {
+  id: number;
+  name: string;
+  image: number | Media;
+  recipe?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  ingredients?:
+    | {
+        amount?: string | null;
+        item?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  nutrition?: {
+    calories?: number | null;
+    protein?: number | null;
+    carbs?: number | null;
+    fat?: number | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -256,6 +301,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'cooks';
         value: number | Cook;
+      } | null)
+    | ({
+        relationTo: 'dishes';
+        value: number | Dish;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -386,6 +435,32 @@ export interface CooksSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dishes_select".
+ */
+export interface DishesSelect<T extends boolean = true> {
+  name?: T;
+  image?: T;
+  recipe?: T;
+  ingredients?:
+    | T
+    | {
+        amount?: T;
+        item?: T;
+        id?: T;
+      };
+  nutrition?:
+    | T
+    | {
+        calories?: T;
+        protein?: T;
+        carbs?: T;
+        fat?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -423,6 +498,63 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "menuSettings".
+ */
+export interface MenuSetting {
+  id: number;
+  /**
+   * Toggle this option to control what week it is currently (A or B).
+   *            You can do this when you, for example, did the same week twice in a row, or when there were holidays
+   *            in between and you are starting with a different week again.
+   */
+  currentWeek: 'A' | 'B';
+  /**
+   * This is the "anchor date" that the system refers to in order to calculate what week it currently is and what dish should be shown.
+   *         It's best to leave this option alone, and just switch the "Current Week" option.
+   */
+  anchorDate: string;
+  /**
+   * This is a list of the dishes in Week A. Change their order so that it's correct. You have to put exactly 5 dishes in.
+   */
+  weekADishes: {
+    dish: number | Dish;
+    id?: string | null;
+  }[];
+  /**
+   * This is a list of the dishes in Week B. Change their order so that it's correct. You have to put exactly 5 dishes in.
+   */
+  weekBDishes: {
+    dish: number | Dish;
+    id?: string | null;
+  }[];
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "menuSettings_select".
+ */
+export interface MenuSettingsSelect<T extends boolean = true> {
+  currentWeek?: T;
+  anchorDate?: T;
+  weekADishes?:
+    | T
+    | {
+        dish?: T;
+        id?: T;
+      };
+  weekBDishes?:
+    | T
+    | {
+        dish?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
