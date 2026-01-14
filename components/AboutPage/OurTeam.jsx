@@ -3,121 +3,14 @@
 import { useState } from "react";
 import YearDropdown from "../General/YearDropdown";
 
-function OurTeam({ boards }) {
-  let boardMembersByYear = [
-    {
-      year: "2024",
-      members: [
-        {
-          name: "Noah Bisinger",
-          role: "Chair",
-          imgUrl: "",
-        },
-        {
-          name: "Chris Cleef",
-          role: "Kitchen",
-          imgUrl: "",
-        },
-        {
-          name: "Fanni Kocsis",
-          role: "Secretary",
-          imgUrl: "",
-        },
-        {
-          name: "Priyasha Ghosh",
-          role: "Secretary",
-          imgUrl: "",
-        },
-        {
-          name: "Malik Jansen",
-          role: "Treasurer",
-          imgUrl: "",
-        },
-        {
-          name: "Sanne Vermeer",
-          role: "Operations",
-          imgUrl: "",
-        },
-      ],
-    },
-    {
-      year: "2025",
-      members: [
-        {
-          name: "Lina de Vries",
-          role: "Chair",
-          imgUrl: "",
-        },
-        {
-          name: "Ravi Kumar",
-          role: "Kitchen",
-          imgUrl: "",
-        },
-        {
-          name: "Mara Lopes",
-          role: "Secretary",
-          imgUrl: "",
-        },
-        {
-          name: "Jules Bakker",
-          role: "Treasurer",
-          imgUrl: "",
-        },
-        {
-          name: "Aya Haddad",
-          role: "Communications",
-          imgUrl: "",
-        },
-        {
-          name: "Timo Smit",
-          role: "Operations",
-          imgUrl: "",
-        },
-      ],
-    },
-    {
-      year: "2026",
-      members: [
-        {
-          name: "Zoe Arens",
-          role: "Chair",
-          imgUrl: "",
-        },
-        {
-          name: "Bruno Ortega",
-          role: "Kitchen",
-          imgUrl: "",
-        },
-        {
-          name: "Nora El Mansour",
-          role: "Secretary",
-          imgUrl: "",
-        },
-        {
-          name: "Iris Vos",
-          role: "Treasurer",
-          imgUrl: "",
-        },
-        {
-          name: "Tomas Silva",
-          role: "Communications",
-          imgUrl: "",
-        },
-        {
-          name: "Elsa Meijer",
-          role: "Operations",
-          imgUrl: "",
-        },
-      ],
-    },
-  ];
-
-  boardMembersByYear = boards;
-
-  const years = boardMembersByYear.map(({ year }) => year);
+function OurTeam({ boardMembersByYear, cooksByYear }) {
+  const years = boardMembersByYear?.map(({ year }) => year);
   const [selectedYear, setSelectedYear] = useState(years.at(-1));
   const selectedBoardMembers =
-    boardMembersByYear.find((set) => set.year === selectedYear)?.members ?? [];
+    boardMembersByYear?.find((set) => set.year === selectedYear)?.members ?? [];
+  const selectedCooks =
+    cooksByYear?.find((set) => set.year === selectedYear)?.members ?? [];
+
   return (
     <div>
       <div className="bg-dnm-dark-green mt-25 -mb-12 flex h-24 w-full rounded-t-4xl border-2"></div>
@@ -189,20 +82,19 @@ function OurTeam({ boards }) {
             </p>
           </div>
           <div className="mt-6 grid grid-cols-2 justify-between gap-x-20 gap-y-2.5 md:grid-cols-3 lg:mt-12 lg:grid-cols-5">
-            {selectedBoardMembers.map((profile, i) => {
+            {selectedCooks.map((profile, i) => {
               return (
                 <div className="flex max-w-53 flex-col" key={`cook-${i}`}>
-                  <img
-                    src="https://picsum.photos/212/212"
-                    alt=""
-                    className="rounded-full"
-                  />
+                  <div className="aspect-square max-w-53 overflow-hidden rounded-full">
+                    <img
+                      src={`${profile.profilePicture?.url || "https://picsum.photos/212/212"}`}
+                      alt=""
+                      className="h-full w-full max-w-53 object-cover"
+                    />
+                  </div>
                   <div className="mt-2 flex flex-col items-center">
                     <span className="md:text-step--1 text-center leading-[92%] font-medium tracking-tight">
                       {profile.name}
-                    </span>
-                    <span className="italic max-md:text-sm">
-                      {profile.role}
                     </span>
                   </div>
                 </div>

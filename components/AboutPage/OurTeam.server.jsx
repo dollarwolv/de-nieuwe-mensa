@@ -4,12 +4,22 @@ import { getPayload } from "payload";
 
 async function OurTeamServer() {
   const payload = await getPayload({ config });
-  const { docs } = await payload.find({
+  const { docs: boardMembersByYear } = await payload.find({
     collection: "boards",
     depth: 1,
   });
 
-  return <OurTeam boards={docs} />;
+  const { docs: cooksByYear } = await payload.find({
+    collection: "cooks",
+    depth: 1,
+  });
+
+  return (
+    <OurTeam
+      boardMembersByYear={boardMembersByYear}
+      cooksByYear={cooksByYear}
+    />
+  );
 }
 
 export default OurTeamServer;

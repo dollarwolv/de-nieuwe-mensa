@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     testimonials: Testimonial;
     boards: Board;
+    cooks: Cook;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +83,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     boards: BoardsSelect<false> | BoardsSelect<true>;
+    cooks: CooksSelect<false> | CooksSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -196,6 +198,23 @@ export interface Board {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cooks".
+ */
+export interface Cook {
+  id: number;
+  year: string;
+  members?:
+    | {
+        name: string;
+        profilePicture?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -233,6 +252,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'boards';
         value: number | Board;
+      } | null)
+    | ({
+        relationTo: 'cooks';
+        value: number | Cook;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -339,6 +362,22 @@ export interface BoardsSelect<T extends boolean = true> {
     | {
         name?: T;
         role?: T;
+        profilePicture?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cooks_select".
+ */
+export interface CooksSelect<T extends boolean = true> {
+  year?: T;
+  members?:
+    | T
+    | {
+        name?: T;
         profilePicture?: T;
         id?: T;
       };
