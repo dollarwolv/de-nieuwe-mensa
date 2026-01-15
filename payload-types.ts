@@ -73,6 +73,7 @@ export interface Config {
     boards: Board;
     cooks: Cook;
     dishes: Dish;
+    votes: Vote;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -86,6 +87,7 @@ export interface Config {
     boards: BoardsSelect<false> | BoardsSelect<true>;
     cooks: CooksSelect<false> | CooksSelect<true>;
     dishes: DishesSelect<false> | DishesSelect<true>;
+    votes: VotesSelect<false> | VotesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -260,6 +262,24 @@ export interface Dish {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "votes".
+ */
+export interface Vote {
+  id: number;
+  dish?: (number | null) | Dish;
+  satisfaction: number;
+  tastiness?: number | null;
+  fillingness?: number | null;
+  healthiness?: number | null;
+  valueForMoney?: number | null;
+  remarks?: string | null;
+  voteDate: string;
+  voterId: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -305,6 +325,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'dishes';
         value: number | Dish;
+      } | null)
+    | ({
+        relationTo: 'votes';
+        value: number | Vote;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -456,6 +480,23 @@ export interface DishesSelect<T extends boolean = true> {
         carbs?: T;
         fat?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "votes_select".
+ */
+export interface VotesSelect<T extends boolean = true> {
+  dish?: T;
+  satisfaction?: T;
+  tastiness?: T;
+  fillingness?: T;
+  healthiness?: T;
+  valueForMoney?: T;
+  remarks?: T;
+  voteDate?: T;
+  voterId?: T;
   updatedAt?: T;
   createdAt?: T;
 }

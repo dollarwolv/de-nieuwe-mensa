@@ -13,6 +13,7 @@ import { Testimonials } from "./collections/Testimonials";
 import { Boards } from "./collections/Boards";
 import { Cooks } from "./collections/Cooks";
 import { Dishes } from "./collections/Dishes";
+import { Votes } from "./collections/Votes";
 
 import { MenuSettings } from "./globals/MenuSettings";
 
@@ -26,7 +27,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Testimonials, Boards, Cooks, Dishes],
+  collections: [Users, Media, Testimonials, Boards, Cooks, Dishes, Votes],
   globals: [MenuSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
