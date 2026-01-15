@@ -12,6 +12,7 @@ export const Votes = {
       "valueForMoney",
       "remarks",
       "voteDate",
+      "voterId",
     ],
   },
   fields: [
@@ -58,7 +59,7 @@ export const Votes = {
     },
     {
       name: "voteDate",
-      type: "date",
+      type: "text",
       required: true,
       index: true,
     },

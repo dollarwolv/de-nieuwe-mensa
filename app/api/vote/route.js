@@ -5,8 +5,8 @@ import crypto from "crypto";
 import { NextResponse } from "next/server";
 import { getDateYYYYMMDD } from "@/lib/helpers";
 
-function getOrSetVoterId() {
-  const jar = cookies();
+async function getOrSetVoterId() {
+  const jar = await cookies();
   const existing = jar.get("voterId")?.value;
   if (existing) return existing;
 
@@ -48,7 +48,7 @@ function parseRubricRatings(body) {
 export async function POST(req) {
   try {
     // collects or sets voter id in a cookie and saves it in voterId variable
-    const voterId = getOrSetVoterId();
+    const voterId = await getOrSetVoterId();
     const body = await req.json();
 
     // checks if ratings are numerical and between 1 and 10
