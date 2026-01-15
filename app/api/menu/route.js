@@ -1,26 +1,7 @@
 import config from "@payload-config";
 import { getPayload } from "payload";
 
-// Helpers
-function startOfDay(d) {
-  const x = new Date(d);
-  x.setHours(0, 0, 0, 0);
-  return x;
-}
-
-// Returns a Date that is the Monday of the week containing `d`.
-// If `d` is Sunday, it returns the Monday 6 days earlier (previous week).
-function mondayOfWeek(d) {
-  const x = startOfDay(d);
-  const day = x.getDay(); // Sun=0, Mon=1, ... Sat=6
-  const diff = day === 0 ? -6 : 1 - day; // move back to Monday
-  x.setDate(x.getDate() + diff);
-  return x;
-}
-
-function flipWeek(w) {
-  return w === "A" ? "B" : "A";
-}
+import { startOfDay, mondayOfWeek, flipWeek } from "../../../lib/helpers";
 
 export async function GET() {
   const payload = await getPayload({ config });
