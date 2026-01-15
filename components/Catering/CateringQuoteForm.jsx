@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Button from "../General/Button";
+import { useRouter } from "next/navigation";
 
 function CateringQuoteForm() {
   const [wantsDifferentDish, setWantsDifferentDish] = useState(false);
@@ -9,9 +10,35 @@ function CateringQuoteForm() {
   const [timeUnknown, setTimeUnknown] = useState(false);
   const [guestsUnknown, setGuestsUnknown] = useState(false);
   const [locationUnknown, setLocationUnknown] = useState(false);
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+  const [error, setError] = useState(false);
+
+  const router = useRouter();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const values = Object.fromEntries(formData.entries());
+
+    const res = await fetch("/api/catering", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...values,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!data.ok) {
+      setError(data.error);
+      // console.error(data.error);
+    } else {
+      router.push("/catering/request-success");
+    }
+  }
 
   return (
     <section className="w-full max-w-460">
@@ -220,7 +247,7 @@ function CateringQuoteForm() {
               <label className="flex items-start gap-3 text-sm font-medium text-black/80">
                 <input
                   type="radio"
-                  name="dish-request"
+                  name="dishRequest"
                   value="default"
                   defaultChecked
                   onChange={() => setWantsDifferentDish(false)}
@@ -231,7 +258,7 @@ function CateringQuoteForm() {
               <label className="flex items-start gap-3 text-sm font-medium text-black/80">
                 <input
                   type="radio"
-                  name="dish-request"
+                  name="dishRequest"
                   value="custom"
                   onChange={() => setWantsDifferentDish(true)}
                   className="mt-1 h-4 w-4 accent-black"
@@ -276,6 +303,7 @@ function CateringQuoteForm() {
                 We are happy to answer any additional questions – feel free to
                 send us an email at catering@denieuwemensa.nl.
               </p>
+              <p className="text-xs font-medium text-red-600/80">{error}</p>
             </div>
 
             <div className="pt-2">

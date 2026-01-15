@@ -1,6 +1,7 @@
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
+import { resendAdapter } from "@payloadcms/email-resend";
 
 import path from "path";
 import { buildConfig } from "payload";
@@ -28,6 +29,11 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
+  email: resendAdapter({
+    defaultFromAddress: "bot@denieuwemensa.nl",
+    defaultFromName: "DNM BOT",
+    apiKey: process.env.RESEND_API_KEY || "",
+  }),
   collections: [
     Users,
     Media,
