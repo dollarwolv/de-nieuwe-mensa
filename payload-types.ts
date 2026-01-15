@@ -74,6 +74,7 @@ export interface Config {
     cooks: Cook;
     dishes: Dish;
     votes: Vote;
+    cateringRequests: CateringRequest;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -88,6 +89,7 @@ export interface Config {
     cooks: CooksSelect<false> | CooksSelect<true>;
     dishes: DishesSelect<false> | DishesSelect<true>;
     votes: VotesSelect<false> | VotesSelect<true>;
+    cateringRequests: CateringRequestsSelect<false> | CateringRequestsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -280,6 +282,27 @@ export interface Vote {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cateringRequests".
+ */
+export interface CateringRequest {
+  id: number;
+  name: string;
+  email: string;
+  phone?: string | null;
+  eventAbout: string;
+  eventDate?: string | null;
+  eventTime?: string | null;
+  location?: string | null;
+  guestCount?: number | null;
+  dishRequest?: string | null;
+  desiredDish?: string | null;
+  remarks?: string | null;
+  submittedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -329,6 +352,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'votes';
         value: number | Vote;
+      } | null)
+    | ({
+        relationTo: 'cateringRequests';
+        value: number | CateringRequest;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -497,6 +524,26 @@ export interface VotesSelect<T extends boolean = true> {
   remarks?: T;
   voteDate?: T;
   voterId?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cateringRequests_select".
+ */
+export interface CateringRequestsSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  phone?: T;
+  eventAbout?: T;
+  eventDate?: T;
+  eventTime?: T;
+  location?: T;
+  guestCount?: T;
+  dishRequest?: T;
+  desiredDish?: T;
+  remarks?: T;
+  submittedAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }

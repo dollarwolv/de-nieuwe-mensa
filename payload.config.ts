@@ -14,6 +14,7 @@ import { Boards } from "./collections/Boards";
 import { Cooks } from "./collections/Cooks";
 import { Dishes } from "./collections/Dishes";
 import { Votes } from "./collections/Votes";
+import { CateringRequests } from "./collections/CateringRequests";
 
 import { MenuSettings } from "./globals/MenuSettings";
 
@@ -27,7 +28,16 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Testimonials, Boards, Cooks, Dishes, Votes],
+  collections: [
+    Users,
+    Media,
+    Testimonials,
+    Boards,
+    Cooks,
+    Dishes,
+    Votes,
+    CateringRequests,
+  ],
   globals: [MenuSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
