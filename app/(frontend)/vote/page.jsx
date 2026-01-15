@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
 import Button from "@/components/General/Button";
+import { useRouter } from "next/navigation";
 
 function Vote() {
   const [menu, setMenu] = useState(null);
@@ -23,7 +24,10 @@ function Vote() {
     { id: "satisfaction", label: "Overall satisfaction" },
   ];
 
+  const router = useRouter();
+
   const [remarks, setRemarks] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const load = async () => {
@@ -55,8 +59,11 @@ function Vote() {
 
     if (!data.ok) {
       console.error(data.error);
+      setError(error);
+    } else if (data.updated) {
+      router.push("/vote/vote-updated");
     } else {
-      console.log("yippie!");
+      router.push("/vote/vote-success");
     }
   }
 
@@ -175,6 +182,8 @@ function Vote() {
               className="bg-dnm-black rounded-lg px-3 py-2 text-white"
             />
           </div>
+
+          <p>{error}</p>
 
           <Button
             type="submit"
