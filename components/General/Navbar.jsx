@@ -12,12 +12,12 @@ function Navbar() {
 
   return (
     <>
-      <div className="fixed top-4 left-4 z-20 block md:hidden">
+      <div className="fixed top-4 left-4 z-20 block lg:hidden">
         <Hamburger toggled={isOpen} toggle={setOpen} />
       </div>
 
-      <nav className="lg:text-step-0 md:text-step-1 flex w-full items-center justify-between px-5 font-extrabold">
-        <div className="relative hidden shrink-0 md:block md:h-13 md:w-16 lg:h-18 lg:w-22">
+      <nav className="lg:text-test-step--1 flex w-full max-w-460 items-center justify-between px-5 font-extrabold">
+        <div className="relative hidden shrink-0 md:h-13 md:w-16 lg:block lg:h-18 lg:w-22">
           <Link href={"/"}>
             <Image
               src="/logo.png"
@@ -28,11 +28,12 @@ function Navbar() {
           </Link>
         </div>
 
-        <div className="hidden items-center gap-5 md:flex">
+        <div className="hidden items-center gap-5 lg:flex">
           <Link href="/about">About</Link>
           <Link href="/transparency">Transparency</Link>
           <Link href="/catering">Catering</Link>
           <Link href="/blog">Blog</Link>
+          <Link href="/vote">Vote</Link>
           <Button className="text-2xl">GET INVOLVED</Button>
         </div>
       </nav>
@@ -45,11 +46,14 @@ function Navbar() {
             exit={{ clipPath: "inset(0% 0% 100%)" }}
             transition={{ duration: 0.7, ease: [0.85, 0, 0.15, 1] }}
             key="hamburger"
-            className="bg-dnm-dark-green fixed top-0 left-0 z-10 flex h-dvh w-full flex-col justify-end overflow-hidden px-2 pb-[env(safe-area-inset-bottom)] md:hidden"
+            className="bg-dnm-dark-green fixed top-0 left-0 z-10 flex h-dvh w-full flex-col justify-end overflow-hidden px-2 pb-[env(safe-area-inset-bottom)] lg:hidden"
           >
             <div className="flex flex-col gap-2 text-3xl text-white uppercase">
               <Link href="/" onClick={() => setOpen(false)}>
                 Home
+              </Link>
+              <Link href="/vote" onClick={() => setOpen(false)}>
+                Vote
               </Link>
               <Link href="/about" onClick={() => setOpen(false)}>
                 About
