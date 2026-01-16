@@ -59,7 +59,7 @@ export const Votes = {
     },
     {
       name: "voteDate",
-      type: "text",
+      type: "date",
       required: true,
       index: true,
     },

@@ -60,7 +60,13 @@ export async function POST(req) {
     // assigns ratings and remarks, voteDate, dish to variables
     const { ratings } = parsed;
     const { remarks, dish } = body;
-    const voteDate = getDateYYYYMMDD();
+
+    const voteDate = new Date();
+    const startOfDay = new Date();
+    startOfDay.setHours(0, 0, 0, 0);
+
+    const startOfNextDay = new Date(startOfDay);
+    startOfNextDay.setDate(startOfDay.getDate() + 1);
 
     const payload = await getPayload({ config });
 
@@ -70,7 +76,8 @@ export async function POST(req) {
       where: {
         and: [
           { voterId: { equals: voterId } },
-          { voteDate: { equals: voteDate } },
+          { voteDate: { greater_than_equal: startOfDay } },
+          { voteDate: { less_than: startOfNextDay } },
         ],
       },
       limit: 1,
