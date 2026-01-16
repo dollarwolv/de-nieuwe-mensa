@@ -75,6 +75,7 @@ export interface Config {
     dishes: Dish;
     votes: Vote;
     cateringRequests: CateringRequest;
+    blogPosts: BlogPost;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -90,6 +91,7 @@ export interface Config {
     dishes: DishesSelect<false> | DishesSelect<true>;
     votes: VotesSelect<false> | VotesSelect<true>;
     cateringRequests: CateringRequestsSelect<false> | CateringRequestsSelect<true>;
+    blogPosts: BlogPostsSelect<false> | BlogPostsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -303,6 +305,51 @@ export interface CateringRequest {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blogPosts".
+ */
+export interface BlogPost {
+  id: number;
+  title: string;
+  /**
+   * The cover image will be displayed on the page that shows all blog posts and at the top of the blog post. Please choose one before you publish the article.
+   */
+  coverImage?: (number | null) | Media;
+  /**
+   * You don't have to tell people if you don't want to.
+   */
+  author?: string | null;
+  /**
+   * A quick summary of the article.
+   */
+  summary?: string | null;
+  /**
+   * Only if you check this field will the post appear on the page, so you can keep writing it inside of the CMS and publish it when you're ready.
+   */
+  posted?: boolean | null;
+  /**
+   * This field decides whether the post will be displayed as a big, featured post. Please only select one post as featured, or else the site might behave strangely.
+   */
+  featured?: boolean | null;
+  textBody: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -356,6 +403,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'cateringRequests';
         value: number | CateringRequest;
+      } | null)
+    | ({
+        relationTo: 'blogPosts';
+        value: number | BlogPost;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -544,6 +595,21 @@ export interface CateringRequestsSelect<T extends boolean = true> {
   desiredDish?: T;
   remarks?: T;
   submittedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blogPosts_select".
+ */
+export interface BlogPostsSelect<T extends boolean = true> {
+  title?: T;
+  coverImage?: T;
+  author?: T;
+  summary?: T;
+  posted?: T;
+  featured?: T;
+  textBody?: T;
   updatedAt?: T;
   createdAt?: T;
 }

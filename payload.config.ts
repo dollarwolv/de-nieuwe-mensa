@@ -16,6 +16,7 @@ import { Cooks } from "./collections/Cooks";
 import { Dishes } from "./collections/Dishes";
 import { Votes } from "./collections/Votes";
 import { CateringRequests } from "./collections/CateringRequests";
+import { BlogPosts } from "./collections/BlogPosts";
 
 import { MenuSettings } from "./globals/MenuSettings";
 
@@ -43,6 +44,7 @@ export default buildConfig({
     Dishes,
     Votes,
     CateringRequests,
+    BlogPosts,
   ],
   globals: [MenuSettings],
   editor: lexicalEditor(),
