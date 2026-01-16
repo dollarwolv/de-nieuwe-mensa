@@ -19,8 +19,7 @@ export async function GET(req) {
   const searchParams = req.nextUrl.searchParams;
   const dateRange = searchParams.get("dateRange"); // dateRange will be something like 30, 90, 180, etc.
   const rubricKey = searchParams.get("rubrik") || "all";
-
-  //   const dish = searchParams.get("dishId");
+  const dishId = searchParams.get("dishId");
 
   const rubricExpr = RUBRICS[rubricKey];
   if (!rubricExpr) {
@@ -42,7 +41,7 @@ export async function GET(req) {
     AVG(${rubricKey === "all" ? rubricExpr : `${rubricExpr}::float`}) AS avg,
     COUNT(*)::int AS count
   FROM "votes"
-  WHERE "vote_date" >= $1
+  WHERE "vote_date" >= $1 ${dishId ? `AND dish_id = ${dishId}` : ""}
   GROUP BY 1
   ORDER BY 1 ASC;
 `;
