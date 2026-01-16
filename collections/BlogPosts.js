@@ -2,7 +2,17 @@
 
 export const BlogPosts = {
   slug: "blogPosts",
-  admin: { useAsTitle: "title" },
+  admin: {
+    useAsTitle: "title",
+    defaultColumns: [
+      "title",
+      "coverImage",
+      "author",
+      "summary",
+      "posted",
+      "featured",
+    ],
+  },
   fields: [
     { name: "title", type: "text", required: true },
     {
@@ -34,6 +44,29 @@ export const BlogPosts = {
       admin: {
         description:
           "Only if you check this field will the post appear on the page, so you can keep writing it inside of the CMS and publish it when you're ready.",
+      },
+    },
+    {
+      name: "postedDate",
+      type: "date",
+      admin: {
+        readOnly: true,
+        description: "Automatically set when the post is published.",
+      },
+      hooks: {
+        beforeChange: [
+          ({ siblingData, value }) => {
+            if (siblingData.posted && !value) {
+              return new Date();
+            }
+
+            if (!siblingData.posted) {
+              return null;
+            }
+
+            return value;
+          },
+        ],
       },
     },
     {

@@ -327,6 +327,10 @@ export interface BlogPost {
    */
   posted?: boolean | null;
   /**
+   * Automatically set when the post is published.
+   */
+  postedDate?: string | null;
+  /**
    * This field decides whether the post will be displayed as a big, featured post. Please only select one post as featured, or else the site might behave strangely.
    */
   featured?: boolean | null;
@@ -608,6 +612,7 @@ export interface BlogPostsSelect<T extends boolean = true> {
   author?: T;
   summary?: T;
   posted?: T;
+  postedDate?: T;
   featured?: T;
   textBody?: T;
   updatedAt?: T;
