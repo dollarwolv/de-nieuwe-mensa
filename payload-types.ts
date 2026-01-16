@@ -319,6 +319,16 @@ export interface BlogPost {
    */
   author?: string | null;
   /**
+   * Short URL slug (e.g., 'first-example-post' in denieuwemensa.nl/blog/first-example-post).
+   *           Please provide a short title for the url, formated in all-lowercase with hyphens for spaces and no special characters.
+   *           Please try not to use more than 7 words.
+   *           For example, for an article called "How we founded De Nieuwe Mensa: The hoops we had to get through",
+   *           a good slug would be "mensa-founding-story" or "how-we-founded-mensa".
+   *           If you leave this field empty, it will be auto-generated from the title,
+   *           but it's probably going to be very long, so it would be better if you did it manually.
+   */
+  slug: string;
+  /**
    * A quick summary of the article.
    */
   summary?: string | null;
@@ -610,6 +620,7 @@ export interface BlogPostsSelect<T extends boolean = true> {
   title?: T;
   coverImage?: T;
   author?: T;
+  slug?: T;
   summary?: T;
   posted?: T;
   postedDate?: T;

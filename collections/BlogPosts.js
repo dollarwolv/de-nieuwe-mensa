@@ -32,6 +32,43 @@ export const BlogPosts = {
       },
     },
     {
+      name: "slug",
+      type: "text",
+      required: true,
+      defaultValue: ({ siblingData }) => {
+        const title = siblingData?.title;
+        if (!title) return "";
+      },
+      unique: true,
+      admin: {
+        description: `Short URL slug (e.g., 'first-example-post' in denieuwemensa.nl/blog/first-example-post). 
+          Please provide a short title for the url, formated in all-lowercase with hyphens for spaces and no special characters. 
+          Please try not to use more than 7 words.  
+          For example, for an article called "How we founded De Nieuwe Mensa: The hoops we had to get through", 
+          a good slug would be "mensa-founding-story" or "how-we-founded-mensa".
+          If you leave this field empty, it will be auto-generated from the title, 
+          but it's probably going to be very long, so it would be better if you did it manually.`,
+      },
+      hooks: {
+        beforeValidate: [
+          ({ value, siblingData }) => {
+            if (value) return value;
+            if (!siblingData?.title) return value;
+
+            const slug = siblingData.title
+              .toLowerCase()
+              .trim()
+              .replace(/[^a-z0-9]+/g, "-")
+              .replace(/(^-|-$)/g, "");
+
+            if (slug.length <= 60) return slug;
+
+            return slug.slice(0, 60).replace(/-[^-]*$/, "");
+          },
+        ],
+      },
+    },
+    {
       name: "summary",
       type: "text",
       admin: {

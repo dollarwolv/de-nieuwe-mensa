@@ -99,7 +99,7 @@ export default async function BlogPage() {
       {featuredPost && (
         <section className="mt-6 w-full max-w-460 md:mt-12">
           <Link
-            href={`/blog/${featuredPost.id}`}
+            href={`/blog/${featuredPost.slug}`}
             className="group border-dnm-black/10 flex flex-col gap-6 rounded-4xl border bg-white p-6 md:grid md:grid-cols-24 md:gap-8"
           >
             <div className="col-start-1 col-end-15">
@@ -150,7 +150,7 @@ export default async function BlogPage() {
               return (
                 <Link
                   key={post.id}
-                  href={`/blog/${post.id}`}
+                  href={`/blog/${post.slug}`}
                   className="group border-dnm-black/10 flex h-full flex-col gap-4 rounded-3xl border bg-white p-5 transition-transform duration-200 hover:-translate-y-1"
                 >
                   {postImage ? (
