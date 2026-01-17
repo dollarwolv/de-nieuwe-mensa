@@ -144,16 +144,16 @@ export default function ProgressionChart() {
     fetchFunc();
   }, []);
   return (
-    <Card className="w-160 justify-between overflow-hidden max-[400px]:w-80 max-sm:w-100">
-      <CardHeader className="flex flex-row justify-between">
+    <Card className="justify-between overflow-hidden max-[400px]:w-80 max-sm:w-100 md:w-150 xl:w-200">
+      <CardHeader className="flex flex-col justify-between md:flex-row">
         <div className="flex flex-col">
           <CardTitle>Dish Rating Data - Progression Over Time</CardTitle>
           <CardDescription>
             Showing average ratings for our dishes per month
           </CardDescription>
         </div>
-        <div className="flex flex-col items-end md:gap-1">
-          <div className="flex w-full flex-col items-end justify-between md:flex-row md:gap-2">
+        <div className="flex flex-row md:flex-col md:gap-1">
+          <div className="flex flex-col md:flex-row md:justify-between md:gap-2">
             <Select
               value={dateRange}
               onValueChange={setDateRange}
@@ -199,9 +199,9 @@ export default function ProgressionChart() {
             </Select>
           </div>
 
-          <div className="flex w-full flex-col items-end justify-between md:flex-row md:gap-2">
+          <div className="flex flex-col items-end md:flex-row md:justify-between md:gap-2">
             <Select value={selectedRubrik} onValueChange={setSelectedRubrik}>
-              <SelectTrigger className="w-50 rounded-lg max-[400px]:w-32">
+              <SelectTrigger className="w-42 rounded-lg md:w-50">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="rounded-xl">
@@ -222,7 +222,7 @@ export default function ProgressionChart() {
               </SelectContent>
             </Select>
             <Select value={groupBy} onValueChange={setGroupBy}>
-              <SelectTrigger className="w-32 rounded-lg">
+              <SelectTrigger className="w-32 rounded-lg md:w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="rounded-xl">

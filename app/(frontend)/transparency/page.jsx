@@ -1,6 +1,8 @@
 import ProgressionChart from "@/components/Transparency/ProgressionChart";
 import ComparisonChart from "@/components/Transparency/ComparisonChart";
 
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 function TransparencyPage() {
   return (
     <div className="flex w-full max-w-460 flex-col">
@@ -37,9 +39,9 @@ function TransparencyPage() {
         </span>
       </div>
 
-      <div className="flex w-full max-w-460 flex-col items-center justify-center">
+      <div className="flex w-full max-w-460 flex-col items-center lg:flex-row lg:gap-12">
         <div className="flex flex-col items-center justify-center">
-          <h2 className="text-test-step-5 mt-24 text-center leading-[92%] font-extrabold tracking-tight">
+          <h2 className="text-test-step-5 text-center leading-[92%] font-extrabold tracking-tight max-lg:mt-24">
             STUDENT FEEDBACK
           </h2>
           <p className="text-test-step--1 mt-2 max-w-[50ch] text-center font-medium">
@@ -50,8 +52,18 @@ function TransparencyPage() {
           </p>
         </div>
         <div className="mt-12 flex gap-12 max-xl:flex-col">
-          <ProgressionChart />
-          <ComparisonChart />
+          <Tabs defaultValue="progression">
+            <TabsList>
+              <TabsTrigger value="progression">Ratings Over Time</TabsTrigger>
+              <TabsTrigger value="comparison">Compare Dishes</TabsTrigger>
+            </TabsList>
+            <TabsContent value="progression">
+              <ProgressionChart />
+            </TabsContent>
+            <TabsContent value="comparison">
+              <ComparisonChart />
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
     </div>

@@ -92,14 +92,14 @@ export default function ComparisonChart() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 480); // pick your breakpoint
+    const check = () => setIsMobile(window.innerWidth < 1280);
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
 
   return (
-    <Card className="w-150 justify-between overflow-hidden max-[400px]:w-80 max-sm:w-100">
+    <Card className="justify-between overflow-hidden max-[400px]:w-80 max-sm:w-100 md:w-150 xl:w-200">
       <CardHeader className="flex flex-row justify-between">
         <div className="flex flex-col">
           <CardTitle>Dish Rating Data - Comparison</CardTitle>
@@ -133,7 +133,10 @@ export default function ComparisonChart() {
       </CardHeader>
       <CardContent>
         {chartData?.length ? (
-          <ChartContainer config={chartConfig} className="min-h-50 w-full">
+          <ChartContainer
+            config={chartConfig}
+            className="min-h-50 w-full max-sm:h-100"
+          >
             {isMobile ? (
               <BarChart
                 accessibilityLayer
@@ -155,7 +158,14 @@ export default function ComparisonChart() {
                 <XAxis type="number" tickLine={false} axisLine={false} />
 
                 <ChartTooltip
-                  content={<ChartTooltipContent />}
+                  content={
+                    <ChartTooltipContent
+                      labelFormatter={(_, payload) => {
+                        const id = payload?.[0]?.payload?.dish_id;
+                        return id ? (getDishNameById(id) ?? `Dish ${id}`) : "";
+                      }}
+                    />
+                  }
                   className="w-40"
                 />
                 <ChartLegend content={<ChartLegendContent />} />
