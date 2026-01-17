@@ -41,18 +41,29 @@ export async function GET(req) {
   const startDate = new Date();
   startDate.setDate(today.getDate() - Number(dateRange));
 
+  const selectAllMonths = `
+    AVG("satisfaction"::float) AS satisfaction,
+    AVG("tastiness"::float) AS tastiness,
+    AVG("fillingness"::float) AS fillingness,
+    AVG("healthiness"::float) AS healthiness,
+    AVG("value_for_money"::float) AS value_for_money
+  `;
+
   // complicated SQL query
   const sql = `
   SELECT
     TO_CHAR(("vote_date" AT TIME ZONE 'Asia/Singapore'), 'YYYY-MM') AS month,
-    AVG(${rubricKey === "all" ? rubricExpr : `${rubricExpr}::float`}) AS avg,
+    ${rubricKey === "all" ? selectAllMonths : `AVG(${rubricExpr}::float) AS avg`},
     COUNT(*)::int AS count
   FROM "votes"
-  WHERE "vote_date" >= $1 ${dishId ? `AND dish_id = ${dishId}` : ""}
+  WHERE "vote_date" >= $1 ${dishId ? `AND dish_id = $2` : ""}
   GROUP BY 1
   ORDER BY 1 ASC;
 `;
-  const result = await pool.query(sql, [startDate]);
+  const result = await pool.query(
+    sql,
+    dishId ? [startDate, dishId] : [startDate],
+  );
 
   return NextResponse.json({ ok: true, daily: result.rows, dishId: dishId });
 }

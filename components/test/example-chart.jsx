@@ -55,13 +55,6 @@ function convertDate(dateString) {
   return monthsDict[month] + " " + year;
 }
 
-const chartConfig = {
-  avg: {
-    label: "Average",
-    color: "#2563eb",
-  },
-};
-
 export default function TestChart() {
   const [dateRange, setDateRange] = useState(365);
   const [selectedDishId, setSelectedDishId] = useState("all");
@@ -95,12 +88,40 @@ export default function TestChart() {
     { name: "valueForMoney", label: "Value For Money" },
   ];
 
+  const chartConfig = {
+    avg: {
+      label: "Average",
+      color: "#cb5651",
+    },
+    fillingness: {
+      label: "Fillingness",
+      color: "#3b8b55",
+    },
+    satisfaction: {
+      label: "Overall Satisfaction",
+      color: "#3b4a3f",
+    },
+    value_for_money: {
+      label: "Value for money",
+      color: "#4877e0",
+    },
+    tastiness: {
+      label: "Tastiness",
+      color: "#b36a22",
+    },
+    healthiness: {
+      label: "Healthiness",
+      color: "#008988",
+    },
+  };
+
   useEffect(() => {
     const fetchFunc = async () => {
       const res = await fetch(`/api/vote-stats?${params.toString()}`);
       const data = await res.json();
       setChartData(data.daily);
       console.log(chartData);
+      console.log(Object.entries(chartConfig));
     };
 
     fetchFunc();
@@ -204,13 +225,51 @@ export default function TestChart() {
                 axisLine={false}
                 tickFormatter={(value) => convertDate(value)}
               />
-              <ChartTooltip content={<ChartTooltipContent />} />
-              <ChartLegend content={<ChartLegendContent />} />
-              <Bar
-                dataKey="avg"
-                fill="var(--color-dnm-light-green)"
-                radius={4}
+              <ChartTooltip
+                content={<ChartTooltipContent />}
+                className="w-40"
               />
+              <ChartLegend content={<ChartLegendContent />} />
+
+              {!chartData[0].avg && (
+                <Bar
+                  dataKey="fillingness"
+                  fill="var(--color-fillingness)"
+                  radius={4}
+                />
+              )}
+              {!chartData[0].avg && (
+                <Bar
+                  dataKey="healthiness"
+                  fill="var(--color-healthiness)"
+                  radius={4}
+                />
+              )}
+
+              {!chartData[0].avg && (
+                <Bar
+                  dataKey="tastiness"
+                  fill="var(--color-tastiness)"
+                  radius={4}
+                />
+              )}
+              {!chartData[0].avg && (
+                <Bar
+                  dataKey="value_for_money"
+                  fill="var(--color-value_for_money)"
+                  radius={4}
+                />
+              )}
+              {!chartData[0].avg && (
+                <Bar
+                  dataKey="satisfaction"
+                  fill="var(--color-satisfaction)"
+                  radius={4}
+                />
+              )}
+              {chartData[0].avg && (
+                <Bar dataKey="avg" fill="var(--color-avg)" radius={4} />
+              )}
             </BarChart>
           </ChartContainer>
         ) : (
