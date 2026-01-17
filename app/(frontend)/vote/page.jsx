@@ -34,6 +34,11 @@ function Vote() {
       const res = await fetch("/api/menu");
       const data = await res.json();
       setMenu(data);
+      if (data && data.todaysDish == null) {
+        setError(
+          "Today's dish couldn't be loaded because we are not open today - please come back on Monday!",
+        );
+      }
       setSelectedDish(data.todaysDish);
     };
 
@@ -125,7 +130,7 @@ function Vote() {
             name="dish-select"
             id="dish-select"
             className="bg-dnm-dark-green/50 h-full w-full rounded-2xl p-1 text-black/60"
-            value={selectedDish.name}
+            value={selectedDish?.name}
             onChange={(e) => findAndSetSelectedDish(e.target.value)}
           >
             {allDishes.map((dish) => {
@@ -183,7 +188,7 @@ function Vote() {
             />
           </div>
 
-          <p>{error}</p>
+          <p className="text-red-600">Error: {error}</p>
 
           <Button
             type="submit"
