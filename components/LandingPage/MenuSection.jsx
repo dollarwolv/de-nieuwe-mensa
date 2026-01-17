@@ -95,7 +95,6 @@ function MenuSection() {
       const res = await fetch("/api/menu");
       const data = await res.json();
       setMenu(data);
-      console.log(data);
     };
 
     load();

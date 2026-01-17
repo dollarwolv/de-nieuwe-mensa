@@ -11,7 +11,7 @@ export async function GET(req) {
     tastiness: `"tastiness"`,
     fillingness: `"fillingness"`,
     healthiness: `"healthiness"`,
-    valueForMoney: `"valueForMoney"`,
+    valueForMoney: `"value_for_money"`,
     all: `("satisfaction" + "tastiness" + "fillingness" + "healthiness" + "value_for_money") / 5.0`,
   };
 
@@ -25,6 +25,13 @@ export async function GET(req) {
   if (!rubricExpr) {
     return NextResponse.json(
       { ok: false, error: "Invalid rubrik" },
+      { status: 400 },
+    );
+  }
+
+  if (dishId && !parseInt(dishId)) {
+    return NextResponse.json(
+      { ok: false, error: "Invalid dishID" },
       { status: 400 },
     );
   }
@@ -47,5 +54,5 @@ export async function GET(req) {
 `;
   const result = await pool.query(sql, [startDate]);
 
-  return NextResponse.json({ ok: true, daily: result.rows });
+  return NextResponse.json({ ok: true, daily: result.rows, dishId: dishId });
 }
