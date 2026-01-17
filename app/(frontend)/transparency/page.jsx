@@ -6,7 +6,7 @@ function TransparencyPage() {
     <div className="flex w-full max-w-460 flex-col">
       {/* Hero Section */}
       <div className="mt-12 flex w-full flex-col">
-        <h1 className="md:text-test-step-7 mb-4 text-5xl leading-[92%] font-extrabold tracking-tight lg:mb-12">
+        <h1 className="md:text-test-step-7 mb-4 text-4xl leading-[92%] font-extrabold tracking-tight max-[400px]:text-3xl lg:mb-12">
           TRANSPARENCY
         </h1>
         <div className="flex w-full flex-col justify-between gap-2 border-t border-black pt-4 md:flex-row lg:gap-6 lg:pt-12">
@@ -37,10 +37,22 @@ function TransparencyPage() {
         </span>
       </div>
 
-      {/* Student ratings */}
-      <div className="w-60">
-        <ProgressionChart />
-        <ComparisonChart />
+      <div className="flex w-full max-w-460 flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center">
+          <h2 className="text-test-step-5 mt-24 text-center leading-[92%] font-extrabold tracking-tight">
+            STUDENT FEEDBACK
+          </h2>
+          <p className="text-test-step--1 mt-2 max-w-[50ch] text-center font-medium">
+            Here, you can find how satisfied students with our different meals,
+            as well as our service in general. Keep in mind that we only started
+            tracking these metrics with the launch of this site in the February
+            of 2026.
+          </p>
+        </div>
+        <div className="mt-12 flex gap-12 max-xl:flex-col">
+          <ProgressionChart />
+          <ComparisonChart />
+        </div>
       </div>
     </div>
   );

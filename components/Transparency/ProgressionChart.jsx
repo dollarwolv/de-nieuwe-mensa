@@ -141,7 +141,7 @@ export default function ProgressionChart() {
     fetchFunc();
   }, []);
   return (
-    <Card className="w-200">
+    <Card className="w-150 justify-between max-[400px]:w-80 max-sm:w-100 md:w-150">
       <CardHeader className="flex flex-row justify-between">
         <div className="flex flex-col">
           <CardTitle>Dish Rating Data - Progression Over Time</CardTitle>
@@ -155,7 +155,7 @@ export default function ProgressionChart() {
             onValueChange={setDateRange}
             defaultValue={30}
           >
-            <SelectTrigger className="w-50 rounded-lg">
+            <SelectTrigger className="w-50 rounded-lg max-[400px]:w-32">
               <SelectValue />
             </SelectTrigger>
 
@@ -174,7 +174,7 @@ export default function ProgressionChart() {
             </SelectContent>
           </Select>
           <Select value={selectedDishId} onValueChange={setSelectedDishId}>
-            <SelectTrigger className="w-45 rounded-lg">
+            <SelectTrigger className="w-45 rounded-lg max-[400px]:w-32">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="rounded-xl">
@@ -195,7 +195,7 @@ export default function ProgressionChart() {
             </SelectContent>
           </Select>
           <Select value={selectedRubrik} onValueChange={setSelectedRubrik}>
-            <SelectTrigger className="w-50 rounded-lg">
+            <SelectTrigger className="w-50 rounded-lg max-[400px]:w-32">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="rounded-xl">

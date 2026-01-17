@@ -90,7 +90,7 @@ export default function ComparisonChart() {
     fetchFunc();
   }, []);
   return (
-    <Card className="w-200">
+    <Card className="w-150 justify-between max-[400px]:w-80 max-sm:w-100">
       <CardHeader className="flex flex-row justify-between">
         <div className="flex flex-col">
           <CardTitle>Dish Rating Data - Comparison</CardTitle>
@@ -100,7 +100,7 @@ export default function ComparisonChart() {
         </div>
         <div className="flex flex-col items-end gap-2">
           <Select value={selectedRubrik} onValueChange={setSelectedRubrik}>
-            <SelectTrigger className="w-50 rounded-lg">
+            <SelectTrigger className="w-50 rounded-lg max-[400px]:w-32">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="rounded-xl">
