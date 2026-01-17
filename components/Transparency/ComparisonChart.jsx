@@ -1,6 +1,6 @@
 "use client";
 
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import {
   ChartContainer,
   ChartTooltip,
@@ -28,6 +28,7 @@ export default function ComparisonChart() {
   const [selectedRubrik, setSelectedRubrik] = useState("satisfaction");
   const [chartData, setChartData] = useState([]);
   const [menu, setMenu] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
 
   const params = new URLSearchParams({
     rubrik: selectedRubrik,
@@ -86,9 +87,16 @@ export default function ComparisonChart() {
       const data = await res.json();
       setMenu([...(data.thisWeeksMenu ?? []), ...(data.nextWeeksMenu ?? [])]);
     };
-
     fetchFunc();
   }, []);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 480); // pick your breakpoint
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   return (
     <Card className="w-150 justify-between max-[400px]:w-80 max-sm:w-100">
       <CardHeader className="flex flex-row justify-between">
@@ -125,58 +133,121 @@ export default function ComparisonChart() {
       <CardContent>
         {chartData?.length ? (
           <ChartContainer config={chartConfig} className="min-h-50 w-full">
-            <BarChart accessibilityLayer data={chartData}>
-              <CartesianGrid />
-              <XAxis
-                dataKey="dish_id"
-                tickLine={false}
-                tickMargin={10}
-                axisLine={false}
-                tickFormatter={(value) => getDishNameById(value)}
-              />
-              <ChartTooltip
-                content={<ChartTooltipContent />}
-                className="w-40"
-              />
-              <ChartLegend content={<ChartLegendContent />} />
+            {isMobile ? (
+              <BarChart
+                accessibilityLayer
+                data={chartData}
+                layout="vertical"
+                margin={{ left: 8, right: 8 }}
+              >
+                <CartesianGrid horizontal={false} />
 
-              {chartData[0].fillingness && (
-                <Bar
-                  dataKey="fillingness"
-                  fill="var(--color-fillingness)"
-                  radius={4}
+                <YAxis
+                  dataKey="dish_id"
+                  type="category"
+                  tickLine={false}
+                  axisLine={false}
+                  width={120}
+                  tickFormatter={(value) => getDishNameById(value)}
                 />
-              )}
-              {chartData[0].healthiness && (
-                <Bar
-                  dataKey="healthiness"
-                  fill="var(--color-healthiness)"
-                  radius={4}
-                />
-              )}
 
-              {chartData[0].tastiness && (
-                <Bar
-                  dataKey="tastiness"
-                  fill="var(--color-tastiness)"
-                  radius={4}
+                <XAxis type="number" tickLine={false} axisLine={false} />
+
+                <ChartTooltip
+                  content={<ChartTooltipContent />}
+                  className="w-40"
                 />
-              )}
-              {chartData[0].value_for_money && (
-                <Bar
-                  dataKey="value_for_money"
-                  fill="var(--color-value_for_money)"
-                  radius={4}
+                <ChartLegend content={<ChartLegendContent />} />
+
+                {chartData[0].fillingness && (
+                  <Bar
+                    dataKey="fillingness"
+                    fill="var(--color-fillingness)"
+                    radius={4}
+                  />
+                )}
+                {chartData[0].healthiness && (
+                  <Bar
+                    dataKey="healthiness"
+                    fill="var(--color-healthiness)"
+                    radius={4}
+                  />
+                )}
+                {chartData[0].tastiness && (
+                  <Bar
+                    dataKey="tastiness"
+                    fill="var(--color-tastiness)"
+                    radius={4}
+                  />
+                )}
+                {chartData[0].value_for_money && (
+                  <Bar
+                    dataKey="value_for_money"
+                    fill="var(--color-value_for_money)"
+                    radius={4}
+                  />
+                )}
+                {chartData[0].satisfaction && (
+                  <Bar
+                    dataKey="satisfaction"
+                    fill="var(--color-satisfaction)"
+                    radius={4}
+                  />
+                )}
+              </BarChart>
+            ) : (
+              <BarChart accessibilityLayer data={chartData}>
+                <CartesianGrid />
+                <XAxis
+                  dataKey="dish_id"
+                  tickLine={false}
+                  tickMargin={10}
+                  axisLine={false}
+                  tickFormatter={(value) => getDishNameById(value)}
                 />
-              )}
-              {chartData[0].satisfaction && (
-                <Bar
-                  dataKey="satisfaction"
-                  fill="var(--color-satisfaction)"
-                  radius={4}
+                <ChartTooltip
+                  content={<ChartTooltipContent />}
+                  className="w-40"
                 />
-              )}
-            </BarChart>
+                <ChartLegend content={<ChartLegendContent />} />
+
+                {chartData[0].fillingness && (
+                  <Bar
+                    dataKey="fillingness"
+                    fill="var(--color-fillingness)"
+                    radius={4}
+                  />
+                )}
+                {chartData[0].healthiness && (
+                  <Bar
+                    dataKey="healthiness"
+                    fill="var(--color-healthiness)"
+                    radius={4}
+                  />
+                )}
+                {chartData[0].tastiness && (
+                  <Bar
+                    dataKey="tastiness"
+                    fill="var(--color-tastiness)"
+                    radius={4}
+                  />
+                )}
+                {chartData[0].value_for_money && (
+                  <Bar
+                    dataKey="value_for_money"
+                    fill="var(--color-value_for_money)"
+                    radius={4}
+                  />
+                )}
+                {chartData[0].satisfaction && (
+                  <Bar
+                    dataKey="satisfaction"
+                    fill="var(--color-satisfaction)"
+                    radius={4}
+                  />
+                )}
+              </BarChart>
+            )}
           </ChartContainer>
         ) : (
           <div className="pointer-events-none flex min-h-50 items-center justify-center">
