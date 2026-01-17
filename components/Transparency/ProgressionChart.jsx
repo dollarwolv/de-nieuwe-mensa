@@ -24,15 +24,6 @@ import {
 } from "../ui/select";
 import { useEffect, useState } from "react";
 
-// const chartData = [
-//   { month: "January", desktop: 186, mobile: 80 },
-//   { month: "February", desktop: 305, mobile: 200 },
-//   { month: "March", desktop: 237, mobile: 120 },
-//   { month: "April", desktop: 73, mobile: 190 },
-//   { month: "May", desktop: 209, mobile: 130 },
-//   { month: "June", desktop: 214, mobile: 140 },
-// ];
-
 function convertDate(dateString) {
   const year = dateString.slice(0, 4);
   const month = Number(dateString.slice(5, 7));
@@ -55,10 +46,15 @@ function convertDate(dateString) {
   return monthsDict[month] + " " + year;
 }
 
-export default function TestChart() {
+function capitalizeFirstLetter(string) {
+  if (!string) return ""; // Handle empty strings
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
+export default function ProgressionChart() {
   const [dateRange, setDateRange] = useState(365);
   const [selectedDishId, setSelectedDishId] = useState("all");
-  const [selectedRubrik, setSelectedRubrik] = useState("all");
+  const [selectedRubrik, setSelectedRubrik] = useState("satisfaction");
 
   const [chartData, setChartData] = useState([]);
   const [menu, setMenu] = useState([]);
@@ -81,16 +77,24 @@ export default function TestChart() {
   ];
 
   const RUBRIKS = [
-    { name: "satisfaction", label: "Satisfaction" },
+    { name: "satisfaction", label: "Overall Satisfaction" },
     { name: "tastiness", label: "Tastiness" },
     { name: "fillingness", label: "Fillingness" },
     { name: "healthiness", label: "Healthiness" },
     { name: "valueForMoney", label: "Value For Money" },
   ];
 
+  const rubricDict = {
+    satisfaction: "Overall satisfaction",
+    tastiness: "Tastiness",
+    fillingness: "Fillingness",
+    healthiness: "Healthiness",
+    valueForMoney: "Value For Money",
+  };
+
   const chartConfig = {
     avg: {
-      label: "Average",
+      label: `Average ${rubricDict[selectedRubrik]}`,
       color: "#cb5651",
     },
     fillingness: {
@@ -117,7 +121,7 @@ export default function TestChart() {
 
   useEffect(() => {
     const fetchFunc = async () => {
-      const res = await fetch(`/api/vote-stats?${params.toString()}`);
+      const res = await fetch(`/api/vote-stats/by-month?${params.toString()}`);
       const data = await res.json();
       setChartData(data.daily);
       console.log(chartData);
@@ -140,7 +144,7 @@ export default function TestChart() {
     <Card className="w-200">
       <CardHeader className="flex flex-row justify-between">
         <div className="flex flex-col">
-          <CardTitle>Dish Rating Data</CardTitle>
+          <CardTitle>Dish Rating Data - Progression Over Time</CardTitle>
           <CardDescription>
             Showing average ratings for our dishes per month
           </CardDescription>
@@ -151,7 +155,7 @@ export default function TestChart() {
             onValueChange={setDateRange}
             defaultValue={30}
           >
-            <SelectTrigger className="w-[160px] rounded-lg">
+            <SelectTrigger className="w-50 rounded-lg">
               <SelectValue />
             </SelectTrigger>
 
@@ -170,7 +174,7 @@ export default function TestChart() {
             </SelectContent>
           </Select>
           <Select value={selectedDishId} onValueChange={setSelectedDishId}>
-            <SelectTrigger className="w-[180px] rounded-lg">
+            <SelectTrigger className="w-45 rounded-lg">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="rounded-xl">
@@ -191,7 +195,7 @@ export default function TestChart() {
             </SelectContent>
           </Select>
           <Select value={selectedRubrik} onValueChange={setSelectedRubrik}>
-            <SelectTrigger className="w-[180px] rounded-lg">
+            <SelectTrigger className="w-50 rounded-lg">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="rounded-xl">
@@ -215,7 +219,7 @@ export default function TestChart() {
       </CardHeader>
       <CardContent>
         {chartData?.length ? (
-          <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+          <ChartContainer config={chartConfig} className="min-h-50 w-full">
             <BarChart accessibilityLayer data={chartData}>
               <CartesianGrid />
               <XAxis

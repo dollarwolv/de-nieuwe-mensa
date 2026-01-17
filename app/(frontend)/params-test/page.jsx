@@ -1,15 +1,15 @@
 "use client";
 
 function ParamsTest() {
-  const params = new URLSearchParams({
-    dateRange: "30",
-  });
+  const params = new URLSearchParams({});
 
   return (
     <div>
       <button
         onClick={async () => {
-          const res = await fetch(`/api/vote-stats?${params.toString()}`);
+          const res = await fetch(
+            `/api/vote-stats/by-dish?${params.toString()}`,
+          );
           const data = await res.json();
           console.log(data);
         }}

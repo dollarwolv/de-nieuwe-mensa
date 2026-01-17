@@ -1,4 +1,5 @@
-import TestChart from "@/components/test/example-chart";
+import ProgressionChart from "@/components/Transparency/ProgressionChart";
+import ComparisonChart from "@/components/Transparency/ComparisonChart";
 
 function TransparencyPage() {
   return (
@@ -38,7 +39,8 @@ function TransparencyPage() {
 
       {/* Student ratings */}
       <div className="w-60">
-        <TestChart></TestChart>
+        <ProgressionChart />
+        <ComparisonChart />
       </div>
     </div>
   );
