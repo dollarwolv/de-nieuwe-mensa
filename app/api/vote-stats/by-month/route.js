@@ -20,6 +20,7 @@ export async function GET(req) {
   const dateRange = searchParams.get("dateRange"); // dateRange will be something like 30, 90, 180, etc.
   const rubricKey = searchParams.get("rubrik") || "all";
   const dishId = searchParams.get("dishId");
+  const groupBy = searchParams.get("groupBy");
 
   const rubricExpr = RUBRICS[rubricKey];
   if (!rubricExpr) {
@@ -52,7 +53,7 @@ export async function GET(req) {
   // complicated SQL query
   const sql = `
   SELECT
-    TO_CHAR(("vote_date" AT TIME ZONE 'Asia/Singapore'), 'YYYY-MM') AS month,
+    ${groupBy === "day" ? "to_char(vote_date::date, 'YYYY-MM-DD') AS vote_day" : `TO_CHAR(("vote_date" AT TIME ZONE 'Asia/Singapore'), 'YYYY-MM') AS month`},
     ${rubricKey === "all" ? selectAllMonths : `AVG(${rubricExpr}::float) AS avg`},
     COUNT(*)::int AS count
   FROM "votes"

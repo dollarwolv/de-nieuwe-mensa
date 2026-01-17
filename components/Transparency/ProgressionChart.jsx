@@ -27,6 +27,11 @@ import { useEffect, useState } from "react";
 function convertDate(dateString) {
   const year = dateString.slice(0, 4);
   const month = Number(dateString.slice(5, 7));
+  let day = "";
+
+  if (dateString.length > 7) {
+    day = Number(dateString.slice(8, 10));
+  }
 
   const monthsDict = {
     1: "Jan",
@@ -43,24 +48,21 @@ function convertDate(dateString) {
     12: "Dec",
   };
 
-  return monthsDict[month] + " " + year;
-}
-
-function capitalizeFirstLetter(string) {
-  if (!string) return ""; // Handle empty strings
-  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  return day + " " + monthsDict[month] + " " + year;
 }
 
 export default function ProgressionChart() {
   const [dateRange, setDateRange] = useState(365);
   const [selectedDishId, setSelectedDishId] = useState("all");
   const [selectedRubrik, setSelectedRubrik] = useState("satisfaction");
+  const [groupBy, setGroupBy] = useState("month");
 
   const [chartData, setChartData] = useState([]);
   const [menu, setMenu] = useState([]);
 
   const params = new URLSearchParams({
     dateRange,
+    groupBy,
   });
   if (selectedDishId !== "all") {
     params.append("dishId", selectedDishId);
@@ -74,6 +76,7 @@ export default function ProgressionChart() {
     { description: "Last 6 months", num: 180 },
     { description: "Last 3 months", num: 90 },
     { description: "Past 30 days", num: 30 },
+    { description: "Past 7 days", num: 7 },
   ];
 
   const RUBRIKS = [
@@ -95,7 +98,7 @@ export default function ProgressionChart() {
   const chartConfig = {
     avg: {
       label: `Average ${rubricDict[selectedRubrik]}`,
-      color: "#cb5651",
+      color: "var(--color-dnm-light-green)",
     },
     fillingness: {
       label: "Fillingness",
@@ -129,7 +132,7 @@ export default function ProgressionChart() {
     };
 
     fetchFunc();
-  }, [dateRange, selectedDishId, selectedRubrik]);
+  }, [dateRange, selectedDishId, selectedRubrik, groupBy]);
 
   useEffect(() => {
     const fetchFunc = async () => {
@@ -141,7 +144,7 @@ export default function ProgressionChart() {
     fetchFunc();
   }, []);
   return (
-    <Card className="w-150 justify-between max-[400px]:w-80 max-sm:w-100 md:w-150">
+    <Card className="w-160 justify-between overflow-hidden max-[400px]:w-80 max-sm:w-100">
       <CardHeader className="flex flex-row justify-between">
         <div className="flex flex-col">
           <CardTitle>Dish Rating Data - Progression Over Time</CardTitle>
@@ -149,72 +152,89 @@ export default function ProgressionChart() {
             Showing average ratings for our dishes per month
           </CardDescription>
         </div>
-        <div className="flex flex-col items-end gap-2">
-          <Select
-            value={dateRange}
-            onValueChange={setDateRange}
-            defaultValue={30}
-          >
-            <SelectTrigger className="w-50 rounded-lg max-[400px]:w-32">
-              <SelectValue />
-            </SelectTrigger>
+        <div className="flex flex-col items-end md:gap-1">
+          <div className="flex w-full flex-col items-end justify-between md:flex-row md:gap-2">
+            <Select
+              value={dateRange}
+              onValueChange={setDateRange}
+              defaultValue={30}
+            >
+              <SelectTrigger className="w-38 rounded-lg max-[400px]:w-32">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="rounded-xl">
+                {dateRanges.map((item) => {
+                  return (
+                    <SelectItem
+                      value={item.num}
+                      className="rounded-lg"
+                      key={item.num}
+                    >
+                      {item.description}
+                    </SelectItem>
+                  );
+                })}
+              </SelectContent>
+            </Select>
+            <Select value={selectedDishId} onValueChange={setSelectedDishId}>
+              <SelectTrigger className="w-45 rounded-lg max-[400px]:w-32">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="rounded-xl">
+                <SelectItem value={"all"} className="rounded-lg">
+                  All dishes
+                </SelectItem>
+                {menu.map((entry) => {
+                  return (
+                    <SelectItem
+                      value={entry.dish.id}
+                      className="rounded-lg"
+                      key={entry.id}
+                    >
+                      {entry.dish.name}
+                    </SelectItem>
+                  );
+                })}
+              </SelectContent>
+            </Select>
+          </div>
 
-            <SelectContent className="rounded-xl">
-              {dateRanges.map((item) => {
-                return (
-                  <SelectItem
-                    value={item.num}
-                    className="rounded-lg"
-                    key={item.num}
-                  >
-                    {item.description}
-                  </SelectItem>
-                );
-              })}
-            </SelectContent>
-          </Select>
-          <Select value={selectedDishId} onValueChange={setSelectedDishId}>
-            <SelectTrigger className="w-45 rounded-lg max-[400px]:w-32">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className="rounded-xl">
-              <SelectItem value={"all"} className="rounded-lg">
-                All dishes
-              </SelectItem>
-              {menu.map((entry) => {
-                return (
-                  <SelectItem
-                    value={entry.dish.id}
-                    className="rounded-lg"
-                    key={entry.id}
-                  >
-                    {entry.dish.name}
-                  </SelectItem>
-                );
-              })}
-            </SelectContent>
-          </Select>
-          <Select value={selectedRubrik} onValueChange={setSelectedRubrik}>
-            <SelectTrigger className="w-50 rounded-lg max-[400px]:w-32">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className="rounded-xl">
-              <SelectItem value={"all"} className="rounded-lg">
-                All rubriks
-              </SelectItem>
-              {RUBRIKS.map((rubrik) => {
-                return (
-                  <SelectItem
-                    value={rubrik.name}
-                    className="rounded-lg"
-                    key={rubrik.name}
-                  >
-                    {rubrik.label}
-                  </SelectItem>
-                );
-              })}
-            </SelectContent>
-          </Select>
+          <div className="flex w-full flex-col items-end justify-between md:flex-row md:gap-2">
+            <Select value={selectedRubrik} onValueChange={setSelectedRubrik}>
+              <SelectTrigger className="w-50 rounded-lg max-[400px]:w-32">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="rounded-xl">
+                <SelectItem value={"all"} className="rounded-lg">
+                  All rubrics
+                </SelectItem>
+                {RUBRIKS.map((rubrik) => {
+                  return (
+                    <SelectItem
+                      value={rubrik.name}
+                      className="rounded-lg"
+                      key={rubrik.name}
+                    >
+                      {rubrik.label}
+                    </SelectItem>
+                  );
+                })}
+              </SelectContent>
+            </Select>
+            <Select value={groupBy} onValueChange={setGroupBy}>
+              <SelectTrigger className="w-32 rounded-lg">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="rounded-xl">
+                <SelectItem value={"day"} className="rounded-lg">
+                  Per Day
+                </SelectItem>
+                <SelectItem value={"month"} className="rounded-lg">
+                  Per Month
+                </SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
       </CardHeader>
       <CardContent>
@@ -222,13 +242,25 @@ export default function ProgressionChart() {
           <ChartContainer config={chartConfig} className="min-h-50 w-full">
             <BarChart accessibilityLayer data={chartData}>
               <CartesianGrid />
-              <XAxis
-                dataKey="month"
-                tickLine={false}
-                tickMargin={10}
-                axisLine={false}
-                tickFormatter={(value) => convertDate(value)}
-              />
+              {groupBy === "day" && (
+                <XAxis
+                  dataKey={"vote_day"}
+                  tickLine={false}
+                  tickMargin={10}
+                  axisLine={false}
+                  tickFormatter={(value) => value}
+                />
+              )}
+              {groupBy === "month" && (
+                <XAxis
+                  dataKey={"month"}
+                  tickLine={false}
+                  tickMargin={10}
+                  axisLine={false}
+                  tickFormatter={(value) => convertDate(value)}
+                />
+              )}
+
               <ChartTooltip
                 content={<ChartTooltipContent />}
                 className="w-40"

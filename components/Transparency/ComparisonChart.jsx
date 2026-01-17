@@ -28,7 +28,6 @@ export default function ComparisonChart() {
   const [selectedRubrik, setSelectedRubrik] = useState("satisfaction");
   const [chartData, setChartData] = useState([]);
   const [menu, setMenu] = useState([]);
-  const [isMobile, setIsMobile] = useState(false);
 
   const params = new URLSearchParams({
     rubrik: selectedRubrik,
@@ -90,6 +89,8 @@ export default function ComparisonChart() {
     fetchFunc();
   }, []);
 
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 480); // pick your breakpoint
     check();
@@ -98,7 +99,7 @@ export default function ComparisonChart() {
   }, []);
 
   return (
-    <Card className="w-150 justify-between max-[400px]:w-80 max-sm:w-100">
+    <Card className="w-150 justify-between overflow-hidden max-[400px]:w-80 max-sm:w-100">
       <CardHeader className="flex flex-row justify-between">
         <div className="flex flex-col">
           <CardTitle>Dish Rating Data - Comparison</CardTitle>
@@ -113,7 +114,7 @@ export default function ComparisonChart() {
             </SelectTrigger>
             <SelectContent className="rounded-xl">
               <SelectItem value={"all"} className="rounded-lg">
-                All rubriks
+                All rubrics
               </SelectItem>
               {RUBRIKS.map((rubrik) => {
                 return (
