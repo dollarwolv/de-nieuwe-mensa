@@ -157,7 +157,7 @@ export default async function BlogPage() {
                     <img
                       src={postImage}
                       alt={postAlt}
-                      className="aspect-4/3 w-full rounded-2xl object-cover"
+                      className="aspect-5/3 w-full rounded-2xl object-cover"
                     />
                   ) : (
                     <div className="bg-dnm-black/5 text-dnm-gray flex aspect-4/3 w-full items-center justify-center rounded-2xl text-sm font-semibold">
