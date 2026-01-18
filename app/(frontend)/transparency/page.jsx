@@ -1,5 +1,6 @@
 import ProgressionChart from "@/components/Transparency/ProgressionChart";
 import ComparisonChart from "@/components/Transparency/ComparisonChart";
+import SalesChart from "@/components/Transparency/SalesChart";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -66,6 +67,7 @@ function TransparencyPage() {
           </Tabs>
         </div>
       </div>
+      <SalesChart />
     </div>
   );
 }
