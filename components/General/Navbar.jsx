@@ -33,6 +33,7 @@ function Navbar() {
           <Link href="/transparency">Transparency</Link>
           <Link href="/catering">Catering</Link>
           <Link href="/blog">Blog</Link>
+          <Link href="/dishes">Dishes</Link>
           <Link href="/vote">Vote</Link>
           <Button className="text-2xl">GET INVOLVED</Button>
         </div>
@@ -66,6 +67,9 @@ function Navbar() {
               </Link>
               <Link href="/blog" onClick={() => setOpen(false)}>
                 Blog
+              </Link>
+              <Link href="/dishes" onClick={() => setOpen(false)}>
+                Dishes
               </Link>
               <Button>GET INVOLVED</Button>
             </div>

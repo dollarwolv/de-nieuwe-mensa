@@ -234,6 +234,10 @@ export interface Cook {
 export interface Dish {
   id: number;
   name: string;
+  /**
+   * Short URL slug for the dish (e.g., 'mushroom-stew' in denieuwemensa.nl/dishes/mushroom-stew). Leave empty to auto-generate from the name.
+   */
+  slug: string;
   image: number | Media;
   description?: string | null;
   recipe?: {
@@ -573,6 +577,7 @@ export interface CooksSelect<T extends boolean = true> {
  */
 export interface DishesSelect<T extends boolean = true> {
   name?: T;
+  slug?: T;
   image?: T;
   description?: T;
   recipe?: T;
