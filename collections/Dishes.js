@@ -5,7 +5,36 @@ export const Dishes = {
   admin: { useAsTitle: "name" },
   fields: [
     { name: "name", type: "text", required: true },
+    {
+      name: "slug",
+      type: "text",
+      required: true,
+      unique: true,
+      admin: {
+        description:
+          "Short URL slug for the dish (e.g., 'mushroom-stew' in denieuwemensa.nl/dishes/mushroom-stew). Leave empty to auto-generate from the name.",
+      },
+      hooks: {
+        beforeValidate: [
+          ({ value, siblingData }) => {
+            if (value) return value;
+            if (!siblingData?.name) return value;
+
+            const slug = siblingData.name
+              .toLowerCase()
+              .trim()
+              .replace(/[^a-z0-9]+/g, "-")
+              .replace(/(^-|-$)/g, "");
+
+            if (slug.length <= 60) return slug;
+
+            return slug.slice(0, 60).replace(/-[^-]*$/, "");
+          },
+        ],
+      },
+    },
     { name: "image", type: "upload", relationTo: "media", required: true },
+    { name: "description", type: "text" },
     { name: "recipe", type: "richText" },
     {
       name: "ingredients",

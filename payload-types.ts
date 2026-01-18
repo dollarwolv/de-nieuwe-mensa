@@ -235,6 +235,7 @@ export interface Dish {
   id: number;
   name: string;
   image: number | Media;
+  description?: string | null;
   recipe?: {
     root: {
       type: string;
@@ -573,6 +574,7 @@ export interface CooksSelect<T extends boolean = true> {
 export interface DishesSelect<T extends boolean = true> {
   name?: T;
   image?: T;
+  description?: T;
   recipe?: T;
   ingredients?:
     | T
