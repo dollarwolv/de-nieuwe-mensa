@@ -76,6 +76,7 @@ export interface Config {
     votes: Vote;
     cateringRequests: CateringRequest;
     blogPosts: BlogPost;
+    salesEntries: SalesEntry;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -92,6 +93,7 @@ export interface Config {
     votes: VotesSelect<false> | VotesSelect<true>;
     cateringRequests: CateringRequestsSelect<false> | CateringRequestsSelect<true>;
     blogPosts: BlogPostsSelect<false> | BlogPostsSelect<true>;
+    salesEntries: SalesEntriesSelect<false> | SalesEntriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -364,6 +366,17 @@ export interface BlogPost {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "salesEntries".
+ */
+export interface SalesEntry {
+  id: number;
+  date: string;
+  amount: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -421,6 +434,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'blogPosts';
         value: number | BlogPost;
+      } | null)
+    | ({
+        relationTo: 'salesEntries';
+        value: number | SalesEntry;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -626,6 +643,16 @@ export interface BlogPostsSelect<T extends boolean = true> {
   postedDate?: T;
   featured?: T;
   textBody?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "salesEntries_select".
+ */
+export interface SalesEntriesSelect<T extends boolean = true> {
+  date?: T;
+  amount?: T;
   updatedAt?: T;
   createdAt?: T;
 }
