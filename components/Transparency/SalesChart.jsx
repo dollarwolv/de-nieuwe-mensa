@@ -71,7 +71,7 @@ function convertWeekday(weekdayInt) {
 
 export default function SalesChart() {
   const [dateRange, setDateRange] = useState(365);
-  const [groupBy, setGroupBy] = useState("month");
+  const [groupBy, setGroupBy] = useState("day");
   const [chartData, setChartData] = useState([]);
 
   const params = new URLSearchParams({
@@ -143,13 +143,13 @@ export default function SalesChart() {
               </SelectTrigger>
               <SelectContent className="rounded-xl">
                 <SelectItem value={"day"} className="rounded-lg">
-                  Per Day
+                  Daily
                 </SelectItem>
                 <SelectItem value={"week"} className="rounded-lg">
-                  Per Weekday
+                  By Weekday
                 </SelectItem>
                 <SelectItem value={"month"} className="rounded-lg">
-                  Per Month
+                  By Month
                 </SelectItem>
               </SelectContent>
             </Select>
@@ -198,7 +198,7 @@ export default function SalesChart() {
                   const day = payload?.[0]?.payload?.day;
                   const month = payload?.[0]?.payload?.month;
                   return id !== undefined
-                    ? (convertWeekday(id) ?? `Weekday ${id}`)
+                    ? (`Avg. sales ${convertWeekday(id)}` ?? `Weekday ${id}`)
                     : day !== undefined
                       ? convertDate(day)
                       : month !== undefined
