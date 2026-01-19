@@ -7,7 +7,7 @@ function BentoGrid({ heading, subheading, boxes = [], image, className = "" }) {
   };
 
   return (
-    <section className={`w-full lg:px-20 ${className}`}>
+    <section className={`w-full ${className}`}>
       <div className="mx-auto flex w-full max-w-460 flex-col gap-10 py-16 lg:grid lg:grid-cols-[55%_45%] lg:gap-16">
         <div className="flex w-full flex-col gap-8">
           <div className="flex flex-col gap-2 md:gap-4">
@@ -29,7 +29,7 @@ function BentoGrid({ heading, subheading, boxes = [], image, className = "" }) {
                 <h3 className="text-test-step--1 leading-[100%] font-bold tracking-tight">
                   {box1.title}
                 </h3>
-                <p className="text-test-step--2 leading-[140%]">{box1.text}</p>
+                <p className="text-base leading-[140%]">{box1.text}</p>
               </div>
             )}
             {box2 && (
@@ -37,7 +37,7 @@ function BentoGrid({ heading, subheading, boxes = [], image, className = "" }) {
                 <h3 className="text-test-step--1 leading-[100%] font-bold tracking-tight">
                   {box2.title}
                 </h3>
-                <p className="text-test-step--2 leading-[140%]">{box2.text}</p>
+                <p className="text-base leading-[140%]">{box2.text}</p>
               </div>
             )}
             {box3 && (
@@ -45,7 +45,7 @@ function BentoGrid({ heading, subheading, boxes = [], image, className = "" }) {
                 <h3 className="text-test-step--1 leading-[100%] font-bold tracking-tight">
                   {box3.title}
                 </h3>
-                <p className="text-test-step--2 leading-[140%]">{box3.text}</p>
+                <p className="text-base leading-[140%]">{box3.text}</p>
               </div>
             )}
             {box4 && (
@@ -53,7 +53,7 @@ function BentoGrid({ heading, subheading, boxes = [], image, className = "" }) {
                 <h3 className="text-test-step--1 leading-[100%] font-bold tracking-tight">
                   {box4.title}
                 </h3>
-                <p className="text-test-step--2 leading-[140%]">{box4.text}</p>
+                <p className="text-base leading-[140%]">{box4.text}</p>
               </div>
             )}
           </div>

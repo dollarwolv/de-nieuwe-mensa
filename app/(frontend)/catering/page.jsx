@@ -49,7 +49,7 @@ function Catering() {
             src: "https://picsum.photos/id/1062/1200/900",
             alt: "Windmill and field landscape",
           }}
-          className="my-24 max-md:my-12"
+          className="my-24 max-md:my-12 lg:px-20"
         />
         <h1 className="text-test-step-5 font-extrabold">THE PROCESS</h1>
         <CateringStickyCards />
