@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/General/Navbar";
 import StickyFooter from "@/components/General/StickyFooter";
+import { ViewTransitions } from "next-view-transitions";
 
 const garet = localFont({
   src: [
@@ -89,14 +90,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${garet.variable} font-garet bg-dnm-white`}>
-        <div className="p-4">
-          <Navbar />
-          {children}
-        </div>
-        <StickyFooter />
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body className={`${garet.variable} font-garet bg-dnm-white`}>
+          <div className="p-4">
+            <Navbar />
+            {children}
+          </div>
+          <StickyFooter />
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

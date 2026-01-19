@@ -6,9 +6,50 @@ import { useState } from "react";
 import { Squeeze as Hamburger } from "hamburger-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useTransitionRouter } from "next-view-transitions";
+
+export function pageAnimation() {
+  document.documentElement.animate(
+    [
+      {
+        clipPath: "polygon(25% 75%, 75% 75%, 75% 75%, 25% 75%)",
+      },
+      {
+        clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+      },
+    ],
+    {
+      duration: 1000,
+      easing: "cubic-bezier(0.85, 0, 0.15, 1)",
+      pseudoElement: "::view-transition-new(root)",
+    },
+  );
+}
 
 function Navbar() {
   const [isOpen, setOpen] = useState(false);
+  const router = useTransitionRouter();
+
+  function handleNav(e, route) {
+    e.preventDefault();
+    if (!route) {
+      return router.push("/", {
+        onTransitionReady: pageAnimation,
+      });
+    }
+    router.push(route.url, {
+      onTransitionReady: pageAnimation,
+    });
+  }
+
+  const routes = [
+    { label: "About", url: "/about" },
+    { label: "Transparency", url: "/transparency" },
+    { label: "Catering", url: "/catering" },
+    { label: "Blog", url: "/blog" },
+    { label: "Dishes", url: "/dishes" },
+    { label: "Vote", url: "/vote" },
+  ];
 
   return (
     <>
@@ -18,7 +59,12 @@ function Navbar() {
 
       <nav className="lg:text-test-step--1 flex w-full max-w-460 items-center justify-between px-5 font-extrabold">
         <div className="relative hidden shrink-0 md:h-13 md:w-16 lg:block lg:h-18 lg:w-22">
-          <Link href={"/"}>
+          <Link
+            href={"/"}
+            onClick={(e) => {
+              handleNav(e);
+            }}
+          >
             <Image
               src="/logo.png"
               alt="De Nieuwe Mensa Logo"
@@ -29,12 +75,17 @@ function Navbar() {
         </div>
 
         <div className="hidden items-center gap-5 lg:flex">
-          <Link href="/about">About</Link>
-          <Link href="/transparency">Transparency</Link>
-          <Link href="/catering">Catering</Link>
-          <Link href="/blog">Blog</Link>
-          <Link href="/dishes">Dishes</Link>
-          <Link href="/vote">Vote</Link>
+          {routes.map((route) => {
+            return (
+              <Link
+                href={route.url}
+                key={route.label}
+                onClick={(e) => handleNav(e, route)}
+              >
+                {route.label}
+              </Link>
+            );
+          })}
           <Button className="text-2xl">GET INVOLVED</Button>
         </div>
       </nav>
@@ -50,27 +101,29 @@ function Navbar() {
             className="bg-dnm-dark-green fixed top-0 left-0 z-10 flex h-dvh w-full flex-col justify-end overflow-hidden px-2 pb-[env(safe-area-inset-bottom)] lg:hidden"
           >
             <div className="flex flex-col gap-2 text-3xl text-white uppercase">
-              <Link href="/" onClick={() => setOpen(false)}>
+              <Link
+                href="/"
+                onClick={(e) => {
+                  (handleNav(e), setOpen(false));
+                }}
+              >
                 Home
               </Link>
-              <Link href="/vote" onClick={() => setOpen(false)}>
-                Vote
-              </Link>
-              <Link href="/about" onClick={() => setOpen(false)}>
-                About
-              </Link>
-              <Link href="/transparency" onClick={() => setOpen(false)}>
-                Transparency
-              </Link>
-              <Link href="/catering" onClick={() => setOpen(false)}>
-                Catering
-              </Link>
-              <Link href="/blog" onClick={() => setOpen(false)}>
-                Blog
-              </Link>
-              <Link href="/dishes" onClick={() => setOpen(false)}>
-                Dishes
-              </Link>
+              {routes.map((route) => {
+                return (
+                  <Link
+                    href={route.url}
+                    onClick={(e) => {
+                      handleNav(e, route);
+                      setOpen(false);
+                    }}
+                    key={route.label}
+                  >
+                    {route.label}
+                  </Link>
+                );
+              })}
+
               <Button>GET INVOLVED</Button>
             </div>
             <div className="mt-12 flex justify-between text-sm text-white uppercase">
