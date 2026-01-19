@@ -87,6 +87,8 @@ export default function Home() {
               vegan meals.`}
               className="text-mobile-step-1 md:text-step-0 leading-[92%] font-medium tracking-tight"
               splitBy="line"
+              delayChildren={1}
+              staggerChildren={0.1}
               onRender={true}
               as="p"
             />
@@ -111,8 +113,8 @@ export default function Home() {
             shouldn't be a radical idea.`}
             splitBy="line"
             className="md:text-step-3 mx-auto my-12 text-center text-3xl leading-[95%] font-semibold tracking-tight md:my-24 md:max-w-[24ch]"
-            delayChildren={0.2}
-            staggerChildren={0.05}
+            delayChildren={0.1}
+            staggerChildren={0.07}
           />
         </div>
 

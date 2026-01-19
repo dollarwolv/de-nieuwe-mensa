@@ -3,6 +3,7 @@ import CateringQuoteForm from "@/components/Catering/CateringQuoteForm";
 import CateringStickyCards from "@/components/Catering/CateringStickyCards";
 import BentoGrid from "@/components/BentoGrid";
 import Curtain from "@/components/General/Curtain";
+import AnimatedText from "@/components/General/AnimatedText";
 
 function Catering() {
   return (
@@ -16,13 +17,17 @@ function Catering() {
           showTop={false}
         />
         <div className="mt-12 flex w-full justify-end">
-          <span className="text-test-step-0 max-w-[44ch] leading-[92%] font-medium">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Planning
+          <AnimatedText
+            text={`Planning
             an event shouldn't be a headache. Whether it’s a small workshop or a
             large faculty symposium, we provide hearty, planet-friendly meals
             that satisfy everyone. By choosing De Nieuwe Mensa, you’re
-            supporting a student movement dedicated to fair food prices.
-          </span>
+            supporting a student movement dedicated to fair food prices.`}
+            splitBy="line"
+            delayChildren={0.2}
+            staggerChildren={0.1}
+            className="text-test-step-0 max-w-[44ch] text-right leading-[92%] font-medium"
+          />
         </div>
         <BentoGrid
           heading="WHY CHOOSE US?"

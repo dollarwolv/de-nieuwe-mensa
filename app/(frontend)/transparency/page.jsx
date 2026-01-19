@@ -2,6 +2,7 @@ import ProgressionChart from "@/components/Transparency/ProgressionChart";
 import ComparisonChart from "@/components/Transparency/ComparisonChart";
 import SalesChart from "@/components/Transparency/SalesChart";
 import Curtain from "@/components/General/Curtain";
+import AnimatedText from "@/components/General/AnimatedText";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -12,18 +13,32 @@ function TransparencyPage() {
       <div className="flex w-full max-w-460 flex-col">
         {/* Hero Section */}
         <div className="mt-12 flex w-full flex-col">
-          <h1 className="md:text-test-step-7 mb-4 text-4xl leading-[92%] font-extrabold tracking-tight max-[400px]:text-3xl lg:mb-12">
-            TRANSPARENCY
-          </h1>
+          <AnimatedText
+            text={"TRANSPARENCY"}
+            onRender={true}
+            splitBy="character"
+            className="md:text-test-step-7 mb-4 text-4xl leading-[92%] font-extrabold tracking-tight max-[400px]:text-3xl lg:mb-12"
+          />
+
           <div className="flex w-full flex-col justify-between gap-2 border-t border-black pt-4 md:flex-row lg:gap-6 lg:pt-12">
-            <p className="text-test-step--2 flex-4 font-medium">
-              Our goal is creating a canteen that students can understand,
-              participate in, and change.
-            </p>
-            <p className="text-test-step--2 flex-5 font-medium">
-              This page will outline the finances of our business, as well as
-              how satisfied students are with DNM.
-            </p>
+            <AnimatedText
+              text={`Our goal is creating a canteen that students can understand,
+              participate in, and change.`}
+              className="text-test-step--2 flex-4 font-medium"
+              onRender={true}
+              splitBy="line"
+              delayChildren={1.1}
+            />
+
+            <AnimatedText
+              text={`This page will outline the finances of our business, as well as
+              how satisfied students are with DNM.`}
+              className="text-test-step--2 flex-5 font-medium"
+              onRender={true}
+              splitBy="line"
+              delayChildren={1.2}
+              staggerChildren={0.1}
+            />
           </div>
         </div>
         <div className="mt-4 aspect-16/7 w-full overflow-hidden rounded-2xl lg:mt-12">
@@ -35,12 +50,16 @@ function TransparencyPage() {
         </div>
         {/* Subheading */}
         <div className="mt-12 flex w-full justify-end">
-          <span className="text-test-step-0 max-w-[44ch] leading-[92%] font-medium">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We want
+          <AnimatedText
+            text={`We want
             to be 100% transparent about how we run as a business. This page
             provides a detailed rundown of our finances - sales, pricing
-            strategy, and everything in between.
-          </span>
+            strategy, and everything in between.`}
+            className="text-test-step-0 max-w-[48ch] text-right leading-[92%] font-medium"
+            splitBy="line"
+            delayChildren={0.2}
+            staggerChildren={0.1}
+          />
         </div>
 
         <div className="flex w-full max-w-460 flex-col items-center lg:mt-24 lg:flex-row-reverse lg:gap-12 lg:px-4">

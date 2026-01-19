@@ -35,7 +35,7 @@ function AnimatedText({
 
   const childSpan = {
     hidden: {
-      y: "1em",
+      y: "1.2em",
     },
     show: {
       y: 0,

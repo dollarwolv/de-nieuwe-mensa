@@ -2,6 +2,7 @@
 
 import { useSpring, motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
+import AnimatedText from "./General/AnimatedText";
 
 const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
 
@@ -93,14 +94,21 @@ function FloatingImageGallery({
           ref={container}
         >
           <div className="absolute flex flex-col items-center justify-center">
-            <h1
+            <AnimatedText
               className={`text-step-8 stroke-red ${textColor} z-20 stroke-3 leading-[92%] font-extrabold tracking-tight`}
-            >
-              {headingText}
-            </h1>
-            <p className={`text-step-0 ${textColor} z-20 font-bold`}>
-              {subHeadingText}
-            </p>
+              text={headingText}
+              as="h1"
+              delayChildren={0.6}
+              onRender={true}
+            />
+            <AnimatedText
+              className={`text-step-0 ${textColor} z-20 mx-auto -mt-4 text-center font-bold`}
+              text={subHeadingText}
+              as="p"
+              delayChildren={0.8}
+              staggerChildren={0.02}
+              onRender={true}
+            />
           </div>
 
           <span

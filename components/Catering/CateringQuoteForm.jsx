@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Button from "../General/Button";
 import { useRouter } from "next/navigation";
+import AnimatedText from "../General/AnimatedText";
 
 function CateringQuoteForm() {
   const [wantsDifferentDish, setWantsDifferentDish] = useState(false);
@@ -46,14 +47,25 @@ function CateringQuoteForm() {
       <div className="bg-dnm-light-green -mb-12 flex h-22 w-full rounded-t-4xl border-2"></div>
       <div className="bg-dnm-white w-full rounded-4xl border-2 border-black px-6 py-12 md:px-12">
         <div className="flex flex-col items-center text-center">
-          <h1 className="text-test-step-6 text-5xl leading-[92%] font-extrabold tracking-tight md:text-7xl">
-            GET A CATERING QUOTE
-          </h1>
-          <p className="text-test-step--1 mt-4 max-w-[60ch] leading-[120%] font-medium">
-            Interested? Just fill out the form below with your event details.
+          <AnimatedText
+            text={"GET A CATERING QUOTE"}
+            className="text-test-step-6 text-5xl leading-[92%] font-extrabold tracking-tight md:text-7xl"
+            as="h1"
+            splitBy="character"
+            delayChildren={0}
+            staggerChildren={0.02}
+          />
+
+          <AnimatedText
+            text={`Interested? Just fill out the form below with your event details.
             Our Catering representative will get back to you with a quote and a
-            menu in the next 1–2 business days.
-          </p>
+            menu in the next 2-3 business days.`}
+            className="text-test-step--1 mt-4 max-w-[60ch] leading-[120%] font-medium"
+            as="p"
+            splitBy="line"
+            delayChildren={0.2}
+            staggerChildren={0.15}
+          />
         </div>
 
         <form
