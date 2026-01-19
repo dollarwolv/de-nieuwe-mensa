@@ -8,6 +8,7 @@ import ValuesSection from "@/components/LandingPage/ValuesSection";
 import HireUs from "@/components/LandingPage/HireUs";
 import Testimonials from "@/components/LandingPage/Testimonials";
 import CircleScrollText from "@/components/LandingPage/CircleScrollText";
+import AnimatedText from "@/components/General/AnimatedText";
 
 import Lenis from "lenis";
 import MenuSection from "@/components/LandingPage/MenuSection";
@@ -48,7 +49,7 @@ export default function Home() {
       <Curtain />
       <div className="relative flex flex-col items-center">
         {/* Hero section */}
-        <div className="mt-12 flex max-w-460 flex-col items-center justify-center gap-12 px-2 md:mt-32 md:grid md:grid-cols-24 md:gap-0">
+        <div className="mt-12 flex w-full max-w-460 flex-col items-center justify-center gap-12 px-2 md:mt-32 md:grid md:grid-cols-24 md:gap-0">
           <div className="wmax-w-112.5 relative aspect-square w-full md:col-start-17 md:col-end-25 md:row-start-1 md:-mt-5 md:-mb-5 md:ml-auto md:max-w-full">
             <div className="relative md:h-full md:w-full">
               <Image
@@ -62,14 +63,33 @@ export default function Home() {
           </div>
           <div className="flex flex-col gap-2 md:col-start-1 md:col-end-16 md:gap-4 lg:gap-8">
             <div className="md:text-step-5 text-mobile-step-5 flex flex-col leading-[92%] font-extrabold tracking-tight">
-              <span className="">REAL FOOD.</span>
-              <span className="">4,50 EUROS.</span>
-              <span className="">NO COMPROMISE.</span>
+              <AnimatedText
+                text={"REAL FOOD."}
+                as="h1"
+                delayChildren={0.6}
+                onRender={true}
+              />
+              <AnimatedText
+                text={"4.50 EUROS."}
+                as="h1"
+                delayChildren={0.7}
+                onRender={true}
+              />
+              <AnimatedText
+                text={"NO COMPROMISE."}
+                as="h1"
+                delayChildren={0.8}
+                onRender={true}
+              />
             </div>
-            <span className="text-mobile-step-1 md:text-step-0 leading-[92%] font-medium tracking-tight">
-              Student-led. Non-profit. Taking back the canteen with healthy,
-              vegan meals.
-            </span>
+            <AnimatedText
+              text={`Student-led. Non-profit. Taking back the canteen with healthy,
+              vegan meals.`}
+              className="text-mobile-step-1 md:text-step-0 leading-[92%] font-medium tracking-tight"
+              splitBy="line"
+              onRender={true}
+              as="p"
+            />
             <Button className="md:text-step-1 w-fit text-2xl font-extrabold">
               SEE THIS WEEK'S MENU
             </Button>
@@ -77,18 +97,23 @@ export default function Home() {
         </div>
         <ScrollText texts={heroTexts} />
 
-        <div className="mt-12 flex w-full max-w-460 flex-col items-center justify-center pt-2 md:mt-0">
+        <div className="mt-12 flex w-full max-w-460 flex-col items-stretch justify-center pt-2 md:mt-0">
           <div className="flex w-full justify-between px-4">
             <span className="text-sm font-medium">(ABOUT DNM)</span>
             <span className="text-sm font-medium">(SCROLL TO EXPLORE)</span>
           </div>
 
-          <h3 className="md:text-step-3 my-12 text-center text-3xl leading-[95%] font-semibold tracking-tight md:my-24 md:max-w-[22ch]">
-            What started as a protest against the status quo is now your daily
+          <AnimatedText
+            as="p"
+            text={`What started as a protest against the status quo is now your daily
             alternative. De Nieuwe Mensa is a student-led non-profit initiative
             serving fresh, vegan meals for a fair price—because affordable food
-            shouldn't be a radical idea.
-          </h3>
+            shouldn't be a radical idea.`}
+            splitBy="line"
+            className="md:text-step-3 mx-auto my-12 text-center text-3xl leading-[95%] font-semibold tracking-tight md:my-24 md:max-w-[24ch]"
+            delayChildren={0.2}
+            staggerChildren={0.05}
+          />
         </div>
 
         <FloatingImageGallery
