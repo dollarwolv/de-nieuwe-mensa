@@ -12,15 +12,15 @@ export function pageAnimation() {
   document.documentElement.animate(
     [
       {
-        clipPath: "polygon(25% 75%, 75% 75%, 75% 75%, 25% 75%)",
+        clipPath: "inset(80% 30% 15% 30% round 999px)",
       },
       {
-        clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+        clipPath: "inset(0% 0% 0% 0% round 0px)",
       },
     ],
     {
       duration: 1000,
-      easing: "cubic-bezier(0.85, 0, 0.15, 1)",
+      easing: "cubic-bezier(0.83, 0, 0.17, 1)",
       pseudoElement: "::view-transition-new(root)",
     },
   );
