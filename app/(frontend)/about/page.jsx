@@ -3,6 +3,7 @@ import OurTeamServer from "@/components/AboutPage/OurTeam.server";
 import Curtain from "@/components/General/Curtain";
 import Button from "@/components/General/Button";
 import BentoGrid from "@/components/BentoGrid";
+import AnimatedText from "@/components/General/AnimatedText";
 
 const suppliers = [
   {
@@ -29,12 +30,24 @@ function About() {
       <Curtain />
       <div className="flex w-full flex-col items-center">
         <div className="mt-12 flex w-full max-w-460 flex-col gap-y-4 md:grid md:aspect-93/27 md:grid-cols-24 md:grid-rows-4">
-          <h1 className="lg:text-test-step-7 md:text-mobile-step-8 col-start-1 row-start-1 row-end-2 text-8xl leading-[92%] font-extrabold lg:col-end-12">
-            ABOUT
-          </h1>
-          <h1 className="lg:text-test-step-7 md:text-mobile-step-8 col-start-1 row-start-2 row-end-3 text-8xl leading-[92%] font-extrabold max-md:-mt-4 lg:col-end-7">
-            DNM
-          </h1>
+          <AnimatedText
+            as="h1"
+            text={"ABOUT"}
+            splitBy="character"
+            delayChildren={0.7}
+            onRender={true}
+            className="lg:text-test-step-7 md:text-mobile-step-8 col-start-1 row-start-1 row-end-2 text-8xl leading-[92%] font-extrabold lg:col-end-12"
+          />
+
+          <AnimatedText
+            as="h1"
+            delayChildren={0.8}
+            onRender={true}
+            text={"DNM"}
+            splitBy="character"
+            className="lg:text-test-step-7 md:text-mobile-step-8 col-start-1 row-start-2 row-end-3 text-8xl leading-[92%] font-extrabold max-md:-mt-4 lg:col-end-7"
+          />
+
           <div className="col-start-10 col-end-25 row-start-3 row-end-5 max-md:mt-4 lg:col-start-7 lg:col-end-19 lg:row-start-2 lg:px-8">
             <img
               src="https://picsum.photos/570/381"
@@ -53,26 +66,47 @@ function About() {
             </div>
 
             <div className="mt-4 flex h-full flex-col gap-2 font-medium lg:mt-8">
-              <h2 className="text-test-step-1 leading-[92%] font-extrabold max-md:text-3xl">
-                Our Philosophy
-              </h2>
+              <AnimatedText
+                as="p"
+                text={"Our Philosophy"}
+                className="text-test-step-1 leading-[92%] font-extrabold max-md:text-3xl"
+                splitBy="line"
+                delayChildren={1.1}
+                onRender={true}
+              />
 
-              <p className="text-test-step--2 max-md:text-base lg:mt-auto">
-                We believe that food is a basic human right that every student
-                should have access to. That’s why we operate as a non-profit.
-              </p>
+              <AnimatedText
+                as="p"
+                text={`We believe that food is a basic human right that every student
+                should have access to. That’s why we operate as a non-profit.`}
+                splitBy="line"
+                delayChildren={1.2}
+                onRender={true}
+                className="text-test-step--2 max-md:text-base lg:mt-auto"
+              />
             </div>
           </div>
 
           <div className="lg:text-test-step--2 text-mobile-step--1 col-start-1 col-end-9 row-start-3 row-end-5 flex flex-col font-medium lg:col-end-7">
-            <h3 className="leading-[92%] font-semibold max-md:text-3xl max-md:font-extrabold md:my-auto">
-              A new canteen for everyone
-            </h3>
-            <p className="max-md:mt-2 max-md:text-base">
-              We started De Nieuwe Mensa with a clear goal: Provide affordable,
+            <AnimatedText
+              as="p"
+              text={"A new canteen for everyone"}
+              delayChildren={0.9}
+              onRender={true}
+              splitBy="line"
+              className="leading-[92%] font-semibold max-md:text-3xl max-md:font-extrabold md:my-auto"
+            />
+
+            <AnimatedText
+              as="p"
+              text={`We started De Nieuwe Mensa with a clear goal: Provide affordable,
               healthy, and sustainable food for every student at the University
-              of Amsterdam.
-            </p>
+              of Amsterdam.`}
+              delayChildren={1}
+              onRender={true}
+              splitBy="line"
+              className="max-md:mt-2 max-md:text-base"
+            />
           </div>
         </div>
 
@@ -92,13 +126,13 @@ function About() {
                 />
               </div>
             </div>
-            <p className="font-medium max-lg:text-base lg:text-base">
+            <p className="max-lg:text-lg lg:text-lg">
               We believe that food is a human right, and that it should be
               accessible to everyone. Sadly, the Netherlands are expensive, and
               for-profit businesses (such as the other canteen stalls) end up
               charging prices that are unsustainable for most students.
             </p>
-            <p className="font-medium max-lg:text-base lg:text-base">
+            <p className="max-lg:text-lg lg:text-lg">
               To combat this situation, we run as a non-profit, charging as
               little as we possibly can while ensuring high-quality food and
               fair wages for our cooks.
@@ -184,7 +218,7 @@ function About() {
           ]}
         />
 
-        <OurTeamServer />
+        {/* <OurTeamServer /> */}
       </div>
     </>
   );
