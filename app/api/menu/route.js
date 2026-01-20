@@ -8,7 +8,7 @@ export async function GET() {
 
   const menu = await payload.findGlobal({
     slug: "menuSettings",
-    depth: 3, // so weekADishes[].dish is populated
+    depth: 3,
   });
 
   const anchorDate = new Date(menu.anchorDate);
@@ -35,17 +35,8 @@ export async function GET() {
   let todaysDish = null;
   if (!isWeekend) {
     const dayIndex = weekday - 1; // Mon=0 .. Fri=4
-    // Each row is like { dish: <DishDoc> } because you used type: "array"
     todaysDish = thisWeeksMenu?.[dayIndex]?.dish ?? null;
   }
-
-  console.log({
-    effectiveWeek,
-    weeksSince,
-    thisWeeksMenu,
-    nextWeeksMenu,
-    todaysDish,
-  });
 
   return Response.json({
     effectiveWeek,

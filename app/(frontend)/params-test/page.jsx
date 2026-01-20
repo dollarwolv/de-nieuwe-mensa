@@ -3,9 +3,9 @@
 import AnimatedText from "@/components/General/AnimatedText";
 
 function ParamsTest() {
+  const date = new Date("2026-11-05");
   const params = new URLSearchParams({
-    groupBy: "week",
-    dateRange: 365,
+    date,
   });
 
   return (
@@ -13,7 +13,7 @@ function ParamsTest() {
       <AnimatedText text={"This is a test"} splitBy="character"></AnimatedText>
       <button
         onClick={async () => {
-          const res = await fetch(`/api/sales?${params.toString()}`);
+          const res = await fetch(`/api/dish-on-date?${params.toString()}`);
           const data = await res.json();
           console.log(data);
         }}
