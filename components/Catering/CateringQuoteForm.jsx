@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../General/Button";
 import { useRouter } from "next/navigation";
 import AnimatedText from "../General/AnimatedText";
+import { SquareLoader } from "react-spinners";
 
 function CateringQuoteForm() {
   const [wantsDifferentDish, setWantsDifferentDish] = useState(false);
@@ -11,12 +12,17 @@ function CateringQuoteForm() {
   const [timeUnknown, setTimeUnknown] = useState(false);
   const [guestsUnknown, setGuestsUnknown] = useState(false);
   const [locationUnknown, setLocationUnknown] = useState(false);
+  const [selectedDate, setSelectedDate] = useState("");
+  const [dishOnDate, setDishOnDate] = useState("");
+  const [dishOnDateError, setDishOnDateError] = useState("");
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
 
     const formData = new FormData(e.currentTarget);
     const values = Object.fromEntries(formData.entries());
@@ -35,11 +41,51 @@ function CateringQuoteForm() {
 
     if (!data.ok) {
       setError(data.error);
-      // console.error(data.error);
+      setLoading(false);
     } else {
+      setLoading(false);
       router.push("/catering/request-success");
     }
   }
+
+  useEffect(() => {
+    if (!selectedDate) return;
+
+    setDishOnDate("");
+    setDishOnDateError("");
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(async () => {
+      try {
+        const params = new URLSearchParams({
+          date: selectedDate,
+        });
+
+        setDishOnDate("loading...");
+
+        const res = await fetch(`/api/dish-on-date?${params.toString()}`, {
+          signal: controller.signal,
+        });
+        const data = await res.json();
+
+        if (!data.ok) {
+          setDishOnDateError(data.error);
+          setDishOnDate("");
+          return;
+        }
+
+        setDishOnDate(data.dishOnDate.name);
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          setError(error);
+        }
+      }
+    }, 600);
+
+    return () => {
+      (clearTimeout(timeoutId), controller.abort());
+    };
+  }, [selectedDate]);
 
   return (
     <section className="w-full max-w-460">
@@ -166,6 +212,8 @@ function CateringQuoteForm() {
                 type="date"
                 placeholder="Enter date"
                 disabled={dateUnknown}
+                value={selectedDate}
+                onChange={(event) => setSelectedDate(event.target.value)}
                 className="w-full rounded-xl border border-black/20 bg-white px-4 py-3 text-sm font-medium placeholder:text-black/50 disabled:opacity-60"
               />
             </div>
@@ -251,7 +299,6 @@ function CateringQuoteForm() {
                 className="w-full rounded-xl border border-black/20 bg-white px-4 py-3 text-sm font-medium placeholder:text-black/50 disabled:opacity-60"
               />
             </div>
-
             <div className="flex flex-col gap-3">
               <span className="text-sm font-semibold">
                 Would you like to request a different dish?
@@ -262,10 +309,12 @@ function CateringQuoteForm() {
                   name="dishRequest"
                   value="default"
                   defaultChecked
+                  disabled={dishOnDateError}
                   onChange={() => setWantsDifferentDish(false)}
                   className="mt-1 h-4 w-4 accent-black"
                 />
-                No, I’m fine with the dish of the day! (Most likely: dish)
+                No, I’m fine with the dish of the day!
+                {dishOnDate && ` (Most likely: ${dishOnDate})`}
               </label>
               <label className="flex items-start gap-3 text-sm font-medium text-black/80">
                 <input
@@ -279,9 +328,26 @@ function CateringQuoteForm() {
               </label>
               <p className="text-xs font-medium text-black/60">
                 By default, we serve the same dish that we regularly serve in
-                the canteen on that day (for your selected date, this is dish).
-                Exceptions are possible, but as this requires significant
-                additional effort on our side, it would cost more.
+                the canteen on that day.
+                {!dishOnDateError && selectedDate ? (
+                  <>
+                    {" "}
+                    For the date you selected, this would most likely be{" "}
+                    <span className="font-bold">{dishOnDate}</span>. Exceptions
+                    are possible, but as this requires significant additional
+                    effort on our side, it would cost more.
+                  </>
+                ) : selectedDate && dishOnDateError ? (
+                  ` ${dishOnDateError} This means that some special arrangement
+                  needs to be made. Once you submit this form, our catering representative 
+                  will get back to you to you and see what can be done!`
+                ) : !selectedDate ? (
+                  ` Exceptions
+                    are possible, but as this requires significant additional
+                    effort on our side, it would cost more.`
+                ) : (
+                  ""
+                )}
               </p>
             </div>
 
@@ -297,6 +363,11 @@ function CateringQuoteForm() {
                   placeholder="Enter desired dish"
                   className="w-full rounded-xl border border-black/20 bg-white px-4 py-3 text-sm font-medium placeholder:text-black/50"
                 />
+                <p className="text-xs font-medium text-black/60">
+                  Do keep in mind that whether or not we can accommodate your
+                  wish depends on several factors, and it might not be possible
+                  to serve your requested dish on this day.
+                </p>
               </div>
             )}
 
@@ -319,8 +390,19 @@ function CateringQuoteForm() {
             </div>
 
             <div className="pt-2">
-              <Button className="px-8 py-3 text-sm font-semibold">
-                SEND REQUEST
+              <Button className="px-8 py-3 text-sm font-semibold" type="submit">
+                {loading ? (
+                  <>
+                    Submitting...
+                    <SquareLoader
+                      color={"var(--color-dnm-white)"}
+                      size={18}
+                      className="ml-4"
+                    />
+                  </>
+                ) : (
+                  "SEND REQUEST"
+                )}
               </Button>
             </div>
           </div>
