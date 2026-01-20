@@ -92,7 +92,10 @@ export default function Home() {
               onRender={true}
               as="p"
             />
-            <Button className="md:text-step-1 w-fit text-2xl font-extrabold">
+            <Button
+              className="md:text-step-1 w-fit text-2xl font-extrabold"
+              scrollTo={"menu"}
+            >
               SEE THIS WEEK'S MENU
             </Button>
           </div>

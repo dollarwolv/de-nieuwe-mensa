@@ -9,6 +9,7 @@ function Button({
   className = "text-2xl",
   navigate = false,
   navigateTo,
+  scrollTo = null,
 }) {
   const router = useTransitionRouter();
 
@@ -24,9 +25,18 @@ function Button({
     });
   }
 
+  const scroll = () => {
+    const el = document.getElementById(scrollTo);
+    el?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <button
       className={`bg-dnm-light-green rounded-full border border-black px-5 py-2 text-white shadow-[4px_4px_0px_0px_rgb(35,35,35)] ${className} hover:bg-dnm-black cursor-pointer transition-colors`}
+      onClick={(e) => {
+        e.preventDefault();
+        if (scrollTo) scroll();
+      }}
     >
       {navigate ? (
         <Link href={navigateTo} onClick={(e) => handleNav(e, null, navigateTo)}>
