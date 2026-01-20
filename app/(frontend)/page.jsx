@@ -9,6 +9,7 @@ import HireUs from "@/components/LandingPage/HireUs";
 import Testimonials from "@/components/LandingPage/Testimonials";
 import CircleScrollText from "@/components/LandingPage/CircleScrollText";
 import AnimatedText from "@/components/General/AnimatedText";
+import TrailingCursor from "@/components/General/TrailingCursor";
 
 import Lenis from "lenis";
 import MenuSection from "@/components/LandingPage/MenuSection";
@@ -47,6 +48,7 @@ export default function Home() {
   return (
     <>
       <Curtain />
+      <TrailingCursor />
       <div className="relative flex flex-col items-center">
         {/* Hero section */}
         <div className="mt-12 flex w-full max-w-460 flex-col items-center justify-center gap-12 px-2 md:mt-32 md:grid md:grid-cols-24 md:gap-0">

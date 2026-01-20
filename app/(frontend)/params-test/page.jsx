@@ -1,6 +1,7 @@
 "use client";
 
 import AnimatedText from "@/components/General/AnimatedText";
+import TrailingCursor from "@/components/General/TrailingCursor";
 
 function ParamsTest() {
   const date = new Date("2026-11-05");
@@ -10,6 +11,7 @@ function ParamsTest() {
 
   return (
     <div>
+      <TrailingCursor />
       <AnimatedText text={"This is a test"} splitBy="character"></AnimatedText>
       <button
         onClick={async () => {
