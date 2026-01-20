@@ -62,12 +62,12 @@ function TransparencyPage() {
           />
         </div>
 
-        <div className="flex w-full max-w-460 flex-col items-center lg:mt-24 lg:flex-row-reverse lg:gap-12 lg:px-4">
+        <div className="flex w-full max-w-460 flex-col items-center lg:mt-48 lg:flex-row-reverse lg:gap-12 lg:px-4">
           <div className="flex flex-col items-center justify-center">
             <h2 className="text-test-step-5 text-center leading-[92%] font-extrabold tracking-tight max-lg:mt-24">
               OUR SALES
             </h2>
-            <p className="text-test-step--1 mt-2 max-w-[50ch] text-center font-medium">
+            <p className="text-test-step--2 mt-2 max-w-[50ch] text-center">
               Here, you can find our sales data. As labor costs are by far our
               biggest expense, our goal is to sell as many portions as possible
               to make the operation as efficient as possible. Therefore, the
@@ -80,12 +80,12 @@ function TransparencyPage() {
           </div>
         </div>
 
-        <div className="flex w-full max-w-460 flex-col items-center lg:flex-row lg:gap-12">
+        <div className="flex w-full max-w-460 flex-col items-center lg:mt-36 lg:flex-row lg:gap-12">
           <div className="flex flex-col items-center justify-center">
             <h2 className="text-test-step-5 text-center leading-[92%] font-extrabold tracking-tight max-lg:mt-24">
               STUDENT FEEDBACK
             </h2>
-            <p className="text-test-step--1 mt-2 max-w-[50ch] text-center font-medium">
+            <p className="text-test-step--2 mt-2 max-w-[50ch] text-center">
               Here, you can find how satisfied students with our different
               meals, as well as our service in general. Keep in mind that we
               only started tracking these metrics with the launch of this site
