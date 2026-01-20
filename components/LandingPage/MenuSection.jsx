@@ -145,7 +145,11 @@ function MenuSection() {
                   {item.dish.name}
                 </p>
 
-                <Button className="bottom-2 py-2 text-xl font-extrabold">
+                <Button
+                  className="bottom-2 py-2 text-xl font-extrabold"
+                  navigate
+                  navigateTo={`/dishes/${item.dish.slug}`}
+                >
                   SEE DETAILS
                 </Button>
               </motion.div>
