@@ -7,6 +7,7 @@ import { Squeeze as Hamburger } from "hamburger-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useTransitionRouter } from "next-view-transitions";
+import { usePathname } from "next/navigation";
 
 export function pageAnimation() {
   document.documentElement.animate(
@@ -29,17 +30,22 @@ export function pageAnimation() {
 function Navbar() {
   const [isOpen, setOpen] = useState(false);
   const router = useTransitionRouter();
+  const pathname = usePathname();
 
   function handleNav(e, route) {
     e.preventDefault();
     if (!route) {
-      return router.push("/", {
+      if (pathname !== "/") {
+        return router.push("/", {
+          onTransitionReady: pageAnimation,
+        });
+      }
+    }
+    if (pathname !== route.url) {
+      router.push(route.url, {
         onTransitionReady: pageAnimation,
       });
     }
-    router.push(route.url, {
-      onTransitionReady: pageAnimation,
-    });
   }
 
   const routes = [
