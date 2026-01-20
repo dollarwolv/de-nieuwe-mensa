@@ -4,6 +4,7 @@ import Button from "../General/Button";
 import PillSwitch from "../General/PillSwitch";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 function MenuSection() {
   const [menu, setMenu] = useState(null);
@@ -106,12 +107,28 @@ function MenuSection() {
       id="menu"
     >
       <div className="mb-6 flex flex-col items-center gap-2 tracking-tight">
-        <h2 className="text-6xl leading-[92%] font-extrabold lg:text-8xl">
-          OUR MENU
-        </h2>
-        <span className="text-center text-xl leading-[92%]">
-          All of our meals 100% plant-based and made by students with ❤️
-        </span>
+        <div className="relative">
+          <Image
+            src={"/biodiversiteit_op_je_bord_round.svg"}
+            width={100}
+            height={100}
+            alt="Logo of Biodviersiteit op je bord"
+            className="max-sm:bg-dnm-white absolute -top-14 -right-16 z-10 scale-70 rotate-24 rounded-full p-1 max-sm:opacity-90 max-sm:shadow md:-right-21 md:scale-75 lg:-right-24 lg:scale-100"
+          />
+          <h2 className="pointer-events-none text-6xl leading-[92%] font-extrabold lg:text-8xl">
+            OUR MENU
+          </h2>
+        </div>
+        <p className="-mt-2 text-center text-lg leading-tight lg:text-xl">
+          All of our meals are{" "}
+          <a
+            className="text-dnm-light-green"
+            href="https://www.biodiversiteitopjebord.nl/koplopers/ambassadeurs/de-nieuwe-mensa"
+          >
+            biodiversity certified
+          </a>
+          , 100% plant-based and made by students with ❤️
+        </p>
       </div>
 
       <PillSwitch toggled={toggled} setToggled={setToggled} className="mb-2" />
