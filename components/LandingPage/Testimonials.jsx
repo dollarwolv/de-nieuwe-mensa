@@ -66,11 +66,13 @@ async function Testimonials() {
           </Marquee>
         );
       })}
-      <Button className="mt-8 text-xl font-bold">
-        <a href="https://www.instagram.com/denieuwemensa/">
-          Leave feedback - good or bad ❤️
-        </a>
-      </Button>
+      <div className="pb-2">
+        <Button className="mt-8 text-xl font-bold">
+          <a href="https://www.instagram.com/denieuwemensa/">
+            Leave feedback - good or bad ❤️
+          </a>
+        </Button>
+      </div>
     </div>
   );
 }

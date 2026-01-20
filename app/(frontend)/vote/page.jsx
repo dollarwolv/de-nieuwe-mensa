@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
 import Button from "@/components/General/Button";
-import { useRouter } from "next/navigation";
+import { useTransitionRouter } from "next-view-transitions";
 import Curtain from "@/components/General/Curtain";
 
 function Vote() {
@@ -25,7 +25,7 @@ function Vote() {
     { id: "satisfaction", label: "Overall satisfaction" },
   ];
 
-  const router = useRouter();
+  const router = useTransitionRouter();
 
   const [remarks, setRemarks] = useState("");
   const [error, setError] = useState("");
@@ -191,12 +191,9 @@ function Vote() {
               />
             </div>
 
-            <p className="text-red-600">Error: {error}</p>
+            {error && <p className="text-red-600">Error: {error}</p>}
 
-            <Button
-              type="submit"
-              className="bg-dnm-dark-green mt-4 w-full rounded-2xl py-3 text-xl font-extrabold text-white shadow-[4px_4px_0px_0px_rgb(35,35,35)]"
-            >
+            <Button type="submit" className="text-2xl font-bold">
               SUBMIT RATING
             </Button>
           </form>

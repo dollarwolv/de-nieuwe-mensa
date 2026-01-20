@@ -40,8 +40,7 @@ function Navbar() {
           onTransitionReady: pageAnimation,
         });
       }
-    }
-    if (pathname !== route.url) {
+    } else if (pathname !== route.url) {
       router.push(route.url, {
         onTransitionReady: pageAnimation,
       });
@@ -54,7 +53,6 @@ function Navbar() {
     { label: "Catering", url: "/catering" },
     { label: "Blog", url: "/blog" },
     { label: "Dishes", url: "/dishes" },
-    { label: "Vote", url: "/vote" },
   ];
 
   return (
@@ -92,7 +90,9 @@ function Navbar() {
               </Link>
             );
           })}
-          <Button className="text-2xl">GET INVOLVED</Button>
+          <Button className="text-2xl" navigate navigateTo={"/vote"}>
+            VOTE
+          </Button>
         </div>
       </nav>
 
@@ -130,7 +130,9 @@ function Navbar() {
                 );
               })}
 
-              <Button>GET INVOLVED</Button>
+              <Button navigate navigateTo={"vote"} className="px-8">
+                VOTE
+              </Button>
             </div>
             <div className="mt-12 flex justify-between text-sm text-white uppercase">
               <div className="flex flex-col">

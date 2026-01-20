@@ -3,9 +3,9 @@ import Button from "../General/Button";
 function HireUs() {
   return (
     <div className="max-w-460">
-      <div className="bg-dnm-dark-green mt-25 -mb-12 flex h-24 w-full rounded-t-4xl border-2"></div>
-      <div className="bg-dnm-light-green -mb-12 flex h-22 w-full rounded-t-4xl border-2"></div>
-      <div className="bg-dnm-white flex flex-col gap-8 rounded-4xl border-2 px-8 py-16 md:flex-row">
+      <div className="bg-dnm-dark-green border-dnm-black mt-25 -mb-12 flex h-24 w-full rounded-t-4xl border-2"></div>
+      <div className="bg-dnm-light-green border-dnm-black -mb-12 flex h-22 w-full rounded-t-4xl border-2"></div>
+      <div className="bg-dnm-white border-dnm-black flex flex-col gap-8 rounded-4xl border-2 px-8 py-16 md:flex-row">
         <div className="flex flex-1 flex-row gap-2">
           <img
             src="https://picsum.photos/200/360"
@@ -36,7 +36,11 @@ function HireUs() {
             catering for 100+ people. Click the button below to get in touch
             with us.
           </p>
-          <Button className="md:text-step-0 font-extrabold md:w-fit">
+          <Button
+            className="md:text-step-0 font-extrabold md:w-fit"
+            navigateTo={"catering"}
+            navigate
+          >
             GET A QUOTE NOW
           </Button>
         </div>

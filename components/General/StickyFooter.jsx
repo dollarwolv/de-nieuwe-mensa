@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const footerLinks = ["About", "Transparency", "Catering", "Blog"];
+const footerLinks = ["About", "Transparency", "Catering", "Blog", "Dishes"];
 
 const contactLinks = [
   {
@@ -70,7 +70,7 @@ export default function StickyFooter() {
       <div className="flex flex-col gap-6 px-4 py-5 md:px-10 md:py-8">
         <div className="flex w-full gap-10">
           <div className="flex w-full flex-row justify-between gap-4">
-            <nav className="flex flex-col text-lg leading-[95%] font-extrabold md:text-3xl">
+            <nav className="flex flex-col gap-1 text-base leading-[95%] font-bold md:text-2xl">
               {footerLinks.map((link) => (
                 <a key={link} href="#" className="w-fit hover:opacity-80">
                   {link}
@@ -78,15 +78,13 @@ export default function StickyFooter() {
               ))}
             </nav>
 
-            <div className="flex flex-col gap-2 md:gap-3">
-              <span className="text-lg leading-[95%] font-extrabold md:text-3xl">
-                Contact info
-              </span>
+            <div className="flex flex-col justify-between gap-2 md:gap-1">
+              <span className="text-2xl font-bold">Contact</span>
               {contactLinks.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="flex items-center gap-3 text-sm leading-[95%] font-semibold hover:opacity-80 md:text-2xl"
+                  className="flex items-center gap-1 text-sm leading-[95%] font-medium hover:opacity-80 md:text-xl"
                 >
                   {item.icon}
                   <span>{item.label}</span>
@@ -107,7 +105,7 @@ export default function StickyFooter() {
         </div>
 
         <div className="flex w-full items-end justify-between">
-          <span className="text-dnm-gray text-xs font-medium md:text-sm">
+          <span className="text-sm font-medium md:text-sm">
             designed and hand coded by justin dotzlaw
           </span>
 
