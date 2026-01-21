@@ -51,9 +51,9 @@ export default function Home() {
       <TrailingCursor />
       <div className="relative flex flex-col items-center">
         {/* Hero section */}
-        <div className="mt-12 flex w-full max-w-460 flex-col items-center justify-center gap-12 px-2 md:mt-32 md:grid md:grid-cols-24 md:gap-0">
-          <div className="wmax-w-112.5 relative aspect-square w-full md:col-start-17 md:col-end-25 md:row-start-1 md:-mt-5 md:-mb-5 md:ml-auto md:max-w-full">
-            <div className="relative md:h-full md:w-full">
+        <div className="mt-12 flex w-full max-w-460 flex-col items-center justify-center gap-8 px-2 md:mt-32 md:grid md:grid-cols-24 md:gap-0">
+          <div className="relative aspect-square w-full max-w-112.5 md:col-start-17 md:col-end-25 md:row-start-1 md:-mt-5 md:-mb-5 md:ml-auto md:max-w-full">
+            <div className="relative max-md:mx-auto max-md:max-w-[90%] md:h-full md:w-full">
               <Image
                 src="/daal.png"
                 className="absolute object-cover"
