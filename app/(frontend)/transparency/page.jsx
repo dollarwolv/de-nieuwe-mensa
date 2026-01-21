@@ -17,14 +17,14 @@ function TransparencyPage() {
             text={"TRANSPARENCY"}
             onRender={true}
             splitBy="character"
-            className="md:text-test-step-7 mb-4 text-4xl leading-[92%] font-extrabold tracking-tight max-[400px]:text-3xl lg:mb-12"
+            className="md:text-test-step-7 mb-4 text-[44px] leading-[92%] font-extrabold tracking-tight max-[400px]:text-[40px] lg:mb-12"
           />
 
           <div className="flex w-full flex-col justify-between gap-2 border-t border-black pt-4 md:flex-row lg:gap-6 lg:pt-12">
             <AnimatedText
               text={`Our goal is creating a canteen that students can understand,
               participate in, and change.`}
-              className="text-test-step--2 flex-4 font-medium"
+              className="md:text-test-step--2 flex-4 text-lg font-medium"
               onRender={true}
               splitBy="line"
               delayChildren={1.1}
@@ -33,7 +33,7 @@ function TransparencyPage() {
             <AnimatedText
               text={`This page will outline the finances of our business, as well as
               how satisfied students are with DNM.`}
-              className="text-test-step--2 flex-5 font-medium"
+              className="md:text-test-step--2 flex-5 text-lg font-medium"
               onRender={true}
               splitBy="line"
               delayChildren={1.2}
@@ -55,7 +55,7 @@ function TransparencyPage() {
             to be 100% transparent about how we run as a business. This page
             provides a detailed rundown of our finances - sales, pricing
             strategy, and everything in between.`}
-            className="text-test-step-0 max-w-[48ch] text-right leading-[92%] font-medium"
+            className="md:text-test-step-0 max-w-[48ch] text-right text-lg leading-[92%] font-medium"
             splitBy="line"
             delayChildren={0.2}
             staggerChildren={0.1}
@@ -67,7 +67,7 @@ function TransparencyPage() {
             <h2 className="text-test-step-5 text-center leading-[92%] font-extrabold tracking-tight max-lg:mt-24">
               OUR SALES
             </h2>
-            <p className="text-test-step--2 mt-2 max-w-[50ch] text-center">
+            <p className="md:text-test-step--2 mt-2 max-w-[50ch] text-center text-base">
               Here, you can find our sales data. As labor costs are by far our
               biggest expense, our goal is to sell as many portions as possible
               to make the operation as efficient as possible. Therefore, the
@@ -85,7 +85,7 @@ function TransparencyPage() {
             <h2 className="text-test-step-5 text-center leading-[92%] font-extrabold tracking-tight max-lg:mt-24">
               STUDENT FEEDBACK
             </h2>
-            <p className="text-test-step--2 mt-2 max-w-[50ch] text-center">
+            <p className="md:text-test-step--2 mt-2 max-w-[50ch] text-center">
               Here, you can find how satisfied students with our different
               meals, as well as our service in general. Keep in mind that we
               only started tracking these metrics with the launch of this site
