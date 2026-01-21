@@ -93,7 +93,7 @@ function AnimatedText({
         }
         role="text"
         style={{ display: "inline-block" }}
-        className="overflow-hidden"
+        className="overflow-hidden text-nowrap"
       >
         {splitBy === "line"
           ? lines.map((line, i) => (
