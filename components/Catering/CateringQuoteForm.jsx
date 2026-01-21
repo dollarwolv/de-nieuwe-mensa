@@ -97,7 +97,7 @@ function CateringQuoteForm() {
             text={"GET A CATERING QUOTE"}
             className="text-test-step-6 text-5xl leading-[92%] font-extrabold tracking-tight md:text-7xl"
             as="h1"
-            splitBy="character"
+            splitBy="line"
             delayChildren={0}
             staggerChildren={0.02}
           />
