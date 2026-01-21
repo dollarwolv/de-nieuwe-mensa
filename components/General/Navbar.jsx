@@ -61,7 +61,7 @@ function Navbar() {
         <Hamburger toggled={isOpen} toggle={setOpen} />
       </div>
 
-      <nav className="lg:text-test-step--1 flex w-full max-w-460 items-center justify-between px-5 font-extrabold">
+      <nav className="lg:text-test-step--1 mx-auto flex w-full max-w-460 items-center justify-between px-5 font-extrabold">
         <div className="relative hidden shrink-0 md:h-13 md:w-16 lg:block lg:h-18 lg:w-22">
           <Link
             href={"/"}
