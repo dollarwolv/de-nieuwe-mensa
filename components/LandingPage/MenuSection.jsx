@@ -109,7 +109,7 @@ function MenuSection() {
       <div className="mb-6 flex flex-col items-center gap-2 tracking-tight">
         <div className="relative">
           <Image
-            src={"/biodiversiteit_op_je_bord_round.svg"}
+            src={"/biodiversiteit_round.svg"}
             width={100}
             height={100}
             alt="Logo of Biodviersiteit op je bord"

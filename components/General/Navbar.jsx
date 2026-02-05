@@ -70,7 +70,7 @@ function Navbar() {
             }}
           >
             <Image
-              src="/logo.png"
+              src="/logo.svg"
               alt="De Nieuwe Mensa Logo"
               fill
               className="object-cover"

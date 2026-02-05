@@ -10,7 +10,7 @@ function TransparencyPage() {
   return (
     <>
       <Curtain />
-      <div className="flex w-full max-w-460 flex-col">
+      <div className="mx-auto flex w-full max-w-460 flex-col">
         {/* Hero Section */}
         <div className="mt-12 flex w-full flex-col">
           <AnimatedText
