@@ -100,7 +100,11 @@ function AnimatedText({
               <span className="block overflow-hidden" key={i}>
                 <motion.span
                   variants={childSpan}
-                  style={{ display: "block", overflow: "hidden" }}
+                  style={{
+                    display: "block",
+                    overflow: "hidden",
+                    lineHeight: 1.1,
+                  }}
                 >
                   {line.textContent}
                 </motion.span>
