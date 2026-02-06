@@ -55,7 +55,7 @@ function ScrollText({ texts }) {
           id="curve"
           fill="none"
         />
-        <text className="text-3xl font-medium text-black">
+        <text className="text-3xl font-medium text-black will-change-auto">
           {texts.map((text, i) => {
             return (
               <textPath

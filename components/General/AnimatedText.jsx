@@ -97,7 +97,10 @@ function AnimatedText({
       >
         {splitBy === "line"
           ? lines.map((line, i) => (
-              <span className="block overflow-hidden" key={i}>
+              <span
+                className="block overflow-hidden will-change-transform"
+                key={i}
+              >
                 <motion.span
                   variants={childSpan}
                   style={{
