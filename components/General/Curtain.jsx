@@ -19,7 +19,7 @@ export default function Curtain() {
       >
         {/* TODO: Add animated SVG of logo */}
         <Image
-          src={"/logo_black.svg"}
+          src={"/logo_darkgreen.svg"}
           width={172}
           height={172}
           className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
