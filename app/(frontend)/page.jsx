@@ -63,8 +63,8 @@ export default function Home() {
               <CircleScrollText />
             </div>
           </div>
-          <div className="flex flex-col gap-2 md:col-start-1 md:col-end-16 md:gap-4 lg:gap-8">
-            <div className="md:text-step-5 text-mobile-step-5 flex flex-col leading-[92%] font-extrabold tracking-tight">
+          <div className="flex flex-col gap-2 md:col-start-1 md:col-end-16 md:gap-4 lg:gap-6">
+            <div className="md:text-step-5 text-mobile-step-5 flex flex-col leading-[92%] font-black tracking-tight">
               <AnimatedText
                 text={"REAL FOOD."}
                 as="h1"

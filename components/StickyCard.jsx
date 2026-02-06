@@ -54,7 +54,7 @@ function StickyCard({ data, rounded = true, cardHeight = 100 }) {
           className={`flex flex-4 flex-col items-start gap-6 ${cardHeight >= 100 && "pt-12"}`}
         >
           <h1
-            className={`${cardHeight === 100 ? "text-step-7" : "text-step-4"} leading-[92%] font-bold tracking-tight md:w-[75%]`}
+            className={`${cardHeight === 100 ? "text-step-7" : "text-step-4"} leading-[92%] font-extrabold tracking-tight md:w-[75%]`}
           >
             {data.title}
           </h1>

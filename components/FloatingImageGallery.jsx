@@ -95,7 +95,7 @@ function FloatingImageGallery({
         >
           <div className="absolute flex flex-col items-center justify-center">
             <AnimatedText
-              className={`text-step-8 stroke-red ${textColor} z-20 stroke-3 leading-[92%] font-extrabold tracking-tight`}
+              className={`text-step-8 stroke-red ${textColor} z-20 stroke-3 leading-[92%] font-black tracking-tight`}
               text={headingText}
               as="h1"
               delayChildren={0.6}

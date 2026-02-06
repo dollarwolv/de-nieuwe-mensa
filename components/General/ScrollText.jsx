@@ -15,7 +15,8 @@ function ScrollText({ texts }) {
   const baseOffset = useRef(0);
 
   // generate array of offsets of the individual texts
-  const charWidth = 14.6;
+  // adjust charWidth to adjust spacing between phrases
+  const charWidth = 14.4;
   let offsets = [];
   let current = 0;
   texts.forEach((text) => {
@@ -54,7 +55,7 @@ function ScrollText({ texts }) {
           id="curve"
           fill="none"
         />
-        <text className="text-3xl text-black">
+        <text className="text-3xl font-medium text-black">
           {texts.map((text, i) => {
             return (
               <textPath

@@ -36,7 +36,7 @@ function About() {
             splitBy="character"
             delayChildren={0.7}
             onRender={true}
-            className="lg:text-test-step-7 md:text-mobile-step-8 col-start-1 row-start-1 row-end-2 text-8xl leading-[92%] font-extrabold lg:col-end-12"
+            className="lg:text-test-step-7 md:text-mobile-step-8 col-start-1 row-start-1 row-end-2 text-8xl leading-[92%] font-black lg:col-end-12"
           />
 
           <AnimatedText
@@ -45,7 +45,7 @@ function About() {
             onRender={true}
             text={"DNM"}
             splitBy="character"
-            className="lg:text-test-step-7 md:text-mobile-step-8 col-start-1 row-start-2 row-end-3 text-8xl leading-[92%] font-extrabold max-md:-mt-4 lg:col-end-7"
+            className="lg:text-test-step-7 md:text-mobile-step-8 col-start-1 row-start-2 row-end-3 text-8xl leading-[92%] font-black max-md:-mt-4 lg:col-end-7"
           />
 
           <div className="col-start-10 col-end-25 row-start-3 row-end-5 max-md:mt-4 lg:col-start-7 lg:col-end-19 lg:row-start-2 lg:px-8">

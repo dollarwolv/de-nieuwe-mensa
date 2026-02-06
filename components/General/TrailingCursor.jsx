@@ -30,7 +30,7 @@ function TrailingCursor() {
       <motion.div
         style={{ x, y }}
         transition={{ type: "tween", ease: "backOut" }}
-        className="bg-dnm-light-green z-10000000 h-3 w-3 -translate-x-[150%] rounded-full"
+        className="bg-dnm-light-green z-10000000 hidden h-3 w-3 -translate-x-[150%] rounded-full"
         ref={trailer}
       />
     </div>
