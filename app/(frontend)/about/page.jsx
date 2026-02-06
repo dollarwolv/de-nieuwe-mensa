@@ -218,7 +218,7 @@ function About() {
           ]}
         />
 
-        {/* <OurTeamServer /> */}
+        <OurTeamServer />
       </div>
     </>
   );

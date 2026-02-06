@@ -12,15 +12,15 @@ function OurTeam({ boardMembersByYear, cooksByYear }) {
     cooksByYear?.find((set) => set.year === selectedYear)?.members ?? [];
 
   return (
-    <div>
-      <div className="bg-dnm-dark-green mt-25 -mb-12 flex h-24 w-full rounded-t-4xl border-2"></div>
-      <div className="bg-dnm-light-green -mb-12 flex h-22 w-full rounded-t-4xl border-2"></div>
-      <div className="bg-dnm-white flex w-full flex-col items-center rounded-4xl border-2 p-8">
+    <section className="w-full">
+      <div className="bg-dnm-dark-green mt-25 -mb-12 flex h-24 w-full rounded-t-4xl border-3 border-black"></div>
+      <div className="bg-dnm-light-green -mb-12 flex h-22 w-full rounded-t-4xl border-3 border-black"></div>
+      <div className="bg-dnm-white flex w-full flex-col items-center rounded-4xl border-3 border-black p-8">
         <div className="flex flex-col items-center gap-2">
           <h1 className="md:text-test-step-6 text-5xl leading-[92%] font-extrabold tracking-tight">
             OUR TEAM
           </h1>
-          <p className="text-test-step--1 max-w-[42ch] text-center leading-[92%] font-medium tracking-tight">
+          <p className="text-test-step--1 max-w-[48ch] text-center leading-[92%] font-medium tracking-tight">
             Our team consist of two interconnected parts: The board running the
             administrative side, and the cooks who make the food. Some board
             members are also cooks, and some cooks are also board members - we
@@ -103,7 +103,7 @@ function OurTeam({ boardMembersByYear, cooksByYear }) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
