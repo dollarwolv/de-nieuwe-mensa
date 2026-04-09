@@ -4,6 +4,7 @@ import CateringStickyCards from "@/components/Catering/CateringStickyCards";
 import BentoGrid from "@/components/BentoGrid";
 import Curtain from "@/components/General/Curtain";
 import AnimatedText from "@/components/General/AnimatedText";
+import Button from "@/components/General/Button";
 
 function Catering() {
   return (
@@ -16,19 +17,29 @@ function Catering() {
           bgColor={"dnm-white"}
           showTop={false}
         />
-        <div className="mt-12 flex w-full justify-end">
-          <AnimatedText
-            text={`Planning
+        <div className="flex w-full flex-col">
+          <div className="mt-12 flex w-full justify-end">
+            <AnimatedText
+              text={`Planning
             an event shouldn't be a headache. Whether it’s a small workshop or a
             large faculty symposium, we provide hearty, planet-friendly meals
             that satisfy everyone. By choosing De Nieuwe Mensa, you’re
-            supporting a student movement dedicated to fair food prices.`}
-            splitBy="line"
-            delayChildren={0.2}
-            staggerChildren={0.1}
-            className="text-test-step-0 max-w-[44ch] text-right leading-[92%] font-medium"
-          />
+            supporting a student movement dedicated to fair prices.`}
+              splitBy="line"
+              delayChildren={0.2}
+              staggerChildren={0.1}
+              className="text-test-step-0 max-w-[44ch] text-right leading-[92%] font-medium"
+            />
+          </div>
+          <Button
+            className="mt-2 ml-auto flex w-fit gap-2 font-semibold"
+            scrollTo={"quoteform"}
+          >
+            <img src="arrow-down.svg" alt="" />
+            Jump to quote form
+          </Button>
         </div>
+
         <BentoGrid
           heading="WHY CHOOSE US?"
           subheading="Fresh, feel-good food for meetings, workshops, and campus moments. We make the planning easy so you can focus on the gathering."
