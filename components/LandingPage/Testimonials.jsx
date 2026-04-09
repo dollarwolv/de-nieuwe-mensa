@@ -16,7 +16,7 @@ async function Testimonials() {
         <h2 className="text-center text-5xl leading-[92%] font-extrabold lg:text-8xl">
           WHAT STUDENTS SAY
         </h2>
-        <span className="text-center text-xl leading-[92%]">
+        <span className="mt-2 text-center text-xl leading-[92%]">
           We are always open to feedback - and so far, it’s been nothing but
           positive ❤️
         </span>

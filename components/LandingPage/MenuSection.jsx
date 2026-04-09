@@ -106,20 +106,20 @@ function MenuSection() {
       className="mt-36 flex w-full max-w-460 flex-col items-center py-12"
       id="menu"
     >
-      <div className="mb-6 flex flex-col items-center gap-2 tracking-tight">
+      <div className="mb-4 flex flex-col items-center gap-2 tracking-tight">
         <div className="relative">
           <Image
             src={"/biodiversiteit_round.svg"}
             width={100}
             height={100}
             alt="Logo of Biodviersiteit op je bord"
-            className="max-sm:bg-dnm-white absolute -top-14 -right-16 z-10 scale-70 rotate-24 rounded-full p-1 max-sm:opacity-90 max-sm:shadow md:-right-21 md:scale-75 lg:-right-24 lg:scale-100"
+            className="max-sm:bg-dnm-white absolute -top-12 -right-16 z-10 scale-70 rotate-24 rounded-full p-1 max-sm:opacity-90 max-sm:shadow md:-right-21 md:scale-75 lg:-right-24 lg:scale-100"
           />
           <h2 className="pointer-events-none text-6xl leading-[92%] font-extrabold lg:text-8xl">
             OUR MENU
           </h2>
         </div>
-        <p className="-mt-2 text-center text-lg leading-tight lg:text-xl">
+        <p className="text-center text-lg leading-tight lg:text-xl">
           All of our meals are{" "}
           <a
             className="text-dnm-light-green"
@@ -127,7 +127,7 @@ function MenuSection() {
           >
             biodiversity certified
           </a>
-          , 100% plant-based and made by students with ❤️
+          , <br /> 100% plant-based and made by students with ❤️
         </p>
       </div>
 
@@ -145,12 +145,12 @@ function MenuSection() {
             console.log("list length:", list?.length, "menu:", menu);
             return (
               <motion.div
-                className="bg-dnm-light-green/93 flex w-65 shrink-0 flex-col items-center gap-2 rounded-4xl border border-black px-8 py-4 shadow-[4px_4px_0px_0px_rgb(35,35,35)]"
+                className="bg-dnm-light-green/93 flex w-65 shrink-0 flex-col items-center gap-2 rounded-4xl border-2 border-black px-8 py-4 shadow-[4px_4px_0px_0px_rgb(35,35,35)]"
                 key={item.dish.name}
                 variants={cardVariants}
               >
                 <h4 className="text-4xl font-extrabold">{weekDays[i]}</h4>
-                <div className="h-full w-full overflow-hidden rounded-2xl">
+                <div className="h-full w-full overflow-hidden rounded-2xl border-2 border-black">
                   <img
                     src={item.dish.image.url}
                     alt={item.dish.image.alt}

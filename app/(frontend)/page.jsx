@@ -87,7 +87,7 @@ export default function Home() {
             <AnimatedText
               text={`Student-led. Non-profit. Taking back the canteen with healthy,
               vegan meals.`}
-              className="text-mobile-step-1 md:text-step-0 leading-[92%] font-medium tracking-tight"
+              className="text-mobile-step-1 md:text-step-0 max-w-[36ch] leading-[92%] font-medium tracking-tight"
               splitBy="line"
               delayChildren={1}
               staggerChildren={0.1}

@@ -102,12 +102,12 @@ function Vote() {
           <h1 className="text-test-step-6 mt-12 text-center leading-[92%] font-extrabold tracking-tight">
             RATE OUR FOOD
           </h1>
-          <p className="mt-2 text-center font-medium">
+          <p className="mt-2 text-center">
             We want to make better decisions about what to serve, and your input
-            really helps. On this page, you can tell us what you think of
+            really helps. <br /> On this page, you can tell us what you think of
             today's food.
           </p>
-          <p className="mt-2 text-center font-light">
+          <p className="mt-2 text-center font-light italic">
             Note: You can vote once per day to keep things fair. Come back daily
             to vote on each dish.
           </p>
@@ -132,7 +132,7 @@ function Vote() {
             <select
               name="dish-select"
               id="dish-select"
-              className="bg-dnm-dark-green/50 h-full w-full rounded-2xl p-1 text-black/60"
+              className="bg-dnm-dark-green/50 h-full w-full rounded-2xl px-2 py-1 font-semibold text-black/60"
               value={selectedDish?.name}
               onChange={(e) => findAndSetSelectedDish(e.target.value)}
             >

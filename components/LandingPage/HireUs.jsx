@@ -37,7 +37,7 @@ function HireUs() {
             with us.
           </p>
           <Button
-            className="md:text-step-0 font-extrabold md:w-fit"
+            className="md:text-step--1 mt-2 font-extrabold md:w-fit"
             navigateTo={"catering"}
             navigate
           >

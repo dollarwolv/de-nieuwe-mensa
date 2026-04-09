@@ -20,20 +20,20 @@ function OurTeam({ boardMembersByYear, cooksByYear }) {
           <h1 className="md:text-test-step-6 text-5xl leading-[92%] font-extrabold tracking-tight">
             OUR TEAM
           </h1>
-          <p className="text-test-step--1 max-w-[48ch] text-center leading-[92%] font-medium tracking-tight">
+          <p className="text-test-step--1 mt-2 max-w-[48ch] text-center leading-[92%] font-medium tracking-tight">
             Our team consist of two interconnected parts: The board running the
             administrative side, and the cooks who make the food. Some board
             members are also cooks, and some cooks are also board members - we
             are one big team!
           </p>
         </div>
-        <div className="mt-12 flex w-full flex-col lg:mt-24">
+        <div className="mt-12 flex w-full flex-col lg:mt-10">
           <div className="flex flex-col justify-between md:flex-row md:items-end">
             <div className="flex flex-col">
               <h2 className="text-test-step-4 leading-[92%] font-bold tracking-tight">
                 The Board
               </h2>
-              <p className="text-test-step--2 max-w-[50ch] leading-[92%] font-medium tracking-tight">
+              <p className="text-test-step--2 mt-2 max-w-[50ch] leading-[92%] font-medium tracking-tight">
                 Meet the motivated students who are working on the
                 administrative side of De Nieuwe Mensa.
               </p>
@@ -45,7 +45,7 @@ function OurTeam({ boardMembersByYear, cooksByYear }) {
               className="w-fit max-md:mt-2"
             />
           </div>
-          <div className="mt-6 grid grid-cols-2 justify-between gap-x-20 gap-y-2.5 md:grid-cols-3 lg:mt-12 lg:grid-cols-5">
+          <div className="mt-6 grid grid-cols-2 justify-between gap-x-20 gap-y-2.5 md:grid-cols-3 lg:mt-8 lg:grid-cols-5">
             {selectedBoardMembers.map((profile, i) => {
               return (
                 <div
@@ -76,12 +76,12 @@ function OurTeam({ boardMembersByYear, cooksByYear }) {
             <h2 className="text-test-step-4 leading-[92%] font-bold tracking-tight">
               The Cooks
             </h2>
-            <p className="text-test-step--2 max-w-[50ch] leading-[92%] font-medium tracking-tight">
+            <p className="text-test-step--2 mt-2 max-w-[50ch] leading-[92%] font-medium tracking-tight">
               Most importantly - the students who are working on the bringing
               you the best food possible.
             </p>
           </div>
-          <div className="mt-6 grid grid-cols-2 justify-between gap-x-20 gap-y-2.5 md:grid-cols-3 lg:mt-12 lg:grid-cols-5">
+          <div className="mt-6 grid grid-cols-2 justify-between gap-x-20 gap-y-2.5 md:grid-cols-3 lg:mt-8 lg:grid-cols-5">
             {selectedCooks.map((profile, i) => {
               return (
                 <div className="flex max-w-53 flex-col" key={`cook-${i}`}>
