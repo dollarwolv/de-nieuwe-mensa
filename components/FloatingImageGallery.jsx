@@ -112,7 +112,7 @@ function FloatingImageGallery({
       )}
 
       <div
-        className={`${bgColor} relative h-screen w-screen ${showTop && "rounded-t-4xl border-t-2"} pointer-events-none rounded-t-4xl`}
+        className={`${bgColor} relative h-screen w-screen ${showTop && "rounded-t-4xl border-t-2"} z-0 rounded-t-4xl`}
         ref={container}
       >
         <motion.div
@@ -148,17 +148,17 @@ function FloatingImageGallery({
             <motion.div
               key={index}
               style={{ y: plane.deplaceValue }}
-              className={`absolute mt-[-30vh] h-screen w-screen ${index === 2 && `max-md:hidden`} will-change-transform`}
+              className={`pointer-events-none absolute mt-[-30vh] h-screen w-screen ${index === 2 && `max-md:hidden`} will-change-transform`}
             >
               <motion.div
                 style={{ x: plane.x, y: plane.y }}
-                className={`absolute h-screen w-screen ${plane.opacity} transform-gpu will-change-transform`}
+                className={`pointer-events-none absolute h-screen w-screen ${plane.opacity} transform-gpu will-change-transform`}
               >
                 {plane.images.map((img, imgIndex) => (
                   <img
                     key={imgIndex}
                     src={img.src}
-                    className={`absolute ${img.pos} rounded-xl`}
+                    className={`pointer-events-none absolute ${img.pos} rounded-xl`}
                     alt=""
                   />
                 ))}

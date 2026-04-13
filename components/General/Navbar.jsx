@@ -57,11 +57,11 @@ function Navbar() {
 
   return (
     <>
-      <div className="fixed top-4 left-4 z-20 block lg:hidden">
+      <div className="fixed top-4 left-4 z-100 block lg:hidden">
         <Hamburger toggled={isOpen} toggle={setOpen} />
       </div>
 
-      <nav className="lg:text-test-step--1 mx-auto flex w-full max-w-460 items-center justify-between px-5 font-extrabold">
+      <nav className="lg:text-test-step--1 relative z-50 mx-auto flex w-full max-w-460 items-center justify-between px-5 font-extrabold">
         <div className="relative hidden shrink-0 md:h-13 md:w-16 lg:block lg:h-18 lg:w-22">
           <Link
             href={"/"}
