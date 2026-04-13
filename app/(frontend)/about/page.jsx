@@ -60,7 +60,7 @@ function About() {
           <div className="order-5 col-end-25 row-start-2 flex-col max-md:mt-12 md:order-0 md:col-start-11 md:row-end-3 lg:col-start-19 lg:row-end-5 lg:flex">
             <div className="md:max-lg:hidden">
               <img
-                src="/img/about/koshari.jpg"
+                src="/img/about/koshari.jpeg"
                 alt=""
                 className="aspect-2/1 h-full w-full rounded-4xl object-cover md:max-lg:hidden lg:rounded-[44px]"
               />
