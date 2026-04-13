@@ -4,6 +4,7 @@ import Curtain from "@/components/General/Curtain";
 import Button from "@/components/General/Button";
 import BentoGrid from "@/components/BentoGrid";
 import AnimatedText from "@/components/General/AnimatedText";
+import Image from "next/image";
 
 const suppliers = [
   {
@@ -50,7 +51,7 @@ function About() {
 
           <div className="col-start-10 col-end-25 row-start-3 row-end-5 max-md:mt-4 lg:col-start-7 lg:col-end-19 lg:row-start-2 lg:px-8">
             <img
-              src="https://picsum.photos/570/381"
+              src="/img/about/kitchen.jpeg"
               alt=""
               className="h-full w-full rounded-2xl object-cover lg:max-xl:rounded-[48px] lg:max-lg:rounded-4xl xl:rounded-[80px] 2xl:mt-4"
             />
@@ -59,9 +60,9 @@ function About() {
           <div className="order-5 col-end-25 row-start-2 flex-col max-md:mt-12 md:order-0 md:col-start-11 md:row-end-3 lg:col-start-19 lg:row-end-5 lg:flex">
             <div className="md:max-lg:hidden">
               <img
-                src="https://picsum.photos/422/170"
+                src="/img/about/koshari.jpg"
                 alt=""
-                className="h-full w-full rounded-4xl object-cover md:max-lg:hidden lg:rounded-[44px]"
+                className="aspect-2/1 h-full w-full rounded-4xl object-cover md:max-lg:hidden lg:rounded-[44px]"
               />
             </div>
 
@@ -120,8 +121,8 @@ function About() {
             <div className="w-full flex-1 lg:hidden">
               <div className="relative h-full w-full overflow-hidden rounded-2xl">
                 <img
-                  src="https://picsum.photos/1920/1080"
-                  alt=""
+                  src="/img/about/handingoutfood.jpeg"
+                  alt="Picture showing a student handing out food"
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -148,7 +149,7 @@ function About() {
           <div className="hidden w-full flex-1 lg:block">
             <div className="relative h-full w-full overflow-hidden rounded-2xl">
               <img
-                src="https://picsum.photos/1920/1080"
+                src="/img/about/handingoutfood.jpeg"
                 alt=""
                 className="h-full w-full object-cover"
               />
@@ -167,9 +168,10 @@ function About() {
               it can be.
             </p>
             <div className="w-full">
-              <div className="relative h-full w-full overflow-hidden rounded-2xl">
-                <img
-                  src="https://picsum.photos/1920/1080"
+              <div className="relative aspect-video h-full w-full overflow-hidden rounded-2xl">
+                <Image
+                  src="/img/about/1A.jpeg"
+                  fill={true}
                   alt=""
                   className="h-full w-full object-cover"
                 />
@@ -198,6 +200,10 @@ function About() {
           subheading={
             "De Nieuwe Mensa only sells plant-based meals, which has several benefits for our cause."
           }
+          image={{
+            src: "/img/about/1B.jpeg",
+            alt: "Image showing students buying our food.",
+          }}
           boxes={[
             {
               title: "Sustainable",

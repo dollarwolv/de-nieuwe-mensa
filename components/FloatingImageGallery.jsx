@@ -12,6 +12,44 @@ function FloatingImageGallery({
   subHeadingText,
   textColor,
   showTop = true,
+  images = [
+    {
+      src: "https://picsum.photos/id/1015/800/500",
+      pos: "top-[12%] left-[10%] h-44",
+    },
+    {
+      src: "https://picsum.photos/id/1027/400/700",
+      pos: "top-[15%] left-[85%] h-56",
+    },
+    {
+      src: "https://picsum.photos/id/1035/600/600",
+      pos: "top-[60%] left-[58%] h-40",
+    },
+    {
+      src: "https://picsum.photos/id/1043/500/800",
+      pos: "top-[8%] left-[55%] h-52",
+    },
+    {
+      src: "https://picsum.photos/id/1052/900/500",
+      pos: "top-[60%] left-[8%] h-44",
+    },
+    {
+      src: "https://picsum.photos/id/1069/600/600",
+      pos: "top-[72%] left-[70%] h-36",
+    },
+    {
+      src: "https://picsum.photos/id/1074/700/450",
+      pos: "top-[18%] left-[20%] h-40",
+    },
+    {
+      src: "https://picsum.photos/id/1084/450/750",
+      pos: "top-[55%] left-[80%] h-56",
+    },
+    {
+      src: "https://picsum.photos/id/109/550/550",
+      pos: "top-[75%] left-[30%] h-38",
+    },
+  ],
 }) {
   const container = useRef();
 
@@ -31,11 +69,7 @@ function FloatingImageGallery({
       x: useSpring(0, springConfig),
       y: useSpring(0, springConfig),
       deplaceValue: deplaceValue1,
-      images: [
-        { src: "1015/800/500", pos: "top-[12%] left-[10%] h-44" },
-        { src: "1027/400/700", pos: "top-[15%] left-[85%] h-56" },
-        { src: "1035/600/600", pos: "top-[60%] left-[58%] h-40" },
-      ],
+      images: images.slice(0, 3),
     },
     {
       speed: 0.1,
@@ -43,11 +77,7 @@ function FloatingImageGallery({
       x: useSpring(0, springConfig),
       y: useSpring(0, springConfig),
       deplaceValue: deplaceValue2,
-      images: [
-        { src: "1043/500/800", pos: "top-[8%] left-[55%] h-52" },
-        { src: "1052/900/500", pos: "top-[60%] left-[8%] h-44" },
-        { src: "1069/600/600", pos: "top-[72%] left-[70%] h-36" },
-      ],
+      images: images.slice(3, 6),
     },
     {
       speed: 0.15,
@@ -55,11 +85,7 @@ function FloatingImageGallery({
       x: useSpring(0, springConfig),
       y: useSpring(0, springConfig),
       deplaceValue: deplaceValue3,
-      images: [
-        { src: "1074/700/450", pos: "top-[18%] left-[20%] h-40" },
-        { src: "1084/450/750", pos: "top-[55%] left-[80%] h-56" },
-        { src: "109/550/550", pos: "top-[75%] left-[30%] h-38" },
-      ],
+      images: images.slice(6, 9),
     },
   ];
 
@@ -131,8 +157,8 @@ function FloatingImageGallery({
                 {plane.images.map((img, imgIndex) => (
                   <img
                     key={imgIndex}
-                    src={`https://picsum.photos/id/${img.src}`}
-                    className={`absolute ${img.pos}`}
+                    src={img.src}
+                    className={`absolute ${img.pos} rounded-xl`}
                     alt=""
                   />
                 ))}

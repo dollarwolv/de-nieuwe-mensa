@@ -103,7 +103,7 @@ function MenuSection() {
 
   return (
     <div
-      className="mt-36 flex w-full max-w-460 flex-col items-center py-12"
+      className="mt-8 flex w-full max-w-460 flex-col items-center py-12"
       id="menu"
     >
       <div className="mb-4 flex flex-col items-center gap-2 tracking-tight">

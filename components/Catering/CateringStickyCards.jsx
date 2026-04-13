@@ -5,7 +5,7 @@ function CateringStickyCards() {
     {
       index: "01",
       title: "REQUEST",
-      image: "/sticky-cards/card-1.jpg",
+      image: "/img/catering/form.png",
       description:
         "Quickly fill out the form below with your event details so we can tailor our offering to you.",
       bgColor: "bg-dnm-white",
@@ -13,7 +13,7 @@ function CateringStickyCards() {
     {
       index: "02",
       title: "QUOTE",
-      image: "/sticky-cards/card-2.jpg",
+      image: "/img/catering/form2.png",
       description:
         "We’ll send you a customized offer and price quote within 3 business days.",
       bgColor: "bg-dnm-white",
@@ -21,7 +21,7 @@ function CateringStickyCards() {
     {
       index: "03",
       title: "DELIVERY",
-      image: "/sticky-cards/card-3.jpg",
+      image: "/img/catering/form3.png",
       description:
         "We cook and deliver directly to your location on Roeterseiland.",
       bgColor: "bg-dnm-white",

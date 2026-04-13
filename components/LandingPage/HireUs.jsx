@@ -8,19 +8,19 @@ function HireUs() {
       <div className="bg-dnm-white border-dnm-black flex flex-col gap-8 rounded-4xl border-2 px-8 py-16 md:flex-row">
         <div className="flex flex-1 flex-row gap-2">
           <img
-            src="https://picsum.photos/200/360"
+            src="/img/landing/hireus/banner.jpeg"
             alt=""
-            className="w-full min-w-0 rounded"
+            className="w-full min-w-0 rounded-xl"
           />
           <img
-            src="https://picsum.photos/200/360"
+            src="/img/landing/hireus/daal.jpeg"
             alt=""
-            className="w-full min-w-0 rounded"
+            className="w-full min-w-0 rounded-xl"
           />
           <img
-            src="https://picsum.photos/200/360"
+            src="/img/landing/hireus/brendan_leo.jpeg"
             alt=""
-            className="w-full min-w-0 rounded"
+            className="w-full min-w-0 rounded-xl"
           />
         </div>
         <div className="flex flex-1 flex-col justify-between gap-2">

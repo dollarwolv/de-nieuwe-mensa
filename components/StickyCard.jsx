@@ -59,9 +59,9 @@ function StickyCard({ data, rounded = true, cardHeight = 100 }) {
             {data.title}
           </h1>
           <img
-            src="https://picsum.photos/1920/1080"
+            src={data.image}
             alt="placeholder image"
-            className="aspect-5/3 lg:max-w-[75%]"
+            className="aspect-5/3 rounded-2xl object-cover shadow lg:max-w-[75%]"
             style={{ aspectRatio: cardHeight < 100 ? 2 / 1 : 5 / 3 }}
           />
           <div className="lg:text-step--1 flex flex-row gap-2 md:w-[75%] md:flex-row md:gap-6">

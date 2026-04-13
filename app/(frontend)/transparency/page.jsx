@@ -43,7 +43,7 @@ function TransparencyPage() {
         </div>
         <div className="mt-4 aspect-16/7 w-full overflow-hidden rounded-2xl lg:mt-12">
           <img
-            src="https://picsum.photos/1920/1080"
+            src="/img/transparency/chris_fanni_noah.jpeg"
             className="h-full w-full object-cover"
             alt=""
           />

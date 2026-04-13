@@ -129,6 +129,44 @@ export default function Home() {
           bgColor={"bg-dnm-black"}
           textColor={"text-white"}
           showTop={false}
+          images={[
+            {
+              src: "/img/catering/floatingimagegallery/5G.jpeg",
+              pos: "top-[12%] left-[4%] h-44",
+            },
+            {
+              src: "/img/landing/floatingimagegallery/luis_leo.jpeg",
+              pos: "top-[60%] left-[48%] h-40",
+            },
+            {
+              src: "/img/landing/floatingimagegallery/fanni.jpeg",
+              pos: "top-[60%] left-[2%] h-44",
+            },
+            {
+              src: "/img/catering/floatingimagegallery/5H2.jpeg",
+              pos: "top-[75%] left-[20%] h-38",
+            },
+            {
+              src: "/img/landing/floatingimagegallery/noah_laura_francesco.jpeg",
+              pos: "top-[8%] left-[45%] h-52",
+            },
+            {
+              src: "/img/catering/floatingimagegallery/5E.jpeg",
+              pos: "top-[72%] left-[60%] h-36",
+            },
+            {
+              src: "/img/catering/floatingimagegallery/5F.jpeg",
+              pos: "top-[18%] left-[20%] h-40",
+            },
+            {
+              src: "/img/catering/floatingimagegallery/5C2.jpeg",
+              pos: "top-[55%] left-[70%] h-56",
+            },
+            {
+              src: "/img/catering/floatingimagegallery/5I.jpeg",
+              pos: "top-[15%] left-[85%] h-56",
+            },
+          ]}
         />
 
         {/* Sticky Cards */}

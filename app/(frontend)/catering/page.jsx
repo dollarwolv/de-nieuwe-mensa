@@ -16,6 +16,44 @@ function Catering() {
           subHeadingText={"ft. De Nieuwe Mensa"}
           bgColor={"dnm-white"}
           showTop={false}
+          images={[
+            {
+              src: "/img/catering/floatingimagegallery/5A.jpeg",
+              pos: "top-[12%] left-[4%] h-44",
+            },
+            {
+              src: "/img/catering/floatingimagegallery/5B.jpeg",
+              pos: "top-[60%] left-[48%] h-40",
+            },
+            {
+              src: "/img/catering/floatingimagegallery/5D.jpeg",
+              pos: "top-[60%] left-[2%] h-44",
+            },
+            {
+              src: "/img/catering/floatingimagegallery/5H2.jpeg",
+              pos: "top-[75%] left-[20%] h-38",
+            },
+            {
+              src: "/img/catering/floatingimagegallery/5C2.jpeg",
+              pos: "top-[8%] left-[45%] h-52",
+            },
+            {
+              src: "/img/catering/floatingimagegallery/5E.jpeg",
+              pos: "top-[72%] left-[60%] h-36",
+            },
+            {
+              src: "/img/catering/floatingimagegallery/5F.jpeg",
+              pos: "top-[18%] left-[20%] h-40",
+            },
+            {
+              src: "/img/catering/floatingimagegallery/5G.jpeg",
+              pos: "top-[55%] left-[70%] h-56",
+            },
+            {
+              src: "/img/catering/floatingimagegallery/5I.jpeg",
+              pos: "top-[15%] left-[85%] h-56",
+            },
+          ]}
         />
         <div className="flex w-full flex-col">
           <div className="mt-12 flex w-full justify-end">
@@ -62,8 +100,8 @@ function Catering() {
             },
           ]}
           image={{
-            src: "https://picsum.photos/id/1062/1200/900",
-            alt: "Windmill and field landscape",
+            src: "/img/catering/4A.jpeg",
+            alt: "Delicious meal cooked by DNM",
           }}
           className="my-24 max-md:my-12 lg:px-20"
         />

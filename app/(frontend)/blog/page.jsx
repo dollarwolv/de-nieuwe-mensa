@@ -49,31 +49,37 @@ export default async function BlogPage() {
 
   if (error) {
     return (
-      <div className="flex w-full flex-col items-center">
-        <div className="mt-12 w-full max-w-460">
-          <h1 className="md:text-step-7 text-7xl leading-[100%] font-extrabold">
-            BLOG
-          </h1>
-          <p className="text-test-step--1 mt-6 max-w-[50ch]">
-            We hit a snag loading the blog posts. Please check back soon.
-          </p>
+      <>
+        <Curtain />
+        <div className="flex w-full flex-col items-center">
+          <div className="mt-12 w-full max-w-460">
+            <h1 className="md:text-step-7 text-7xl leading-[100%] font-extrabold">
+              BLOG
+            </h1>
+            <p className="text-test-step--1 mt-6 max-w-[50ch]">
+              We hit a snag loading the blog posts. Please check back soon.
+            </p>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
   if (!posts?.length) {
     return (
-      <div className="flex w-full flex-col items-center">
-        <div className="mt-12 w-full max-w-460">
-          <h1 className="md:text-step-7 text-6xl leading-[100%] font-extrabold">
-            BLOG
-          </h1>
-          <p className="text-test-step--1 mt-6 max-w-[50ch]">
-            No posts yet. Check back soon for stories from the DNM kitchen.
-          </p>
+      <>
+        <Curtain />
+        <div className="flex w-full flex-col items-center">
+          <div className="mt-12 w-full max-w-460">
+            <h1 className="md:text-step-7 text-6xl leading-[100%] font-extrabold">
+              BLOG
+            </h1>
+            <p className="text-test-step--1 mt-6 max-w-[50ch]">
+              No posts yet. Check back soon for stories from the DNM kitchen.
+            </p>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
