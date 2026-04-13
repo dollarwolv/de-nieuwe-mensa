@@ -68,7 +68,11 @@ function StickyCard({ data, rounded = true, cardHeight = 100 }) {
             <div className="flex flex-col gap-2">
               <p> {data.description}</p>
               {data.index == "03" && cardHeight >= 100 && (
-                <Button className="w-fit px-0 font-extrabold">
+                <Button
+                  className="w-fit px-0 font-extrabold"
+                  navigate
+                  navigateTo={"about"}
+                >
                   LEARN MORE ABOUT DNM
                 </Button>
               )}
