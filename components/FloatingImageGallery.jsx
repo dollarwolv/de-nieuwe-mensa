@@ -112,12 +112,12 @@ function FloatingImageGallery({
       )}
 
       <div
-        className={`${bgColor} relative h-screen w-screen ${showTop && "rounded-t-4xl border-t-2"} rounded-t-4xl`}
+        className={`${bgColor} relative h-screen w-screen ${showTop && "rounded-t-4xl border-t-2"} pointer-events-none rounded-t-4xl`}
+        ref={container}
       >
         <motion.div
-          className="sticky top-0 flex h-screen w-screen items-center justify-center overflow-hidden"
+          className="top-0 flex h-screen w-screen items-center justify-center overflow-hidden"
           onMouseMove={manageMouseMove}
-          ref={container}
         >
           <div className="absolute flex flex-col items-center justify-center">
             <AnimatedText
@@ -148,7 +148,7 @@ function FloatingImageGallery({
             <motion.div
               key={index}
               style={{ y: plane.deplaceValue }}
-              className={`absolute mt-[-30vh] h-screen w-screen ${index === 2 && `max-md:hidden`}`}
+              className={`absolute mt-[-30vh] h-screen w-screen ${index === 2 && `max-md:hidden`} will-change-transform`}
             >
               <motion.div
                 style={{ x: plane.x, y: plane.y }}

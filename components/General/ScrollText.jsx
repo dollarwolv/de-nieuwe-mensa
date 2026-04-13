@@ -1,72 +1,77 @@
 "use client";
 
-import { useAnimationFrame, useScroll, useVelocity } from "framer-motion";
-import { useRef } from "react";
+import {
+  useAnimationFrame,
+  useInView,
+  useScroll,
+  useSpring,
+} from "framer-motion";
+import { useId, useMemo, useRef } from "react";
 
 function ScrollText({ texts }) {
   const container = useRef();
+  const textRef = useRef(null);
+  const curveId = useId();
+  const isInView = useInView(container, { amount: 0.1 });
   const { scrollY } = useScroll({
     target: container,
     offset: ["start end", "end start"],
   });
 
-  const textRefs = useRef([]);
-  const scrollVelocity = useVelocity(scrollY);
+  const scrollVelocity = useSpring(scrollY, {
+    stiffness: 300,
+    damping: 30,
+    mass: 0.5,
+  });
   const baseOffset = useRef(0);
 
-  // generate array of offsets of the individual texts
-  // adjust charWidth to adjust spacing between phrases
-  const charWidth = 14.4;
-  let offsets = [];
-  let current = 0;
-  texts.forEach((text) => {
-    offsets.push(current);
-    current += charWidth * text.length;
-  });
-  const totalLength = current;
+  const { repeatedText, totalLength } = useMemo(() => {
+    const sequence = texts.join("");
+    const charWidth = 14.4;
+    const current = charWidth * sequence.length;
+
+    // Repeat the sequence so Safari only has to animate one textPath.
+    return {
+      repeatedText: `${sequence}${sequence}${sequence}`,
+      totalLength: current,
+    };
+  }, [texts]);
 
   /**
    * This function is responsible for moving the text along and moving it left/right
    * on scroll.
    */
   useAnimationFrame((time, delta) => {
-    // loop through each text ref, and move it to the right.
-    textRefs.current.forEach((text, i) => {
-      const v = scrollVelocity.get();
-      const baseSpeed = 25;
-      const boostSpeed = 0.2;
-      const speed = baseSpeed + v * boostSpeed;
+    if (!isInView) return;
 
-      // each frame, increase the base offset by speed * time passed (delta)
-      baseOffset.current += (speed * delta) / 1000;
+    const velocity = scrollVelocity.getVelocity();
+    const baseSpeed = 200;
+    const boostSpeed = 0.4;
+    const speed = baseSpeed + velocity * boostSpeed;
 
-      // change startOffset of each text to the length of the text (offset[i]) + the increased baseOffset,
-      // and use modulo to wrap around. -800 because it wraps around when the text has just left the screen
-      let moveBy = ((offsets[i] + baseOffset.current) % totalLength) - 800;
-      text?.setAttribute("startOffset", `${moveBy}px`);
-    });
+    // Advance the marquee once per frame, not once per text node.
+    baseOffset.current += (speed * delta) / 1000;
+
+    // Safari is much smoother when only one textPath offset changes per frame.
+    const moveBy = (baseOffset.current % totalLength) - totalLength - 800;
+    textRef.current?.setAttribute("startOffset", `${moveBy}px`);
   });
 
   return (
-    <div className="hidden w-full max-w-460 md:block" ref={container}>
+    <div
+      className="hidden w-full max-w-460 will-change-auto md:block"
+      ref={container}
+    >
       <svg viewBox="0 0 1512 137" className="my-12 overflow-visible">
         <path
           d="M0 136.001C287.5 136.001 472.5 0.499903 751 0.5C1029.5 0.500097 1262.5 136.001 1512 136.001"
-          id="curve"
+          id={curveId}
           fill="none"
         />
-        <text className="text-3xl font-medium text-black will-change-transform">
-          {texts.map((text, i) => {
-            return (
-              <textPath
-                href="#curve"
-                key={i}
-                ref={(ref) => (textRefs.current[i] = ref)}
-              >
-                {text}
-              </textPath>
-            );
-          })}
+        <text className="text-3xl font-medium text-black will-change-auto">
+          <textPath href={`#${curveId}`} ref={textRef}>
+            {repeatedText}
+          </textPath>
         </text>
       </svg>
     </div>
