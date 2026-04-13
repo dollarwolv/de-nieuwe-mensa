@@ -136,7 +136,7 @@ export default function Home() {
             },
             {
               src: "/img/landing/floatingimagegallery/luis_leo.jpeg",
-              pos: "top-[60%] left-[48%] h-40",
+              pos: "top-[60%] left-[40%] h-40",
             },
             {
               src: "/img/landing/floatingimagegallery/fanni.jpeg",
@@ -148,7 +148,7 @@ export default function Home() {
             },
             {
               src: "/img/landing/floatingimagegallery/noah_laura_francesco.jpeg",
-              pos: "top-[8%] left-[45%] h-52",
+              pos: "top-[24%] left-[45%] h-52",
             },
             {
               src: "/img/catering/floatingimagegallery/5E.jpeg",

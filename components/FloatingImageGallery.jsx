@@ -1,7 +1,7 @@
 "use client";
 
 import { useSpring, motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import AnimatedText from "./General/AnimatedText";
 
 const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
@@ -148,7 +148,7 @@ function FloatingImageGallery({
             <motion.div
               key={index}
               style={{ y: plane.deplaceValue }}
-              className="absolute mt-[-30vh] h-screen w-screen"
+              className={`absolute mt-[-30vh] h-screen w-screen ${index === 2 && `max-md:hidden`}`}
             >
               <motion.div
                 style={{ x: plane.x, y: plane.y }}
