@@ -8,20 +8,35 @@ import Image from "next/image";
 
 const suppliers = [
   {
-    heading: "VEGETABLES",
-    text: "Our vegetables are supplied by Orgenional - a local vegetable supply company sourcing ingredients exclusively from the Netherlands. ",
+    heading: "OREGIONAL",
+    text: `Oregional is a Dutch supplier for fresh regional produce, offered at a fair price. What makes them special is their effort to reduce food waste by offering second-rate ("ugly") produce.`,
   },
   {
-    heading: "SPICES",
-    text: "A random indian store..? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dictum faucibus augue, ut lacinia neque.",
+    heading: "AUTHENTIC INDIA",
+    text: "Authentic India is a cozy grocery store near the Dappermarkt. They supply us with nearly all of the spices and condiments that make our food as delicious as it is.",
   },
   {
-    heading: "ITALIAN STUFF?",
-    text: "Matteo’s buddy? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dictum faucibus augue, ut lacinia neque. ",
+    heading: "BD-TOTAAL",
+    text: "BD-Totaal is an organic food supplier that focuses on providing sustainable, environmentally aware, and biodiversity friendly food options. We primarily use BD-Totaal for rice, some of our vegetables and tomatoes to ensure that our food is biodiverse and organic for your health and peace of mind.",
   },
   {
-    heading: "SOMETHING ELSE?",
-    text: "Appie for the win? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dictum faucibus augue, ut lacinia neque. ",
+    heading: "JOYBUY",
+    text: "Joybuy is an online retailer specializing primarily in pan-Asian ingredients that we use across our lineup of dishes, particularly our fan-favorite Japanese curry.",
+  },
+];
+
+const partners = [
+  {
+    heading: "KRITERION",
+    text: `De Nieuwe Mensa is supported by the Kriterion foundation, who pays board grants to the volunteers organizing DNM as a compensation for the work they put in. Doing so, Kriterion supports our mission to make DNM a long-lasting and influential project. Furthermore, they offer help and guidance with legal questions.`,
+  },
+  {
+    heading: "BIODIVERSITEIT OP JE BORD",
+    text: `We joined the "Biodiversiteit op je bord" program as ambassadors in October 2025. The Dutch Cuise initiative, supported by the Dutch Ministry of Agriculture and the WWF, promotes more biodiversity in food systems. As ambassadors, we ensure that at least 50% of our menu meets their standards. In practice, this means our meals exclude red-listed ingredients and always include at least one biodiverse main ingredient.`,
+  },
+  {
+    heading: "AMSTERDAM UNIVERSITY FUND",
+    text: "De Nieuwe Mensa received a 5000€ grant from the Amsterdam University Fund. With their support, we can continue to expand our impact, strengthen our student community and ensure that De Nieuwe Mensa remains a sustainable and inspiring part of campus life at the UvA.",
   },
 ];
 
@@ -223,6 +238,42 @@ function About() {
             },
           ]}
         />
+
+        <div className="mt-32 flex flex-col justify-between gap-8 px-4 lg:flex-row lg:gap-18">
+          <div className="flex flex-1 flex-col gap-4">
+            <h2 className="text-test-step-3 leading-[92%] font-extrabold tracking-tight">
+              BUILT WITH THE SUPPORT OF OUR PARTNERS
+            </h2>
+            <p className="font-medium max-lg:text-base lg:text-lg">
+              Supported by partners who believe in our mission and help bring it
+              to life.
+            </p>
+            <div className="w-full">
+              <div className="relative aspect-video h-full w-full overflow-hidden rounded-2xl shadow">
+                <Image
+                  src="/img/about/partners.jpeg"
+                  fill={true}
+                  alt=""
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-1 flex-row gap-8">
+            <div className="flex flex-col justify-between max-lg:gap-4">
+              {partners.map((item) => {
+                return (
+                  <div key={item.text}>
+                    <h3 className="text-test-step-2 leading-[92%] font-extrabold tracking-tight">
+                      {item.heading}
+                    </h3>
+                    <p className="">{item.text}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
 
         <OurTeamServer />
       </div>
