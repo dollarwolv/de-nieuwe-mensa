@@ -152,7 +152,7 @@ function FloatingImageGallery({
             >
               <motion.div
                 style={{ x: plane.x, y: plane.y }}
-                className={`absolute h-screen w-screen ${plane.opacity} will-change-transform`}
+                className={`absolute h-screen w-screen ${plane.opacity} transform-gpu will-change-transform`}
               >
                 {plane.images.map((img, imgIndex) => (
                   <img
