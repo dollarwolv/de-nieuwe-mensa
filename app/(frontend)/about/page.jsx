@@ -134,7 +134,7 @@ function About() {
               A NEW CANTEEN - FOR STUDENTS, NOT PROFIT
             </h2>
             <div className="w-full flex-1 lg:hidden">
-              <div className="relative h-full w-full overflow-hidden rounded-2xl">
+              <div className="relative h-full w-full overflow-hidden rounded-4xl">
                 <img
                   src="/img/about/handingoutfood.jpeg"
                   alt="Picture showing a student handing out food"
@@ -162,7 +162,7 @@ function About() {
             </Button>
           </div>
           <div className="hidden w-full flex-1 lg:block">
-            <div className="relative h-full w-full overflow-hidden rounded-2xl">
+            <div className="relative h-full w-full overflow-hidden rounded-4xl">
               <img
                 src="/img/about/handingoutfood.jpeg"
                 alt=""

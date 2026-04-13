@@ -1,10 +1,52 @@
 "use client";
 
+import Image from "next/image";
 import { useSpring, motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import AnimatedText from "./General/AnimatedText";
 
 const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
+const fallbackImageSize = { width: 600, height: 800 };
+
+const imageSizeMap = {
+  "/img/catering/floatingimagegallery/5A.jpeg": { width: 480, height: 640 },
+  "/img/catering/floatingimagegallery/5B.jpeg": { width: 480, height: 640 },
+  "/img/catering/floatingimagegallery/5C.jpeg": { width: 480, height: 640 },
+  "/img/catering/floatingimagegallery/5C2.jpeg": { width: 640, height: 411 },
+  "/img/catering/floatingimagegallery/5D.jpeg": { width: 480, height: 640 },
+  "/img/catering/floatingimagegallery/5E.jpeg": { width: 480, height: 640 },
+  "/img/catering/floatingimagegallery/5F.jpeg": { width: 640, height: 480 },
+  "/img/catering/floatingimagegallery/5G.jpeg": { width: 640, height: 427 },
+  "/img/catering/floatingimagegallery/5H.jpeg": { width: 640, height: 485 },
+  "/img/catering/floatingimagegallery/5H2.jpeg": { width: 360, height: 640 },
+  "/img/catering/floatingimagegallery/5I.jpeg": { width: 480, height: 640 },
+  "/img/landing/floatingimagegallery/fanni.jpeg": { width: 480, height: 640 },
+  "/img/landing/floatingimagegallery/luis_leo.jpeg": {
+    width: 413,
+    height: 640,
+  },
+  "/img/landing/floatingimagegallery/noah_laura_francesco.jpeg": {
+    width: 640,
+    height: 416,
+  },
+  "https://picsum.photos/id/1015/800/500": { width: 800, height: 500 },
+  "https://picsum.photos/id/1027/400/700": { width: 400, height: 700 },
+  "https://picsum.photos/id/1035/600/600": { width: 600, height: 600 },
+  "https://picsum.photos/id/1043/500/800": { width: 500, height: 800 },
+  "https://picsum.photos/id/1052/900/500": { width: 900, height: 500 },
+  "https://picsum.photos/id/1069/600/600": { width: 600, height: 600 },
+  "https://picsum.photos/id/1074/700/450": { width: 700, height: 450 },
+  "https://picsum.photos/id/1084/450/750": { width: 450, height: 750 },
+  "https://picsum.photos/id/109/550/550": { width: 550, height: 550 },
+};
+
+function getImageSize(image) {
+  if (image.width && image.height) {
+    return { width: image.width, height: image.height };
+  }
+
+  return imageSizeMap[image.src] ?? fallbackImageSize;
+}
 
 function FloatingImageGallery({
   bgColor,
@@ -154,14 +196,25 @@ function FloatingImageGallery({
                 style={{ x: plane.x, y: plane.y }}
                 className={`pointer-events-none absolute h-screen w-screen ${plane.opacity} transform-gpu will-change-transform`}
               >
-                {plane.images.map((img, imgIndex) => (
-                  <img
-                    key={imgIndex}
-                    src={img.src}
-                    className={`pointer-events-none absolute ${img.pos} `}
-                    alt=""
-                  />
-                ))}
+                {plane.images.map((img, imgIndex) => {
+                  const { width, height } = getImageSize(img);
+
+                  return (
+                    <div
+                      key={imgIndex}
+                      className={`pointer-events-none absolute ${img.pos} overflow-hidden`}
+                      style={{ aspectRatio: `${width} / ${height}` }}
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.alt ?? ""}
+                        fill
+                        sizes="(max-width: 768px) 32vw, 18vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  );
+                })}
               </motion.div>
             </motion.div>
           ))}
