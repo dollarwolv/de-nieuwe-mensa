@@ -2,13 +2,28 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Curtain() {
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    const reveal = () => setIsReady(true);
+    if (document.readyState === "complete") {
+      reveal();
+      return;
+    }
+
+    window.addEventListener("load", reveal, { once: true });
+    return () => window.removeEventListener("load", reveal);
+  }, []);
   return (
     <motion.div
       className="bg-dnm-light-green pointer-events-none fixed inset-0 z-9999"
       initial={{ clipPath: "inset(0% 0% 0% 0%)" }}
-      animate={{ clipPath: "inset(0% 0% 100% 0%)" }}
+      animate={{
+        clipPath: isReady ? "inset(0% 0% 100% 0%)" : "inset(0% 0% 0% 0%)",
+      }}
       transition={{ duration: 1, ease: [0.83, 0, 0.17, 1], delay: 0.25 }}
     >
       <motion.div

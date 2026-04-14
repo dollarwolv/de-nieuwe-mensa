@@ -5,45 +5,45 @@ import { useRef } from "react";
 
 const images = [
   {
-    src: "/img/landing/values/bellpepper.png",
+    src: "/img/landing/values/bellpepper.webp",
     pos: "md:top-[-2%] md:left-[-5%] left-[-8%] top-[4%]",
   },
   {
-    src: "/img/landing/values/potato.png",
+    src: "/img/landing/values/potato.webp",
     pos: "md:bottom-[4%] left-[-4%] max-md:top-[64%]",
   },
   {
-    src: "/img/landing/values/onion.png",
+    src: "/img/landing/values/onion.webp",
     pos: "md:top-[48%] right-[-1%] top-[22%]",
   },
   {
-    src: "/img/landing/values/onion.png",
+    src: "/img/landing/values/onion.webp",
     pos: "bottom-[1%] md:left-[63%]",
   },
   {
-    src: "/img/landing/values/onion.png",
+    src: "/img/landing/values/onion.webp",
     pos: "md:top-[35%] left-[-1%] top-[28%]",
   },
   {
-    src: "/img/landing/values/onion.png",
+    src: "/img/landing/values/onion.webp",
     pos: "top-[-4%] md:left-[28%] left-[40%] top-[1%]",
   },
 
   {
-    src: "/img/landing/values/onion.png",
+    src: "/img/landing/values/onion.webp",
     pos: "md:top-[-7%] left-[92%] top-[58%]",
   },
   {
-    src: "/img/landing/values/bellpepper.png",
+    src: "/img/landing/values/bellpepper.webp",
     pos: "bottom-[8%] md:left-[29%] left-1/2",
   },
 
   {
-    src: "/img/landing/values/bellpepper.png",
+    src: "/img/landing/values/bellpepper.webp",
     pos: "bottom-[6%] left-[89%]",
   },
   {
-    src: "/img/landing/values/potato.png",
+    src: "/img/landing/values/potato.webp",
     pos: "md:top-[-3%] md:left-[60%] left-[80%] top-[1%]",
   },
 ];
@@ -53,21 +53,21 @@ const text = [
     heading: "CHEAP",
     text: "We're a non-profit — the money we make only covers our costs, which include ingredients, a service fee we pay to Cirfood, and staff. We keep the price as low as we can to make the canteen accessible to as many students as possible.",
     img: {
-      src: "/img/landing/values/bellpepper.png",
+      src: "/img/landing/values/bellpepper.webp",
     },
   },
   {
     heading: "SUSTAINABLE",
     text: "Good food starts with responsible sourcing. We cooperate with local farmers and Amsterdam-based stores to keep our supply chain short and direct. DNM is also part of the Dutch cuisine program “Biodiversiteit op je board” that is partnered with the WWF.",
     img: {
-      src: "/img/landing/values/potato.png",
+      src: "/img/landing/values/potato.webp",
     },
   },
   {
     heading: "TASTY",
     text: "All our dishes are fully vegan, built on staples like rice, couscous, and legumes that form the base of a satisfying meal. We avoid processed ingredients, focusing instead on creating depth of flavor through thoughtful seasoning and high-quality ingredients.",
     img: {
-      src: "/img/landing/values/onion.png",
+      src: "/img/landing/values/onion.webp",
     },
   },
 ];
