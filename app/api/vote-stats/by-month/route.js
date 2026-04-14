@@ -53,7 +53,7 @@ export async function GET(req) {
   // complicated SQL query
   const sql = `
   SELECT
-    ${groupBy === "day" ? "to_char(vote_date::date, 'YYYY-MM-DD') AS vote_day" : `TO_CHAR(("vote_date" AT TIME ZONE 'Asia/Singapore'), 'YYYY-MM') AS month`},
+    ${groupBy === "day" ? "to_char(vote_date::date, 'YYYY-MM-DD') AS vote_day" : `TO_CHAR(("vote_date" AT TIME ZONE 'Europe/Frankfurt'), 'YYYY-MM') AS month`},
     ${rubricKey === "all" ? selectAllMonths : `AVG(${rubricExpr}::float) AS avg`},
     COUNT(*)::int AS count
   FROM "votes"

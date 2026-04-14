@@ -26,10 +26,10 @@ export async function GET(req) {
   SELECT
     ${
       groupBy === "day"
-        ? `TO_CHAR(("date" AT TIME ZONE 'Asia/Singapore'), 'YYYY-MM-DD') AS day`
+        ? `TO_CHAR(("date" AT TIME ZONE 'Europe/Frankfurt'), 'YYYY-MM-DD') AS day`
         : groupBy === "month"
-          ? `TO_CHAR(("date" AT TIME ZONE 'Asia/Singapore'), 'YYYY-MM') AS month`
-          : `EXTRACT(DOW FROM ("date" AT TIME ZONE 'Asia/Singapore'))::int AS weekday`
+          ? `TO_CHAR(("date" AT TIME ZONE 'Europe/Frankfurt'), 'YYYY-MM') AS month`
+          : `EXTRACT(DOW FROM ("date" AT TIME ZONE 'Europe/Frankfurt'))::int AS weekday`
     },
     ROUND(AVG(amount), 0)::int AS sales,
     COUNT(*)::int AS count

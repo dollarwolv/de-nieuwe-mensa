@@ -136,7 +136,7 @@ export default function Home() {
             },
             {
               src: "/img/landing/floatingimagegallery/luis_leo.jpeg",
-              pos: "top-[60%] left-[40%] h-40",
+              pos: "md:top-[60%] top-[70%] md:left-[40%] left-[30%] h-40",
             },
             {
               src: "/img/landing/floatingimagegallery/fanni.jpeg",
@@ -144,7 +144,7 @@ export default function Home() {
             },
             {
               src: "/img/catering/floatingimagegallery/5H2.jpeg",
-              pos: "top-[75%] left-[20%] h-38",
+              pos: "top-[75%] left-[65%] md:left-[20%] h-38",
             },
             {
               src: "/img/landing/floatingimagegallery/antikantine.jpeg",
@@ -152,7 +152,7 @@ export default function Home() {
             },
             {
               src: "/img/landing/floatingimagegallery/noah_laura_francesco.jpeg",
-              pos: "top-[24%] left-[45%] h-52",
+              pos: "top-[33%] md:top-[24%] md:left-[45%] left-[15%] h-52",
             },
             {
               src: "/img/catering/floatingimagegallery/5E.jpeg",
