@@ -171,7 +171,7 @@ export default function Home() {
 
         {/* Sticky Cards */}
         <StickyCards />
-        {/* <ValuesSection /> */}
+        <ValuesSection />
         <MenuSection />
         <ScrollText texts={menuTexts} />
         <HireUs />
