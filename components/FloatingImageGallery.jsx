@@ -158,7 +158,7 @@ function FloatingImageGallery({
                   <img
                     key={imgIndex}
                     src={img.src}
-                    className={`pointer-events-none absolute ${img.pos} rounded-2xl`}
+                    className={`pointer-events-none absolute ${img.pos}`}
                     alt=""
                   />
                 ))}
