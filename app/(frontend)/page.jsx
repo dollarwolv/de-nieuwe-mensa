@@ -147,16 +147,16 @@ export default function Home() {
               pos: "top-[75%] left-[20%] h-38",
             },
             {
+              src: "/img/landing/floatingimagegallery/antikantine.jpeg",
+              pos: "top-[18%] left-[20%] h-40",
+            },
+            {
               src: "/img/landing/floatingimagegallery/noah_laura_francesco.jpeg",
               pos: "top-[24%] left-[45%] h-52",
             },
             {
               src: "/img/catering/floatingimagegallery/5E.jpeg",
               pos: "top-[72%] left-[60%] h-36",
-            },
-            {
-              src: "/img/catering/floatingimagegallery/5F.jpeg",
-              pos: "top-[18%] left-[20%] h-40",
             },
             {
               src: "/img/catering/floatingimagegallery/5C2.jpeg",

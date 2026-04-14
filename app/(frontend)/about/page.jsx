@@ -69,6 +69,7 @@ function About() {
               src="/img/about/kitchen.jpeg"
               alt=""
               className="h-full w-full rounded-2xl object-cover lg:max-xl:rounded-[48px] lg:max-lg:rounded-4xl xl:rounded-[80px] 2xl:mt-4"
+              loading="eager"
             />
           </div>
 
@@ -78,6 +79,7 @@ function About() {
                 src="/img/about/koshari.jpeg"
                 alt=""
                 className="aspect-2/1 h-full w-full rounded-4xl object-cover md:max-lg:hidden lg:rounded-[44px]"
+                loading="eager"
               />
             </div>
 

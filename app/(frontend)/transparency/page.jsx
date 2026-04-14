@@ -45,7 +45,8 @@ function TransparencyPage() {
           <img
             src="/img/transparency/chris_fanni_noah.jpeg"
             className="h-full w-full object-cover"
-            alt=""
+            alt="Four students wearing cooking clothing, smiling at the camera."
+            loading="eager"
           />
         </div>
         {/* Subheading */}
