@@ -62,6 +62,7 @@ function StickyCard({ data, rounded = true, cardHeight = 100 }) {
             src={data.image}
             alt="placeholder image"
             className="aspect-5/3 rounded-2xl object-cover shadow lg:max-w-[75%]"
+            loading="eager"
             style={{ aspectRatio: cardHeight < 100 ? 2 / 1 : 5 / 3 }}
           />
           <div className="lg:text-step--1 flex flex-row gap-2 md:w-[75%] md:flex-row md:gap-6">
