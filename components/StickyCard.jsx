@@ -27,7 +27,7 @@ function StickyCard({ data, rounded = true, cardHeight = 100 }) {
 
   return (
     <div
-      className={`bg-dnm-black relative w-full ${data.index !== "01" && rounded && cardHeight >= 100 && "rounded-t-4xl"} `}
+      className={`bg-dnm-black relative z-10 w-full ${data.index !== "01" && rounded && cardHeight >= 100 && "rounded-t-4xl"} `}
       ref={ref}
       style={{
         height: data.index !== "03" ? wrapperH : "auto",
