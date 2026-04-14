@@ -14,7 +14,7 @@ const images = [
   },
   {
     src: "/img/landing/values/onion.png",
-    pos: "md:top-[35%] right-[-5%] top-[22%]",
+    pos: "md:top-[48%] right-[-1%] top-[22%]",
   },
   {
     src: "/img/landing/values/onion.png",
@@ -31,16 +31,16 @@ const images = [
 
   {
     src: "/img/landing/values/onion.png",
-    pos: "md:top-[-2%] left-[92%] top-[58%]",
+    pos: "md:top-[-7%] left-[92%] top-[58%]",
   },
   {
     src: "/img/landing/values/bellpepper.png",
-    pos: "bottom-[2%] md:left-[29%] left-1/2",
+    pos: "bottom-[8%] md:left-[29%] left-1/2",
   },
 
   {
     src: "/img/landing/values/bellpepper.png",
-    pos: "bottom-[1%] left-[92%]",
+    pos: "bottom-[6%] left-[89%]",
   },
   {
     src: "/img/landing/values/potato.png",
@@ -84,18 +84,18 @@ function ValuesSection() {
 
   const deplaceValue1 = useTransform(scrollYProgress, [1, 0], [-100, 0]);
   const deplaceValue2 = useTransform(scrollYProgress, [1, 0], [-100, 50]);
-  const deplaceValue3 = useTransform(scrollYProgress, [1, 0], [-50, 75]);
+  const deplaceValue3 = useTransform(scrollYProgress, [1, 0], [-50, 150]);
 
   const planesData = [
     {
       speed: 0.05,
-      opacity: "opacity-70 brightness-70",
+      opacity: "opacity-70",
       deplaceValue: deplaceValue1,
       images: images.slice(0, 3),
     },
     {
       speed: 0.2,
-      opacity: "opacity-80 brightness-90",
+      opacity: "opacity-85",
       x: useSpring(0, springConfig),
       y: useSpring(0, springConfig),
       deplaceValue: deplaceValue2,
@@ -124,6 +124,7 @@ function ValuesSection() {
               src={img.src}
               className={`${img.pos} ${plane.opacity} absolute z-0 h-32 object-contain md:h-44 xl:h-48`}
               key={index}
+              loading="eager"
             />
           ))}
         </motion.div>
@@ -137,7 +138,7 @@ function ValuesSection() {
           <div className="flex flex-col gap-4 md:flex-row">
             {text.map((item, index) => (
               <div
-                className="bg-dnm-white mx-auto flex h-fit flex-col items-center justify-center gap-1 rounded-2xl border-2 border-black p-4 shadow"
+                className="bg-dnm-white mx-auto flex h-fit flex-col items-center justify-center gap-1 rounded-2xl border-2 border-black p-4 shadow-xl"
                 key={index}
               >
                 <img src={item.img.src} alt="" className="h-32" />
