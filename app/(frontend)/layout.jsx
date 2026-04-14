@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/General/Navbar";
 import StickyFooter from "@/components/General/StickyFooter";
 import { ViewTransitions } from "next-view-transitions";
+import { Analytics } from "@vercel/analytics/next";
 
 const garet = localFont({
   src: [
@@ -96,6 +97,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ViewTransitions>
+      <Analytics />
       <html lang="en">
         <body className={`${montserrat.className} font-garet bg-dnm-white`}>
           <div className="p-4">
