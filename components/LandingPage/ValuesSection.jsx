@@ -17,7 +17,7 @@ const images = [
     pos: "md:top-[48%] right-[-1%] top-[22%]",
   },
   {
-    src: "/img/landing/values/onion.webp",
+    src: "/img/landing/values/potato.webp",
     pos: "bottom-[1%] md:left-[63%]",
   },
   {
@@ -30,7 +30,7 @@ const images = [
   },
 
   {
-    src: "/img/landing/values/onion.webp",
+    src: "/img/landing/values/bellpepper.webp",
     pos: "md:top-[-7%] left-[92%] top-[58%]",
   },
   {
