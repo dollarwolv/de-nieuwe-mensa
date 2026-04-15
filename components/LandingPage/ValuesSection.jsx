@@ -51,7 +51,7 @@ const images = [
 const text = [
   {
     heading: "CHEAP",
-    text: "We're a non-profit — the money we make only covers our costs, which include ingredients, a service fee we pay to Cirfood, and staff. We keep the price as low as we can to make the canteen accessible to as many students as possible.",
+    text: "We're a non-profit — the money we make only covers our costs, which include ingredients, a service fee we pay to Cirfood, and fair wages for our cooks. We keep the price as low as we can to make the canteen accessible to as many students as possible.",
     img: {
       src: "/img/landing/values/bellpepper.webp",
     },
