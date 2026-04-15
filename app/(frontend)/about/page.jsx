@@ -174,7 +174,7 @@ function About() {
           </div>
         </div>
 
-        <div className="mt-32 flex flex-col justify-between gap-8 px-4 lg:flex-row lg:gap-18">
+        <div className="mt-20 flex flex-col justify-between gap-8 px-4 md:mt-32 lg:flex-row lg:gap-18">
           <div className="flex flex-1 flex-col gap-4">
             <h2 className="text-test-step-3 leading-[92%] font-extrabold tracking-tight">
               OUR PLEDGE TO SUSTAINABILITY
@@ -200,7 +200,7 @@ function About() {
               {suppliers.map((item) => {
                 return (
                   <div key={item.text}>
-                    <h3 className="text-test-step-2 font-extrabold tracking-tight">
+                    <h3 className="text-test-step-2 font-bold tracking-tight">
                       {item.heading}
                     </h3>
                     <p className="">{item.text}</p>
@@ -212,7 +212,7 @@ function About() {
         </div>
 
         <BentoGrid
-          className="mt-24 px-4 lg:pr-20 lg:pl-8"
+          className="mt-0 px-4 md:mt-24 lg:pr-20 lg:pl-8"
           heading={"A PLANT-BASED CANTEEN"}
           subheading={
             "De Nieuwe Mensa only sells plant-based meals, which has several benefits for our cause."
@@ -241,7 +241,7 @@ function About() {
           ]}
         />
 
-        <div className="mt-32 flex flex-col justify-between gap-8 px-4 lg:flex-row lg:gap-18">
+        <div className="mt-0 flex flex-col justify-between gap-8 px-4 md:mt-32 lg:flex-row lg:gap-18">
           <div className="flex flex-1 flex-col gap-4">
             <h2 className="text-test-step-3 leading-[92%] font-extrabold tracking-tight">
               BUILT WITH THE SUPPORT OF OUR PARTNERS
@@ -266,7 +266,7 @@ function About() {
               {partners.map((item) => {
                 return (
                   <div key={item.text}>
-                    <h3 className="text-test-step-2 leading-[92%] font-extrabold tracking-tight">
+                    <h3 className="text-test-step-2 leading-[92%] font-bold tracking-tight">
                       {item.heading}
                     </h3>
                     <p className="">{item.text}</p>

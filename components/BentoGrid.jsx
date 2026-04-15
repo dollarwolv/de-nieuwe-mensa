@@ -12,7 +12,7 @@ function BentoGrid({ heading, subheading, boxes = [], image, className = "" }) {
         <div className="flex w-full flex-col gap-8">
           <div className="flex flex-col gap-2 md:gap-4">
             {heading && (
-              <h2 className="lg:text-test-step-3 text-4xl leading-[92%] font-bold tracking-tight md:text-5xl">
+              <h2 className="lg:text-test-step-3 text-4xl leading-[92%] font-extrabold tracking-tight md:text-5xl">
                 {heading}
               </h2>
             )}
