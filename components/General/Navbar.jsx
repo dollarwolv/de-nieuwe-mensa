@@ -4,7 +4,12 @@ import Image from "next/image";
 import Button from "./Button";
 import { useState } from "react";
 import { Squeeze as Hamburger } from "hamburger-react";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
 import Link from "next/link";
 import { useTransitionRouter } from "next-view-transitions";
 import { usePathname } from "next/navigation";
@@ -31,6 +36,7 @@ function Navbar() {
   const [isOpen, setOpen] = useState(false);
   const router = useTransitionRouter();
   const pathname = usePathname();
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
 
   function handleNav(e, route) {
     e.preventDefault();
@@ -55,13 +61,25 @@ function Navbar() {
     { label: "Dishes", url: "/dishes" },
   ];
 
+  // check scroll direction
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (current) => {
+    const diff = current - scrollY.getPrevious();
+    setIsScrollingDown(diff > 0 ? true : false);
+  });
+
   return (
     <>
       <div className="fixed top-4 left-4 z-9999 block lg:hidden">
         <Hamburger toggled={isOpen} toggle={setOpen} />
       </div>
 
-      <nav className="lg:text-test-step--1 relative z-9999 mx-auto flex w-full max-w-460 items-center justify-between px-5 font-extrabold">
+      <motion.nav
+        initial={{ y: 0 }}
+        animate={{ y: isScrollingDown ? "-100px" : "0px" }}
+        transition={{ delay: 0.05, ease: [0.16, 1, 0.3, 1], duration: 0.4 }}
+        className="lg:text-test-step--1 bg-dnm-white fixed top-0 left-0 z-9999 mx-auto flex w-full max-w-460 items-center justify-between px-5 py-2 font-extrabold max-md:hidden"
+      >
         <div className="relative hidden shrink-0 md:h-13 md:w-16 lg:block lg:h-18 lg:w-22">
           <Link
             href={"/"}
@@ -94,7 +112,7 @@ function Navbar() {
             VOTE
           </Button>
         </div>
-      </nav>
+      </motion.nav>
 
       <AnimatePresence>
         {isOpen && (

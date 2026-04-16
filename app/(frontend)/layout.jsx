@@ -100,7 +100,7 @@ export default function RootLayout({ children }) {
       <Analytics />
       <html lang="en">
         <body className={`${montserrat.className} font-garet bg-dnm-white`}>
-          <div className="p-4">
+          <div className="px-4 py-8">
             <Navbar />
             {children}
           </div>
