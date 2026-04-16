@@ -1,9 +1,14 @@
 function RoundButton({ onClick, direction }) {
   return (
     <button
-      className="bg-dnm-light-green border-dnm-black flex h-20 w-20 cursor-pointer items-center justify-center rounded-full border-2 shadow-[8px_8px_0px_0px_rgb(35,35,35)]"
+      className="bg-dnm-light-green border-dnm-black flex h-20 cursor-pointer items-center justify-center gap-2 rounded-full border-2 px-4 shadow-[8px_8px_0px_0px_rgb(35,35,35)]"
       onClick={onClick}
     >
+      {direction === "right" && (
+        <span className="text-xl font-semibold whitespace-nowrap md:text-3xl">
+          Next Milestone
+        </span>
+      )}
       <svg
         width="40"
         height="40"

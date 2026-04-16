@@ -33,11 +33,14 @@ function ClickThroughStory() {
   ];
 
   const [index, setIndex] = useState(0);
-  const progress = index / (story.length - 1);
+  const progress = (index + 1) / story.length;
+  const markerPositions = story.map(
+    (_, markerIndex) => ((markerIndex + 1) / story.length) * 100,
+  );
 
   return (
-    <section className="mt-24 w-full max-w-460 md:mt-48">
-      <h2 className="text-test-step-0 font-bold">Our Origin</h2>
+    <section className="mt-24 w-full max-w-460 px-8 md:mt-54">
+      <h2 className="text-test-step-0 font-bold">Our Journey — Timeline</h2>
       <div className="flex flex-row items-start justify-start">
         <div className="relative inline-flex overflow-hidden">
           <AnimatePresence mode="popLayout">
@@ -53,7 +56,7 @@ function ClickThroughStory() {
                 mass: 1,
               }}
               style={{ willChange: "transform" }}
-              className="md:text-test-step-10 block text-8xl leading-[80%] font-extrabold"
+              className="md:text-test-step-9 block text-8xl leading-[80%] font-extrabold"
             >
               {story[index].year}
             </motion.span>
@@ -62,7 +65,7 @@ function ClickThroughStory() {
         <div className="relative inline-flex overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.span
-              className="text-test-step-4 hidden leading-[100%] font-bold md:ml-4 md:block"
+              className="text-test-step-3 hidden leading-[100%] font-bold md:ml-4 md:block"
               key={story[index].text}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -97,28 +100,46 @@ function ClickThroughStory() {
 
       {/* SVG PROGRESS BAR */}
       <div className="my-8 w-full">
-        <svg width="100%" height="2" className="overflow-visible">
-          <line x1="0" y1="1" x2="100%" y2="1" stroke="black" strokeWidth="6" />
+        <svg width="100%" height="16" className="overflow-visible">
+          <line x1="0" y1="8" x2="100%" y2="8" stroke="black" strokeWidth="8" />
           <line
             x1="0"
-            y1="1"
+            y1="8"
             x2="100%"
-            y2="1"
+            y2="8"
             stroke="oklch(0.5725 0.1145 151.74)"
-            strokeWidth="6"
+            strokeWidth="8"
             pathLength="1"
             strokeDasharray="1"
             strokeDashoffset={1 - progress}
             style={{ transition: "stroke-dashoffset 0.4s ease-out" }}
           />
+          {markerPositions.map((position, markerIndex) => {
+            const isCompleted = markerIndex <= index;
+
+            return (
+              <circle
+                key={story[markerIndex].year}
+                cx={`${position}%`}
+                cy="8"
+                r="6"
+                fill={isCompleted ? "oklch(0.5725 0.1145 151.74)" : "white"}
+                stroke="black"
+                strokeWidth="1"
+                style={{ transition: "fill 0.3s ease-out" }}
+                onClick={() => setIndex(markerIndex)}
+                className="hover:r- cursor-pointer shadow hover:fill-[oklch(0.5725_0.0629_151.74)]"
+              />
+            );
+          })}
         </svg>
       </div>
 
-      <div className="flex flex-col justify-between md:flex-row md:items-center">
-        <p className="md:text-test-step--2 max-w-[40ch] font-medium md:mt-12">
+      <div className="flex flex-col justify-between md:flex-row md:items-start">
+        <p className="md:text-test-step--2 max-w-[48ch] font-medium md:mt-4">
           {story[index].text}
         </p>
-        <div className="flex w-44 justify-between gap-4 max-md:mt-8 max-md:w-full">
+        <div className="flex w-104 justify-between gap-4 max-md:mt-8 max-md:w-full md:mr-4">
           {index > 0 ? (
             <RoundButton
               onClick={() => {
@@ -139,6 +160,7 @@ function ClickThroughStory() {
                   setIndex((prev) => prev + 1);
                 }
               }}
+              direction={"right"}
             />
           )}
         </div>

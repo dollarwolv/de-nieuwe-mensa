@@ -130,7 +130,7 @@ function About() {
 
         <ClickThroughStory />
 
-        <div className="mt-32 flex flex-col gap-18 px-4 lg:flex-row">
+        <div className="mt-54 flex flex-col gap-18 px-4 lg:flex-row">
           <div className="flex h-full flex-1 flex-col gap-4">
             <h2 className="text-test-step-3 leading-[92%] font-extrabold tracking-tight lg:max-w-[15ch]">
               A NEW CANTEEN - FOR STUDENTS, NOT PROFIT
