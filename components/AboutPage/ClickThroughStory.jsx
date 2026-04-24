@@ -39,7 +39,7 @@ function ClickThroughStory() {
   );
 
   return (
-    <section className="mt-24 w-full max-w-460 px-8 md:mt-54">
+    <section className="mt-24 w-full max-w-460 md:mt-54 md:px-8">
       <h2 className="text-test-step-0 font-bold">Our Journey — Timeline</h2>
       <div className="flex flex-row items-start justify-start">
         <div className="relative inline-flex overflow-hidden">

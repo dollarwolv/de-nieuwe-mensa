@@ -77,8 +77,8 @@ function OurTeam({ boardMembersByYear, cooksByYear }) {
               The Cooks
             </h2>
             <p className="text-test-step--2 mt-2 max-w-[50ch] leading-[92%] font-medium tracking-tight">
-              Most importantly - the students who are working on the bringing
-              you the best food possible.
+              Most importantly - the students who are working on bringing you
+              the best food possible.
             </p>
           </div>
           <div className="mt-6 grid grid-cols-2 justify-between gap-x-20 gap-y-2.5 md:grid-cols-3 lg:mt-8 lg:grid-cols-5">
