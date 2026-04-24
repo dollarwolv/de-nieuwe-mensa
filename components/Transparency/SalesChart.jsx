@@ -70,8 +70,8 @@ function convertWeekday(weekdayInt) {
 }
 
 export default function SalesChart() {
-  const [dateRange, setDateRange] = useState(365);
-  const [groupBy, setGroupBy] = useState("day");
+  const [dateRange, setDateRange] = useState(3650);
+  const [groupBy, setGroupBy] = useState("month");
   const [chartData, setChartData] = useState([]);
 
   const params = new URLSearchParams({
@@ -80,6 +80,7 @@ export default function SalesChart() {
   });
 
   const dateRanges = [
+    { description: "All time", num: 3650 },
     { description: "Last year", num: 365 },
     { description: "Last 6 months", num: 180 },
     { description: "Last 3 months", num: 90 },
@@ -187,7 +188,7 @@ export default function SalesChart() {
                   tickLine={false}
                   tickMargin={10}
                   axisLine={false}
-                  tickFormatter={(value) => convertWeekday(value)}
+                  tickFormatter={(value) => convertWeekday(value - 1)}
                 />
               )}
 
