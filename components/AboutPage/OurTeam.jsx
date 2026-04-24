@@ -64,7 +64,7 @@ function OurTeam({ boardMembersByYear, cooksByYear }) {
                     <span className="md:text-step--1 text-center leading-[92%] font-medium tracking-tight">
                       {profile.name}
                     </span>
-                    <span className="italic max-md:text-sm">
+                    <span className="text-center italic max-md:text-sm">
                       {profile.role}
                     </span>
                   </div>
