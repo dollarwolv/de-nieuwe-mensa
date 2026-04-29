@@ -8,27 +8,57 @@ function ClickThroughStory() {
   const story = [
     {
       year: "2023",
-      month: "April",
-      monthAbb: "Apr",
-      text: "In April of 2023, a few students were fed up with the high food prices, so they formed 'Antikantine': a protest movement against the high prices.",
+      month: "February",
+      monthAbb: "Feb",
+      text: "In February of 2023, a few students were fed up with the high food prices, so they formed 'ANTIKANTINE': a protest movement against the high prices.",
+    },
+    {
+      year: "2023",
+      month: "March",
+      monthAbb: "Mar",
+      text: "In March, they held their first protest, giving out free sandwiches on campus. This attracted attention from several regional news platforms, which made many students join to fight for the cause.",
     },
     {
       year: "2024",
-      month: "June",
-      monthAbb: "Jun",
-      text: "In June, they held their first protest, where they haneded out free food in the canteen to stick it to the canteen overlords.",
+      month: "February",
+      monthAbb: "Feb",
+      text: `A year later, ANTIKANTINE announced their biggest protest yet, giving out free Daal in the canteen. 
+      This announcement sparked a controversy among students — while many were in favor of the cause, some did not agree that canteen food should be affordable, attesting that "Appie is around the corner".`,
+    },
+    {
+      year: "2024",
+      month: "March",
+      monthAbb: "Mar",
+      text: `This controversy helped the announcement go viral, which caused many students to show up to the March protests. The huge turnout attracted the attention of the UvA, 
+      which invited ANTIKANTINE to join a stakeholder meeting with the Facility Services department, who are in charge of the canteen.`,
+    },
+    {
+      year: "2024",
+      month: "May",
+      monthAbb: "May",
+      text: `During our meeting with the UvA's Facility Services in May, we discussed how the canteen could be improved.
+      The UvA carefully listened to our vision for the canteen and the idea of an entirely student-run, non-profit food stall emerged.
+      We agreed to set up a pilot project to make our vision a reality.`,
+    },
+    {
+      year: "2024",
+      month: "September",
+      monthAbb: "Sep",
+      text: `In September, we started recruiting a team and prepared for our launch in February 2025. With a budget of 10.000€ from the UvA, we
+      covered initial bureaucratic, as well as operational costs, and managed to set up a business.`,
+    },
+    {
+      year: "2025",
+      month: "February",
+      monthAbb: "Feb",
+      text: `In February of 2025, De Nieuwe Mensa finally opened as a fully non-profit, student-run canteen stall. The project was extremely well-received
+      by both students and staff, managing to sell around 1800 portions every week.`,
     },
     {
       year: "2025",
       month: "August",
       monthAbb: "Aug",
-      text: "In August, they held their second protest, where they haneded out EVEN MORE free food in the canteen to stick it to the canteen overlords.",
-    },
-    {
-      year: "2026",
-      month: "September",
-      monthAbb: "Sep",
-      text: "In September, members of ANTIKANTINE talked to the UvA staff, seeing where things could go.",
+      text: "In August, the initial test phase of the project ended, and we were able to prolong our contract for an additional year at REC. Currently, we are expanding our menu and optimizing our operations to make De Nieuwe Mensa a permanent part of campus life.",
     },
   ];
 
@@ -119,7 +149,7 @@ function ClickThroughStory() {
 
             return (
               <circle
-                key={story[markerIndex].year}
+                key={story[markerIndex].year * markerIndex}
                 cx={`${position}%`}
                 cy="8"
                 r="6"

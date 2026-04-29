@@ -175,7 +175,7 @@ export default function Home() {
         <MenuSection />
         <ScrollText texts={menuTexts} />
         <HireUs />
-        <Testimonials />
+        {/* <Testimonials /> */}
       </div>
     </>
   );

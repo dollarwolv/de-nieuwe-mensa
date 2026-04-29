@@ -54,7 +54,7 @@ function OurTeam({ boardMembersByYear, cooksByYear }) {
                 >
                   <div className="aspect-square max-w-53 overflow-hidden rounded-full">
                     <img
-                      src={`${profile.profilePicture?.url || "https://picsum.photos/212/212"}`}
+                      src={`${profile.profilePicture?.url || "/img/about/placeholder_profile_pic.jpg"}`}
                       alt=""
                       className="h-full w-full max-w-53 object-cover"
                     />
@@ -72,7 +72,8 @@ function OurTeam({ boardMembersByYear, cooksByYear }) {
               );
             })}
           </div>
-          <div className="mt-24 flex flex-col">
+          {/* Uncomment when cooks have finally given their pictures - as of now (May 2026) it doesn't seem like they want to have their picture on there. */}
+          {/* <div className="mt-24 flex flex-col">
             <h2 className="text-test-step-4 leading-[92%] font-bold tracking-tight">
               The Cooks
             </h2>
@@ -100,7 +101,7 @@ function OurTeam({ boardMembersByYear, cooksByYear }) {
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

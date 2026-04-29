@@ -57,8 +57,9 @@ function Navbar() {
     { label: "About", url: "/about" },
     { label: "Transparency", url: "/transparency" },
     { label: "Catering", url: "/catering" },
-    { label: "Blog", url: "/blog" },
-    { label: "Dishes", url: "/dishes" },
+    // uncomment when blog articles and recipes are ready!
+    // { label: "Blog", url: "/blog" },
+    // { label: "Dishes", url: "/dishes" },
   ];
 
   // check scroll direction
