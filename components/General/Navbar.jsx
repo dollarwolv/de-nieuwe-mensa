@@ -155,7 +155,7 @@ function Navbar() {
             </div>
             <div className="mt-12 flex justify-between text-sm text-white uppercase">
               <div className="flex flex-col">
-                <span>info@denieuwemensa.nl</span>
+                <span>contact@denieuwemensa.nl</span>
                 <span>catering@denieuwemensa.nl</span>
                 <span>Nieuwe Achtergracht 170, Amsterdam</span>
               </div>

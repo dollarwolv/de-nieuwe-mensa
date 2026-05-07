@@ -4,8 +4,8 @@ const footerLinks = ["About", "Transparency", "Catering", "Blog", "Dishes"];
 
 const contactLinks = [
   {
-    label: "info@denieuwemensa.nl",
-    href: "mailto:info@denieuwemensa.nl",
+    label: "contact@denieuwemensa.nl",
+    href: "mailto:contact@denieuwemensa.nl",
     icon: (
       <svg
         aria-hidden="true"
