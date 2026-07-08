@@ -63,10 +63,15 @@ function Navbar() {
   ];
 
   // check scroll direction
-  const { scrollY } = useScroll();
+  const { scrollY, scrollYProgress } = useScroll();
   useMotionValueEvent(scrollY, "change", (current) => {
-    const diff = current - scrollY.getPrevious();
-    setIsScrollingDown(diff > 0 ? true : false);
+    const previous = scrollY.getPrevious() ?? current;
+    const diff = current - previous;
+
+    const isScrollingDown = diff > 0;
+    const isPastTopBuffer = scrollYProgress.get() >= 0.01;
+
+    setIsScrollingDown(isScrollingDown && isPastTopBuffer);
   });
 
   return (
