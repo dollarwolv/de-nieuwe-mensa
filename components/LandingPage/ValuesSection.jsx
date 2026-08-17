@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 const images = [
   {
-    src: "/img/landing/values/bellpepper.webp",
+    src: "/img/landing/values/broccoli.webp",
     pos: "md:top-[-2%] md:left-[-5%] left-[-8%] top-[4%]",
   },
   {
@@ -30,16 +30,16 @@ const images = [
   },
 
   {
-    src: "/img/landing/values/bellpepper.webp",
+    src: "/img/landing/values/broccoli.webp",
     pos: "md:top-[-7%] left-[92%] top-[58%]",
   },
   {
-    src: "/img/landing/values/bellpepper.webp",
+    src: "/img/landing/values/broccoli.webp",
     pos: "bottom-[8%] md:left-[29%] left-1/2",
   },
 
   {
-    src: "/img/landing/values/bellpepper.webp",
+    src: "/img/landing/values/broccoli.webp",
     pos: "bottom-[6%] left-[89%]",
   },
   {
@@ -53,7 +53,7 @@ const text = [
     heading: "CHEAP",
     text: "We're a non-profit — the money we make only covers our costs, which include ingredients, a service fee we pay to Cirfood, and fair wages for our cooks. We keep the price as low as we can to make the canteen accessible to as many students as possible.",
     img: {
-      src: "/img/landing/values/bellpepper.webp",
+      src: "/img/landing/values/broccoli.webp",
     },
   },
   {

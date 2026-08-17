@@ -55,7 +55,7 @@ export default function Home() {
           <div className="relative aspect-square w-full max-w-112.5 md:col-start-17 md:col-end-25 md:row-start-1 md:-mt-5 md:-mb-5 md:ml-auto md:max-w-full">
             <div className="relative max-md:mx-auto max-md:max-w-[90%] md:h-full md:w-full">
               <Image
-                src="/daal.png"
+                src="/mainPageMeal.webp"
                 className="absolute object-cover"
                 alt="Daal at de nieuwe mensa"
                 fill
