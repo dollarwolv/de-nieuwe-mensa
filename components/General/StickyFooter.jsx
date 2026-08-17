@@ -1,6 +1,18 @@
-import Image from "next/image";
+"use client";
 
-const footerLinks = ["About", "Transparency", "Catering", "Blog", "Dishes"];
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTransitionRouter } from "next-view-transitions";
+import { pageAnimation } from "./Navbar";
+
+const footerLinks = [
+  { label: "About", url: "/about" },
+  { label: "Transparency", url: "/transparency" },
+  { label: "Catering", url: "/catering" },
+  { label: "Blog", url: "/blog" },
+  { label: "Dishes", url: "/dishes" },
+];
 
 const contactLinks = [
   {
@@ -65,16 +77,34 @@ const contactLinks = [
 ];
 
 export default function StickyFooter() {
+  const router = useTransitionRouter();
+  const pathname = usePathname();
+
+  function handleNav(event, route) {
+    event.preventDefault();
+
+    if (pathname !== route.url) {
+      router.push(route.url, {
+        onTransitionReady: pageAnimation,
+      });
+    }
+  }
+
   return (
     <footer className="bg-dnm-black text-dnm-white mt-10 w-full">
       <div className="flex flex-col gap-6 px-4 py-5 md:px-10 md:py-8">
         <div className="flex w-full gap-10">
           <div className="flex w-full flex-row justify-between gap-4">
             <nav className="flex flex-col gap-1 text-base leading-[95%] font-bold md:text-2xl">
-              {footerLinks.map((link) => (
-                <a key={link} href="#" className="w-fit hover:opacity-80">
-                  {link}
-                </a>
+              {footerLinks.map((route) => (
+                <Link
+                  key={route.label}
+                  href={route.url}
+                  onClick={(event) => handleNav(event, route)}
+                  className="w-fit hover:opacity-80"
+                >
+                  {route.label}
+                </Link>
               ))}
             </nav>
 
