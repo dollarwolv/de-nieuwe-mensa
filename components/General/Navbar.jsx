@@ -84,7 +84,7 @@ function Navbar() {
         initial={{ y: 0 }}
         animate={{ y: isScrollingDown ? "-100px" : "0px" }}
         transition={{ delay: 0.05, ease: [0.16, 1, 0.3, 1], duration: 0.4 }}
-        className="lg:text-test-step--1 bg-dnm-white fixed top-0 left-0 z-9999 mx-auto flex w-full max-w-460 items-center justify-between px-5 py-2 font-extrabold max-md:hidden"
+        className="lg:text-test-step--1 bg-dnm-white fixed top-0 left-0 z-9999 mx-auto flex w-full items-center justify-between px-5 py-2 font-extrabold max-md:hidden"
       >
         <div className="relative hidden shrink-0 md:h-13 md:w-16 lg:block lg:h-18 lg:w-22">
           <Link
